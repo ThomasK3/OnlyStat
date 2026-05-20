@@ -42,32 +42,6 @@ a { color: inherit; text-decoration: none; }
 }
 .screen::-webkit-scrollbar { display: none; }
 .screen.active { display: flex; }
-.screen.slide-in-right { animation: slideInRight var(--transition-screen) forwards; }
-.screen.slide-out-left { animation: slideOutLeft var(--transition-screen) forwards; }
-.screen.slide-in-left { animation: slideInLeft var(--transition-screen) forwards; }
-.screen.slide-out-right { animation: slideOutRight var(--transition-screen) forwards; }
-
-@keyframes slideInRight {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(0); }
-}
-@keyframes slideOutLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-30%); }
-}
-@keyframes slideInLeft {
-  from { transform: translateX(-30%); }
-  to   { transform: translateX(0); }
-}
-@keyframes slideOutRight {
-  from { transform: translateX(0); }
-  to   { transform: translateX(100%); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.screen.fade-in { animation: fadeIn 200ms ease forwards; }
 
 /* Top bar */
 .top-bar {

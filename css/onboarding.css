@@ -1,0 +1,123 @@
+#screen-onboarding {
+  background: linear-gradient(160deg, var(--c-primary) 0%, var(--c-accent) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.onb-wrap {
+  width: 100%;
+  max-width: 360px;
+  padding: var(--sp-xl) var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xl);
+}
+
+/* Logo */
+.onb-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: -0.02em;
+}
+
+/* Hero text */
+.onb-hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+.onb-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+}
+.onb-subtitle {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Form */
+.onb-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+.onb-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.02em;
+}
+.onb-input {
+  width: 100%;
+  padding: 14px var(--sp-md);
+  border-radius: var(--r-md);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.onb-input::placeholder {
+  color: rgba(255,255,255,0.4);
+  font-weight: 400;
+}
+.onb-input:focus {
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.2);
+}
+/* Remove number input arrows */
+.onb-input::-webkit-outer-spin-button,
+.onb-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.onb-input[type=number] { -moz-appearance: textfield; }
+
+/* Live calc */
+.onb-calc {
+  background: rgba(255,255,255,0.12);
+  border-radius: var(--r-md);
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+.onb-calc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+}
+.onb-calc-row strong {
+  font-size: 15px;
+  color: #fff;
+}
+
+/* CTA button */
+.onb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-xs);
+  padding: 16px;
+  background: #fff;
+  color: var(--c-primary);
+  border-radius: var(--r-md);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.onb-btn svg { width: 18px; height: 18px; }
+.onb-btn:active { opacity: 0.9; transform: scale(0.98); }

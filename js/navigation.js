@@ -1,11 +1,11 @@
 const App = {
   current: 'screen-home',
   history: [],
-  animating: false
 };
 
 /* Screens that don't show the bottom nav */
 const NO_NAV_SCREENS = new Set([
+  'screen-onboarding',
   'screen-stehovani', 'screen-narozeni', 'screen-doklady',
   'screen-s12', 'screen-s13', 'screen-s14',
   'screen-s8', 'screen-s9',
@@ -23,9 +23,10 @@ const TAB_MAP = {
   'screen-ukoly':   'nav-situace',
   'screen-profil':  'nav-profil',
   'screen-nastaveni':'nav-profil',
-  'screen-stehovani':'nav-situace',
-  'screen-narozeni': 'nav-situace',
-  'screen-doklady':  'nav-situace',
+  'screen-stehovani':   'nav-situace',
+  'screen-narozeni':    'nav-situace',
+  'screen-doklady':     'nav-situace',
+  'screen-nemovitost':  'nav-situace',
   'screen-s12':      'nav-situace',
   'screen-s13':      'nav-situace',
   'screen-s14':      'nav-situace',
@@ -36,59 +37,52 @@ const TAB_MAP = {
   'screen-autone':   'nav-dane',
   'screen-feedback': 'nav-home',
   'screen-feedback-done': 'nav-home',
+  'screen-report':   'nav-home',
 };
 
+function _formatKc(n) {
+  return n.toLocaleString('cs-CZ') + ' Kč';
+}
+
+function initReport() {
+  const income  = parseInt(localStorage.getItem('monthly_income') || '0');
+  const monthly = income > 0 ? Math.round(income * 0.489) : 4029;
+
+  document.getElementById('report-total').textContent     = _formatKc(monthly);
+  document.getElementById('report-duchody').textContent   = _formatKc(Math.round(monthly * 0.33));
+  document.getElementById('report-skolstvi').textContent  = _formatKc(Math.round(monthly * 0.26));
+  document.getElementById('report-doprava').textContent   = _formatKc(Math.round(monthly * 0.24));
+  document.getElementById('report-chodnik').textContent   = '~' + _formatKc(Math.round(monthly * 0.006));
+}
+
 function navigateTo(id, dir = 'forward') {
-  if (App.animating || id === App.current) return;
+  if (id === App.current) return;
   const prevEl = document.getElementById(App.current);
   const nextEl = document.getElementById(id);
   if (!nextEl) return;
 
-  App.animating = true;
   App.history.push(App.current);
   App.current = id;
 
-  const inClass  = dir === 'forward' ? 'slide-in-right'  : 'slide-in-left';
-  const outClass = dir === 'forward' ? 'slide-out-left'  : 'slide-out-right';
-
-  /* Show next screen on top */
-  nextEl.classList.add('active', inClass);
-  if (prevEl) prevEl.classList.add(outClass);
-
+  if (prevEl) prevEl.classList.remove('active');
+  nextEl.classList.add('active');
+  nextEl.scrollTop = 0;
   _updateNav(id);
 
-  setTimeout(() => {
-    if (prevEl) {
-      prevEl.classList.remove('active', outClass);
-    }
-    nextEl.classList.remove(inClass);
-    nextEl.scrollTop = 0;
-    App.animating = false;
-  }, 280);
+  if (id === 'screen-report') initReport();
 }
 
 function goBack() {
-  if (App.animating || App.history.length === 0) return;
+  if (App.history.length === 0) return;
   const prev = App.history.pop();
-  const id = App.current;
-
-  App.animating = true;
-  const prevEl = document.getElementById(id);
+  const prevEl = document.getElementById(App.current);
   const nextEl = document.getElementById(prev);
-  if (!nextEl) { App.animating = false; return; }
+  if (!nextEl) return;
 
   App.current = prev;
-
-  nextEl.classList.add('active', 'slide-in-left');
-  if (prevEl) prevEl.classList.add('slide-out-right');
-
+  if (prevEl) prevEl.classList.remove('active');
+  nextEl.classList.add('active');
   _updateNav(prev);
-
-  setTimeout(() => {
-    if (prevEl) prevEl.classList.remove('active', 'slide-out-right');
-    nextEl.classList.remove('slide-in-left');
-    App.animating = false;
-  }, 280);
 }
 
 function switchTab(id) {
@@ -99,12 +93,10 @@ function switchTab(id) {
   if (!nextEl) return;
 
   if (prevEl) prevEl.classList.remove('active');
-  nextEl.classList.add('active', 'fade-in');
+  nextEl.classList.add('active');
   nextEl.scrollTop = 0;
   App.current = id;
   _updateNav(id);
-
-  setTimeout(() => nextEl.classList.remove('fade-in'), 200);
 }
 
 function _updateNav(screenId) {
@@ -171,8 +163,64 @@ function selectOption(screenId, selectedId, dest) {
   if (dest) setTimeout(() => navigateTo(dest, 'forward'), 300);
 }
 
+/* Situation steps */
+function toggleStep(rowEl) {
+  const step = rowEl.closest('.sit-step');
+  const isOpen = step.classList.contains('sit-step--open');
+  step.closest('.sit-steps').querySelectorAll('.sit-step--open').forEach(s => s.classList.remove('sit-step--open'));
+  if (!isOpen) step.classList.add('sit-step--open');
+}
+
+function checkStep(event, checkEl) {
+  event.stopPropagation();
+  const step = checkEl.closest('.sit-step');
+  step.classList.toggle('sit-step--done');
+  step.classList.remove('sit-step--open');
+  _updateSitProgress(step.closest('.screen'));
+}
+
+function startSituation(id, name, btnEl) {
+  localStorage.setItem('active_situation', JSON.stringify({ id, name }));
+  btnEl.textContent = '✓ Přidáno';
+  btnEl.disabled = true;
+}
+
+function _updateSitProgress(screenEl) {
+  const total = screenEl.querySelectorAll('.sit-step').length;
+  const done = screenEl.querySelectorAll('.sit-step--done').length;
+  const pct = total > 0 ? Math.round(done / total * 100) : 0;
+  const fill = screenEl.querySelector('.progress-fill');
+  const counter = screenEl.querySelector('.sit-progress-counter');
+  if (fill) fill.style.width = pct + '%';
+  if (counter) counter.textContent = done + ' / ' + total + ' kroků';
+  if (done === total && total > 0) {
+    const banner = screenEl.querySelector('.sit-completion');
+    if (banner) banner.removeAttribute('hidden');
+  }
+}
+
+/* Onboarding */
+function calcOnboarding() {
+  const income = parseInt(document.getElementById('onb-income').value) || 0;
+  const monthly = Math.round(income * 0.489);
+  const yearly = monthly * 12;
+  const fmt = n => n > 0 ? '~ ' + n.toLocaleString('cs-CZ') + ' Kč' : '–';
+  document.getElementById('onb-monthly').textContent = fmt(monthly);
+  document.getElementById('onb-yearly').textContent = fmt(yearly);
+}
+
+function finishOnboarding() {
+  const income = parseInt(document.getElementById('onb-income').value) || 0;
+  localStorage.setItem('onboarding_done', '1');
+  if (income > 0) localStorage.setItem('monthly_income', String(income));
+  switchTab('screen-home');
+}
+
 /* Init on load */
 document.addEventListener('DOMContentLoaded', () => {
+  if (!localStorage.getItem('onboarding_done')) {
+    App.current = 'screen-onboarding';
+  }
   const startEl = document.getElementById(App.current);
   if (startEl) {
     startEl.classList.add('active');

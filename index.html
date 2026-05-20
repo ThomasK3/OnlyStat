@@ -18,11 +18,56 @@
   <link rel="stylesheet" href="css/quiz.css">
   <link rel="stylesheet" href="css/profil.css">
   <link rel="stylesheet" href="css/feedback.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/report.css">
+  <link rel="stylesheet" href="css/situace-detail.css">
 </head>
 <body>
   <div id="app">
 
     <!-- ========== SCREENS ========== -->
+
+    <!-- ONBOARDING -->
+    <div id="screen-onboarding" class="screen">
+      <div class="onb-wrap">
+
+        <div class="onb-logo">OnlyStát</div>
+
+        <div class="onb-hero">
+          <h1 class="onb-title">Vítej. Víš, co za své daně dostáváš?</h1>
+          <p class="onb-subtitle">Zadej svůj měsíční příjem a my ti ukážeme, kam tvoje peníze jdou.</p>
+        </div>
+
+        <div class="onb-form">
+          <label class="onb-label" for="onb-income">Tvůj hrubý měsíční příjem (Kč)</label>
+          <input
+            class="onb-input"
+            id="onb-income"
+            type="number"
+            inputmode="numeric"
+            placeholder="např. 45 000"
+            oninput="calcOnboarding()"
+          />
+
+          <div class="onb-calc" id="onb-calc">
+            <div class="onb-calc-row">
+              <span>Tvůj měsíční příspěvek státu:</span>
+              <strong id="onb-monthly">–</strong>
+            </div>
+            <div class="onb-calc-row">
+              <span>Ročně:</span>
+              <strong id="onb-yearly">–</strong>
+            </div>
+          </div>
+        </div>
+
+        <button class="onb-btn" onclick="finishOnboarding()">
+          Začít
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+      </div>
+    </div>
 
     <!-- HOME -->
     <div id="screen-home" class="screen has-nav">
@@ -103,37 +148,69 @@
           </div>
         </div>
 
+        <!-- Odznaky -->
+        <div class="home-section">
+          <div class="home-section-header">
+            <div class="home-section-title">Moje odznaky</div>
+            <button class="home-section-link" onclick="switchTab('screen-profil')">Zobrazit vše →</button>
+          </div>
+          <div class="home-badges-row">
+            <div class="home-badge-chip"><span>🏅</span></div>
+            <div class="home-badge-chip"><span>🚌</span></div>
+            <div class="home-badge-chip"><span>🌳</span></div>
+            <div class="home-badge-chip"><span>🏗️</span></div>
+            <div class="home-badge-chip home-badge-chip--locked"><span>📚</span></div>
+            <div class="home-badge-chip home-badge-chip--locked"><span>🚴</span></div>
+            <div class="home-badge-chip home-badge-chip--locked"><span>🏊</span></div>
+            <div class="home-badge-chip home-badge-chip--locked"><span>♻️</span></div>
+          </div>
+        </div>
+
+        <!-- Report karta -->
+        <div class="home-report-card" onclick="navigateTo('screen-report','forward')">
+          <div class="home-report-card-top">
+            <span class="home-report-card-title">Tvůj přehled za květen</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="home-report-card-sub">Co jsi přispěl a co z toho vzešlo</div>
+          <div class="home-report-card-divider"></div>
+          <div class="home-report-card-bottom">
+            <span class="home-report-card-value">4 029 Kč</span>
+            <span class="home-report-card-label">tento měsíc</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <!-- DANE -->
     <div id="screen-dane" class="screen has-nav">
-      <div class="dane-header">
-        <div class="dane-header-title">Moje daně</div>
-        <div class="dane-header-sub">Přehled za rok 2024</div>
-      </div>
-      <div class="dane-tabs">
-        <div class="dane-tab active" data-tab="prehled" onclick="switchDaneTab('prehled')">Přehled</div>
-        <div class="dane-tab" data-tab="historia" onclick="switchDaneTab('historia')">Historie</div>
-        <div class="dane-tab" data-tab="projekty" onclick="switchDaneTab('projekty')">Projekty</div>
-      </div>
-      <div class="dane-panel" data-panel="prehled">
-        <div class="dane-summary-card">
-          <div class="dane-summary-row"><span class="dane-summary-label">Celkem zaplaceno (2024)</span></div>
-          <div class="dane-summary-row"><span class="dane-summary-total">145 320 Kč</span><span class="badge badge-green">Vypočteno</span></div>
-          <div style="height:1px;background:var(--c-divider)"></div>
-          <div class="dane-summary-row"><span class="dane-summary-label">Daň z příjmu FO</span><span class="dane-summary-val">58 400 Kč</span></div>
-          <div class="dane-summary-row"><span class="dane-summary-label">Sociální pojištění</span><span class="dane-summary-val">51 840 Kč</span></div>
-          <div class="dane-summary-row"><span class="dane-summary-label">Zdravotní pojištění</span><span class="dane-summary-val">23 040 Kč</span></div>
-          <div class="dane-summary-row"><span class="dane-summary-label">DPH (odhad)</span><span class="dane-summary-val">12 040 Kč</span></div>
+      <!-- Hero -->
+      <div class="dane-hero">
+        <div class="dane-hero-label">Moje daňová stopa</div>
+        <div class="dane-hero-sublabel">celkový roční příspěvek</div>
+        <div class="dane-hero-value">48 350 Kč</div>
+        <div class="dane-hero-bar-wrap">
+          <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+          <div class="dane-hero-bar-sub">68 % průměru zaměstnanců v ČR</div>
         </div>
+      </div>
+      <!-- Tabs -->
+      <div class="dane-tabs">
+        <div class="dane-tab active" data-tab="celostatni" onclick="switchDaneTab('celostatni')">Celostátní</div>
+        <div class="dane-tab" data-tab="lokalni" onclick="switchDaneTab('lokalni')">Lokální</div>
+      </div>
+
+      <!-- Celostátní panel -->
+      <div class="dane-panel" data-panel="celostatni">
+        <!-- Donut chart -->
         <div class="donut-wrapper">
           <div class="donut-chart">
             <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#094672" stroke-width="14" stroke-dasharray="79 239" stroke-dashoffset="0"/>
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#1e7a87" stroke-width="14" stroke-dasharray="62 239" stroke-dashoffset="-79"/>
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#2d5f8a" stroke-width="14" stroke-dasharray="57 239" stroke-dashoffset="-141"/>
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#c8e9ed" stroke-width="14" stroke-dasharray="40 239" stroke-dashoffset="-198"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#006a68" stroke-width="13" stroke-dasharray="79 239" stroke-dashoffset="0"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#1e7a87" stroke-width="13" stroke-dasharray="62 239" stroke-dashoffset="-79"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#2d5f8a" stroke-width="13" stroke-dasharray="57 239" stroke-dashoffset="-141"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#094672" stroke-width="13" stroke-dasharray="41 239" stroke-dashoffset="-198"/>
             </svg>
             <div class="donut-center">
               <div class="donut-center-amount">48 350 Kč</div>
@@ -141,47 +218,162 @@
             </div>
           </div>
           <div class="legend">
-            <div class="legend-item" onclick="navigateTo('screen-s8','forward')">
-              <div class="legend-dot" style="background:#094672"></div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#006a68"></div>
               <span class="legend-label">Důchody a soc. dávky</span>
-              <span class="legend-amount">15 955 Kč</span>
+              <span class="legend-amount">19 340 Kč</span>
               <span class="legend-pct">33 %</span>
             </div>
-            <div class="legend-item" onclick="navigateTo('screen-s9','forward')">
+            <div class="legend-item">
               <div class="legend-dot" style="background:#1e7a87"></div>
               <span class="legend-label">Školství</span>
-              <span class="legend-amount">12 571 Kč</span>
+              <span class="legend-amount">12 088 Kč</span>
               <span class="legend-pct">26 %</span>
             </div>
             <div class="legend-item">
               <div class="legend-dot" style="background:#2d5f8a"></div>
               <span class="legend-label">Doprava</span>
-              <span class="legend-amount">11 604 Kč</span>
+              <span class="legend-amount">9 670 Kč</span>
               <span class="legend-pct">24 %</span>
             </div>
             <div class="legend-item">
-              <div class="legend-dot" style="background:#c8e9ed"></div>
-              <span class="legend-label">Obrana</span>
-              <span class="legend-amount">8 220 Kč</span>
+              <div class="legend-dot" style="background:#094672"></div>
+              <span class="legend-label">Obrana a bezpečnost</span>
+              <span class="legend-amount">7 252 Kč</span>
               <span class="legend-pct">17 %</span>
             </div>
           </div>
         </div>
+
+        <!-- Section label -->
+        <div class="section-label" style="padding:0">Podrobný rozpis</div>
+
+        <!-- Breakdown rows -->
+        <div class="dane-breakdown">
+          <div class="dane-breakdown-row" onclick="navigateTo('screen-s8','forward')">
+            <div class="dane-breakdown-icon" style="background:#e0f2f1">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#006a68" stroke-width="2" style="width:20px;height:20px"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Důchody a soc. dávky</span>
+                <span class="dane-breakdown-amount">19 340 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Platíš na starobní důchody, invaliditu a podporu v nezaměstnanosti.</div>
+              <div class="dane-breakdown-bar"><div style="width:33%;background:#006a68"></div></div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="dane-breakdown-row" onclick="navigateTo('screen-s9','forward')">
+            <div class="dane-breakdown-icon" style="background:#e6f6f8">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#1e7a87" stroke-width="2" style="width:20px;height:20px"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Školství a vzdělávání</span>
+                <span class="dane-breakdown-amount">12 088 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Financuješ školy od MŠ po vysoké školy a vědecký výzkum.</div>
+              <div class="dane-breakdown-bar"><div style="width:26%;background:#1e7a87"></div></div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="dane-breakdown-row">
+            <div class="dane-breakdown-icon" style="background:#ebf2f9">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#2d5f8a" stroke-width="2" style="width:20px;height:20px"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Doprava a infrastruktura</span>
+                <span class="dane-breakdown-amount">9 670 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Dálnice, silnice, železnice a veřejná doprava po celé republice.</div>
+              <div class="dane-breakdown-bar"><div style="width:24%;background:#2d5f8a"></div></div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="dane-breakdown-row">
+            <div class="dane-breakdown-icon" style="background:#e8eef4">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#094672" stroke-width="2" style="width:20px;height:20px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Obrana a bezpečnost</span>
+                <span class="dane-breakdown-amount">7 252 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Armáda, policie a záchranné složky chrání stát i tebe každý den.</div>
+              <div class="dane-breakdown-bar"><div style="width:17%;background:#094672"></div></div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
         <button class="btn-primary" onclick="navigateTo('screen-projekty','forward')">Zobrazit projekty financované z mých daní</button>
       </div>
-      <div class="dane-panel" data-panel="historia" style="display:none">
-        <div class="dane-summary-card">
-          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2024</span><span class="dane-summary-total">145 320 Kč</span></div>
-          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2023</span><span class="dane-summary-val">138 770 Kč</span></div>
-          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2022</span><span class="dane-summary-val">131 040 Kč</span></div>
-          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2021</span><span class="dane-summary-val">119 500 Kč</span></div>
+
+      <!-- Lokální panel -->
+      <div class="dane-panel" data-panel="lokalni" style="display:none">
+        <div class="dane-local-card">
+          <div class="dane-local-label">Praha 2 – Vinohrady</div>
+          <div class="dane-local-value">~2 780 Kč</div>
+          <div class="dane-local-sub">Odhadovaný roční příspěvek do obecního a krajského rozpočtu</div>
         </div>
-        <div style="background:var(--c-bg-card);border-radius:var(--r-lg);padding:var(--sp-md);text-align:center;color:var(--c-text-sub);font-size:14px;">Celkem za 4 roky: <strong style="color:var(--c-text)">534 630 Kč</strong></div>
-      </div>
-      <div class="dane-panel" data-panel="projekty" style="display:none">
-        <div style="padding:var(--sp-md);font-size:14px;color:var(--c-text-sub);line-height:1.6;">Vaše daně financují projekty ve vašem okolí. Chcete vidět konkrétní příklady?</div>
+        <div class="section-label" style="padding:0">Kam jdou lokální daně</div>
+        <div class="dane-breakdown">
+          <div class="dane-breakdown-row">
+            <div class="dane-breakdown-icon" style="background:#e0f2f1">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#006a68" stroke-width="2" style="width:20px;height:20px"><polygon points="3 11 12 2 21 11"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Správa obce</span>
+                <span class="dane-breakdown-amount">~890 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Radnice, úřad, komunální služby a správa obecního majetku.</div>
+              <div class="dane-breakdown-bar"><div style="width:32%;background:#006a68"></div></div>
+            </div>
+          </div>
+          <div class="dane-breakdown-row">
+            <div class="dane-breakdown-icon" style="background:#e6f6f8">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#1e7a87" stroke-width="2" style="width:20px;height:20px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Místní školství</span>
+                <span class="dane-breakdown-amount">~720 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Základní a mateřské školy zřizované Prahou 2.</div>
+              <div class="dane-breakdown-bar"><div style="width:26%;background:#1e7a87"></div></div>
+            </div>
+          </div>
+          <div class="dane-breakdown-row">
+            <div class="dane-breakdown-icon" style="background:#ebf2f9">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#2d5f8a" stroke-width="2" style="width:20px;height:20px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Místní doprava a opravy</span>
+                <span class="dane-breakdown-amount">~610 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Opravy chodníků, ulic a lokální infrastruktury MČ Praha 2.</div>
+              <div class="dane-breakdown-bar"><div style="width:22%;background:#2d5f8a"></div></div>
+            </div>
+          </div>
+          <div class="dane-breakdown-row">
+            <div class="dane-breakdown-icon" style="background:#e8eef4">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#094672" stroke-width="2" style="width:20px;height:20px"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="dane-breakdown-body">
+              <div class="dane-breakdown-top">
+                <span class="dane-breakdown-name">Kultura a sport</span>
+                <span class="dane-breakdown-amount">~560 Kč</span>
+              </div>
+              <div class="dane-breakdown-sub">Kulturní domy, hřiště, parky a sportovní zařízení v okolí.</div>
+              <div class="dane-breakdown-bar"><div style="width:20%;background:#094672"></div></div>
+            </div>
+          </div>
+        </div>
         <button class="btn-primary" onclick="navigateTo('screen-projekty','forward')">Zobrazit projekty v okolí</button>
-        <div style="height:var(--sp-md)"></div>
       </div>
     </div>
 
@@ -241,7 +433,7 @@
         <div class="situace-card" onclick="navigateTo('screen-auto1','forward')"><div class="situace-card-emoji">🚗</div><div class="situace-card-title">Koupě auta</div><div class="situace-card-sub">Registrace, pojištění, STK</div><div class="situace-card-steps">4 kroky</div></div>
         <div class="situace-card" onclick="navigateTo('screen-doklady','forward')"><div class="situace-card-emoji">📄</div><div class="situace-card-title">Výměna dokladů</div><div class="situace-card-sub">OP, pas, řidičák</div><div class="situace-card-steps">3 kroky</div></div>
         <div class="situace-card" onclick="navigateTo('screen-s12','forward')"><div class="situace-card-emoji">💼</div><div class="situace-card-title">Ztráta zaměstnání</div><div class="situace-card-sub">Podpora, ÚP, dávky</div><div class="situace-card-steps">6 kroků</div></div>
-        <div class="situace-card"><div class="situace-card-emoji">🏡</div><div class="situace-card-title">Koupě nemovitosti</div><div class="situace-card-sub">Daň, katastr, zápis</div><div class="situace-card-steps">8 kroků</div></div>
+        <div class="situace-card" onclick="navigateTo('screen-nemovitost','forward')"><div class="situace-card-emoji">🏡</div><div class="situace-card-title">Koupě nemovitosti</div><div class="situace-card-sub">Daň, katastr, zápis</div><div class="situace-card-steps">8 kroků</div></div>
       </div>
       <div style="height:var(--sp-md)"></div>
     </div>
@@ -252,51 +444,300 @@
         <button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
         <div class="top-bar-title">Stěhování</div><div class="top-bar-spacer"></div>
       </div>
-      <div class="detail-hero"><div class="detail-hero-emoji">🏠</div><div class="detail-hero-title">Stěhování do nového bytu</div><div class="detail-hero-sub">Kompletní průvodce — co zařídit a v jakém pořadí</div><div class="detail-hero-badge">3 / 5 kroků splněno</div></div>
-      <div style="padding:var(--sp-md)"><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div></div>
-      <div class="steps-list">
-        <div class="step-item"><div class="step-num done"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="step-body"><div class="step-title">Nahlášení nové adresy na obecním úřadě</div><div class="step-desc">Trvalé bydliště jste úspěšně přihlásili na Úřadu MČ Praha 2.</div></div></div>
-        <div class="step-item"><div class="step-num done"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="step-body"><div class="step-title">Aktualizace OP (nová adresa)</div><div class="step-desc">Nový občanský průkaz s aktuální adresou je připraven k vyzvednutí.</div></div></div>
-        <div class="step-item"><div class="step-num done"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="step-body"><div class="step-title">Přepis energií a médií</div><div class="step-desc">ČEZ, plyn a internet přepsány na vaše jméno.</div></div></div>
-        <div class="step-item"><div class="step-num" style="background:var(--c-bg-card);color:var(--c-primary);">4</div><div class="step-body"><div class="step-title">Oznámit změnu adresy zaměstnavateli</div><div class="step-desc">Pošlete aktualizovanou adresu HR oddělení.</div><div class="step-action" onclick="navigateTo('screen-ukoly','forward')">Přidat do úkolů <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div></div>
-        <div class="step-item"><div class="step-num" style="background:var(--c-bg-card);color:var(--c-primary);">5</div><div class="step-body"><div class="step-title">Aktualizace v registru řidičů</div><div class="step-desc">Změna adresy v řidičském průkazu je dobrovolná, ale doporučená.</div></div></div>
+      <div class="sit-hero">
+        <div class="sit-hero-circle">🏠</div>
+        <div class="sit-hero-name">Stěhování</div>
       </div>
-      <div style="padding:var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);">
-        <button class="btn-primary" onclick="navigateTo('screen-s13','forward')">Označit krok 4 jako splněný</button>
-        <button class="btn-secondary" onclick="goBack()">Zpět na situace</button>
+      <div class="screen-content">
+        <div class="sit-tax-card">
+          <div class="sit-tax-icon">🏠</div>
+          <div>
+            <div class="sit-tax-label">Daňová souvislost</div>
+            <div class="sit-tax-text">Přihlášení k trvalému pobytu je podmínkou pro správné zdanění příjmů a odvody do obce. Změna adresy ovlivňuje, do které obce jde vaše daň z příjmu.</div>
+          </div>
+        </div>
+        <div class="sit-meta">Stěhování · 5 kroků · Bezplatné</div>
+        <div class="sit-progress-wrap">
+          <div class="sit-progress-row">
+            <span class="sit-progress-counter">0 / 5 kroků</span>
+            <button class="sit-start-btn" onclick="startSituation('screen-stehovani','Stěhování',this)">Sledovat</button>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="sit-steps">
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Nahlásit nové trvalé bydliště</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Na obecním úřadě nebo úřadu MČ podle nové adresy. Přineste doklad o právu užívání bytu (nájemní smlouva nebo souhlas vlastníka) a občanský průkaz. Lhůta: do 30 dnů od nastěhování.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Platný občanský průkaz</div>
+                <div class="sit-brings-item">Nájemní smlouva nebo souhlas vlastníka</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Požádat o nový OP s aktuální adresou</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Po změně trvalého bydliště je potřeba vyměnit OP. Poplatek 200 Kč, vyřízení do 30 dnů (50 Kč za express do 5 dnů). Podání na obecním úřadě s rozšířenou působností.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Stávající OP</div>
+                <div class="sit-brings-item">1× fotografie (35×45 mm)</div>
+                <div class="sit-brings-item">Správní poplatek 200 Kč</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Přepsat energie a média</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Kontaktujte dodavatele elektřiny, plynu a internetu a přepište smlouvy na své jméno. Většinu lze vyřídit online nebo telefonicky. Nezapomeňte předat stavy měřičů.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Oznámit změnu adresy zaměstnavateli</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Pošlete aktualizované kontaktní údaje HR oddělení. Zaměstnavatel potřebuje novou adresu pro mzdové listy a daňové přiznání. Stačí e-mail nebo interní portál.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Aktualizace adresy v řidičském průkazu</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Dobrovolné, ale doporučené. Adresa v ŘP se aktualizuje při podání žádosti o nový OP — pokud o OP nepožádáte, lze změnit adresu i samostatně za 50 Kč na obecním úřadě s rozšířenou působností.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sit-completion" hidden>
+          <div class="sit-completion-emoji">🏠</div>
+          <div class="sit-completion-title">Stěhování dokončeno!</div>
+          <div style="font-size:14px;color:var(--c-text-sub)">Všechny kroky splněny. Váš nový domov je úředně zařízen.</div>
+          <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+        </div>
       </div>
     </div>
 
     <!-- NAROZENI -->
     <div id="screen-narozeni" class="screen">
       <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Narodilo se miminko</div><div class="top-bar-spacer"></div></div>
-      <div class="detail-hero"><div class="detail-hero-emoji">👶</div><div class="detail-hero-title">Narodilo se vám miminko!</div><div class="detail-hero-sub">Blahopřejeme. Tady je co zařídit — seřazeno podle urgence.</div><div class="detail-hero-badge">7 kroků celkem</div></div>
-      <div class="steps-list">
-        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Nahlásit narození na matrice</div><div class="step-desc">Do 1 měsíce od porodu. Nemocnice to obvykle vyřídí za vás.</div></div></div>
-        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Požádat o rodný list</div><div class="step-desc">Vydá ho matriční úřad zdarma.</div></div></div>
-        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Přihlásit dítě k zdravotní pojišťovně</div><div class="step-desc">Do 8 dnů od porodu.</div></div></div>
-        <div class="step-item"><div class="step-num">4</div><div class="step-body"><div class="step-title">Požádat o porodné</div><div class="step-desc">Jednorázová dávka 13 000 Kč na první dítě. Žádost na ÚP ČR.</div></div></div>
-        <div class="step-item"><div class="step-num">5</div><div class="step-body"><div class="step-title">Požádat o rodičovský příspěvek</div><div class="step-desc">Až 300 000 Kč celkem, čerpání do 4 let věku dítěte.</div></div></div>
-        <div class="step-item"><div class="step-num">6</div><div class="step-body"><div class="step-title">Uplatnit daňové zvýhodnění</div><div class="step-desc">Na dítě: 15 204 Kč ročně.</div></div></div>
-        <div class="step-item"><div class="step-num">7</div><div class="step-body"><div class="step-title">Zkontrolovat nárok na přídavek na dítě</div><div class="step-desc">Při příjmu do 2,7násobku životního minima.</div></div></div>
+      <div class="sit-hero">
+        <div class="sit-hero-circle">👶</div>
+        <div class="sit-hero-name">Narodilo se miminko</div>
       </div>
-      <div style="padding:var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat úkoly do mého seznamu</button></div>
+      <div class="screen-content">
+        <div class="sit-tax-card">
+          <div class="sit-tax-icon">👶</div>
+          <div>
+            <div class="sit-tax-label">Daňová souvislost</div>
+            <div class="sit-tax-text">Na každé dítě máte nárok na daňové zvýhodnění 15 204 Kč ročně (1 267 Kč/měsíc). Rodičovský příspěvek 300 000 Kč je financován ze sociálního pojistného, které platíte každý měsíc.</div>
+          </div>
+        </div>
+        <div class="sit-meta">Miminko · 7 kroků · Dávky až 313 000 Kč</div>
+        <div class="sit-progress-wrap">
+          <div class="sit-progress-row">
+            <span class="sit-progress-counter">0 / 7 kroků</span>
+            <button class="sit-start-btn" onclick="startSituation('screen-narozeni','Miminko',this)">Sledovat</button>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="sit-steps">
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Nahlásit narození na matrice</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Do 1 měsíce od porodu na matričním úřadě podle místa porodu. Nemocnice to za vás obvykle vyřídí automaticky — ověřte při propouštění. Bezplatné.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Převzít rodný list</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Vydá matriční úřad zdarma, obvykle do 30 dnů od nahlášení. Budete ho potřebovat pro zdravotní pojišťovnu, dávky i daňové zvýhodnění. Uložte na bezpečné místo.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Přihlásit dítě ke zdravotní pojišťovně</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Do 8 dnů od porodu. Dítě lze přihlásit ke stejné pojišťovně jako rodič, nebo vybrat novou. Formulář dostupný online nebo na přepážce. Bezplatné.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co budete potřebovat</div>
+                <div class="sit-brings-item">Rodný list dítěte</div>
+                <div class="sit-brings-item">OP rodiče</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Požádat o porodné (13 000 Kč)</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Jednorázová dávka 13 000 Kč na první živé dítě, 10 000 Kč na druhé. Podmínka: příjem rodiny do 2,7× životního minima. Žádost na Úřadu práce do 1 roku od porodu.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou na ÚP</div>
+                <div class="sit-brings-item">Rodný list dítěte</div>
+                <div class="sit-brings-item">Doklady totožnosti obou rodičů</div>
+                <div class="sit-brings-item">Doklad o příjmu za předchozí čtvrtletí</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Požádat o rodičovský příspěvek</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Celková výše 300 000 Kč (na druhé dítě 330 000 Kč), čerpáte do 4 let věku dítěte. Výši měsíční splátky si volíte sami. Žádost na Úřadu práce. Bezplatné, nárok má každý rodič bez ohledu na příjem.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Uplatnit daňové zvýhodnění na dítě</div>
+              <span class="sit-badge sit-badge--doc">DANĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">15 204 Kč ročně (1 267 Kč/měsíc) na první dítě. Uplatňuje se buď v daňovém přiznání (OSVČ), nebo podáním Prohlášení poplatníka u zaměstnavatele. Lze zpětně za aktuální rok.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Zkontrolovat přídavek na dítě</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Opakovaná měsíční dávka při příjmu rodiny do 2,7× životního minima. Výše závisí na věku dítěte (500–700 Kč/měsíc). Žádost online na portálu MPSV nebo na ÚP.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sit-completion" hidden>
+          <div class="sit-completion-emoji">👶</div>
+          <div class="sit-completion-title">Vše zařízeno!</div>
+          <div style="font-size:14px;color:var(--c-text-sub)">Splnili jste všechny kroky. Gratulujeme k mimince!</div>
+          <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+        </div>
+      </div>
     </div>
 
     <!-- DOKLADY -->
     <div id="screen-doklady" class="screen">
       <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Výměna dokladů</div><div class="top-bar-spacer"></div></div>
-      <div class="detail-hero"><div class="detail-hero-emoji">📄</div><div class="detail-hero-title">Výměna dokladů</div><div class="detail-hero-sub">Platnost vašeho OP vyprší za 47 dní — začněte včas</div><div class="detail-hero-badge">⚠️ Urgentní</div></div>
-      <div style="background:var(--c-orange-light);border-radius:var(--r-lg);margin:var(--sp-md);padding:var(--sp-md);display:flex;gap:var(--sp-sm);align-items:flex-start;border:1px solid rgba(230,81,0,0.2);">
-        <span style="font-size:20px;">⚠️</span>
-        <div style="font-size:13px;color:var(--c-orange);line-height:1.5;">Váš občanský průkaz vyprší <strong>6. 7. 2025</strong>. S vydáním OP trvá úřadům až 30 dní — požádejte co nejdříve.</div>
+      <div class="sit-hero">
+        <div class="sit-hero-circle">📄</div>
+        <div class="sit-hero-name">Výměna dokladů</div>
       </div>
-      <div class="steps-list">
-        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Objednat termín na úřadě</div><div class="step-desc">Rezervace na MV ČR nebo příslušném obecním úřadě.</div></div></div>
-        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Připravit dokumenty</div><div class="step-desc">Stávající OP nebo pas, fotografie, doklad o adrese, poplatek 200 Kč.</div></div></div>
-        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Vyzvednout nový OP</div><div class="step-desc">Do 30 dnů od podání žádosti.</div></div></div>
+      <div class="screen-content">
+        <div class="sit-tax-card">
+          <div class="sit-tax-icon">📄</div>
+          <div>
+            <div class="sit-tax-label">Daňová souvislost</div>
+            <div class="sit-tax-text">Výroba občanského průkazu je hrazena ze státního rozpočtu. Vydání OP stojí stát přibližně 250 Kč — váš poplatek 200 Kč část nákladů pokrývá. Express vydání (50 Kč) je dotováno ve zbytku z daní.</div>
+          </div>
+        </div>
+        <div style="background:var(--c-orange-light);border-radius:var(--r-md);padding:var(--sp-md);display:flex;gap:var(--sp-sm);align-items:flex-start;border:1px solid rgba(230,81,0,0.2);">
+          <span style="font-size:18px;">⚠️</span>
+          <div style="font-size:13px;color:var(--c-orange);line-height:1.5;">Váš OP vyprší <strong>6. 7. 2025</strong>. S vydáním trvá úřad až 30 dní — požádejte co nejdříve.</div>
+        </div>
+        <div class="sit-meta">Výměna dokladů · 3 kroky · Poplatek 200 Kč</div>
+        <div class="sit-progress-wrap">
+          <div class="sit-progress-row">
+            <span class="sit-progress-counter">0 / 3 kroků</span>
+            <button class="sit-start-btn" onclick="startSituation('screen-doklady','Výměna dokladů',this)">Sledovat</button>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="sit-steps">
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Objednat termín na úřadě</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Rezervaci termínu proveďte online na portálu MV ČR (obcanky.cz) nebo přímo na webu vašeho obecního úřadu s rozšířenou působností. Bez objednání hrozí dlouhé čekání.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Podat žádost o nový OP</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Na obecním úřadě s rozšířenou působností (ORP). Standardní vyřízení do 30 dnů zdarma. Express do 5 dnů za 500 Kč, do 24 hodin za 1 000 Kč.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Stávající OP (i prošlý)</div>
+                <div class="sit-brings-item">1× fotografie (35×45 mm) — nebo biometrická na místě</div>
+                <div class="sit-brings-item">Správní poplatek 200 Kč (standardní)</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Vyzvednout nový OP</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">O připravenosti OP budete informováni SMS nebo e-mailem. Vyzvednutí na stejném úřadě, kde jste podali žádost. Nezapomeňte odevzdat starý OP. Bezplatné.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sit-completion" hidden>
+          <div class="sit-completion-emoji">📄</div>
+          <div class="sit-completion-title">Doklady vyřízeny!</div>
+          <div style="font-size:14px;color:var(--c-text-sub)">Nový OP je připraven. Všechny kroky splněny.</div>
+          <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+        </div>
       </div>
-      <div style="padding:0 var(--sp-md) var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat do úkolů</button></div>
     </div>
 
     <!-- UKOLY -->
@@ -331,16 +772,107 @@
     <!-- S12 ZTRÁTA ZAMĚSTNÁNÍ -->
     <div id="screen-s12" class="screen">
       <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Ztráta zaměstnání</div><div class="top-bar-spacer"></div></div>
-      <div class="detail-hero"><div class="detail-hero-emoji">💼</div><div class="detail-hero-title">Ztráta zaměstnání</div><div class="detail-hero-sub">Co dělat jako první — krok za krokem</div><div class="detail-hero-badge">6 kroků</div></div>
-      <div class="steps-list">
-        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Zaregistrovat se na Úřadu práce</div><div class="step-desc">Do 3 pracovních dnů od skončení zaměstnání.</div></div></div>
-        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Požádat o podporu v nezaměstnanosti</div><div class="step-desc">Výše: 65 % průměrného čistého výdělku (první 2 měsíce).</div></div></div>
-        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Oznámit ztrátu příjmu zdravotní pojišťovně</div><div class="step-desc">Registrace na ÚP vás automaticky přihlásí ke zdravotnímu pojištění.</div></div></div>
-        <div class="step-item"><div class="step-num">4</div><div class="step-body"><div class="step-title">Zkontrolovat nárok na sociální dávky</div><div class="step-desc">Přídavek na dítě, příspěvek na bydlení — závisí na příjmech domácnosti.</div><div class="step-action" onclick="navigateTo('screen-s13','forward')">Spočítat nárok → <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div></div>
-        <div class="step-item"><div class="step-num">5</div><div class="step-body"><div class="step-title">Aktualizovat daňové přiznání</div><div class="step-desc">Pokud jste zaměstnání skončili v průběhu roku.</div></div></div>
-        <div class="step-item"><div class="step-num">6</div><div class="step-body"><div class="step-title">Přijmout nabídky rekvalifikace</div><div class="step-desc">ÚP nabízí bezplatné rekvalifikační kurzy.</div></div></div>
+      <div class="sit-hero">
+        <div class="sit-hero-circle">💼</div>
+        <div class="sit-hero-name">Ztráta zaměstnání</div>
       </div>
-      <div style="padding:0 var(--sp-md) var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat úkoly do mého seznamu</button></div>
+      <div class="screen-content">
+        <div class="sit-tax-card">
+          <div class="sit-tax-icon">💼</div>
+          <div>
+            <div class="sit-tax-label">Daňová souvislost</div>
+            <div class="sit-tax-text">Podpora v nezaměstnanosti a příspěvky ÚP jsou financovány ze sociálního pojistného — 6,5 % z vaší hrubé mzdy, které jste platili každý měsíc jako zaměstnanec.</div>
+          </div>
+        </div>
+        <div class="sit-meta">Ztráta zaměstnání · 6 kroků · Podpora až 65 % mzdy</div>
+        <div class="sit-progress-wrap">
+          <div class="sit-progress-row">
+            <span class="sit-progress-counter">0 / 6 kroků</span>
+            <button class="sit-start-btn" onclick="startSituation('screen-s12','Ztráta zaměstnání',this)">Sledovat</button>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="sit-steps">
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Zaregistrovat se na Úřadu práce</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Do 3 pracovních dnů od skončení zaměstnání na místně příslušném ÚP ČR (dle trvalého bydliště). Pozdější registrace zkracuje dobu pobírání podpory. Bezplatné.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Občanský průkaz</div>
+                <div class="sit-brings-item">Zápočtový list od zaměstnavatele</div>
+                <div class="sit-brings-item">Číslo bankovního účtu</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Požádat o podporu v nezaměstnanosti</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Při registraci na ÚP. Výše: 65 % průměrné čisté mzdy (1.–2. měsíc), 50 % (3.–4. měsíc), 45 % (5. měsíc). Maximální délka pobírání: 5 měsíců (do 50 let).</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Zdravotní pojištění se zařídí automaticky</div>
+              <span class="sit-badge sit-badge--doc">INFO</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Registrací na ÚP se stáváte automaticky pojištěnci státu — zdravotní pojistné za vás platí stát. Zdravotní pojišťovně nemusíte nic hlásit. Platí od prvního dne evidence na ÚP.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Zkontrolovat nárok na sociální dávky</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Při poklesu příjmu mohou vzniknout nároky na příspěvek na bydlení, přídavek na dítě nebo pomoc v hmotné nouzi. Nárok závisí na příjmech celé domácnosti. Ověřte na portálu MPSV nebo přímo na ÚP.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Podat daňové přiznání za rok ztráty</div>
+              <span class="sit-badge sit-badge--doc">DANĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Pokud zaměstnání skončilo v průběhu roku, musíte podat daňové přiznání sami (zaměstnavatel neudělá roční zúčtování). Termín: do 1. dubna následujícího roku. Podpora v nezaměstnanosti je příjem osvobozený od daně.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Využít rekvalifikační kurzy ÚP</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">ÚP nabízí bezplatné rekvalifikační kurzy — od IT po řemesla. Po dobu kurzu dostáváte rekvalifikační příspěvek. Zeptejte se svého poradce na ÚP, jaké kurzy jsou dostupné ve vašem regionu.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sit-completion" hidden>
+          <div class="sit-completion-emoji">💼</div>
+          <div class="sit-completion-title">Vše zařízeno!</div>
+          <div style="font-size:14px;color:var(--c-text-sub)">Splnili jste všechny kroky po ztrátě zaměstnání.</div>
+          <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+        </div>
+      </div>
     </div>
 
     <!-- S13 SPLNĚNO -->
@@ -408,11 +940,237 @@
     <!-- AUTO1 -->
     <div id="screen-auto1" class="screen">
       <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Koupě auta</div><div class="top-bar-spacer"></div></div>
-      <div class="quiz-hero"><div class="quiz-hero-title">Koupili jste nové auto?</div><div class="quiz-hero-sub">Pomůžeme vám s registrací. Nejprve řeknete, od koho jste ho koupili.</div></div>
-      <div class="option-list">
-        <button class="option-btn" id="opt-dealer" onclick="selectOption('screen-auto1','opt-dealer','screen-autoano')"><div class="option-emoji">🏪</div><div class="option-text"><div class="option-title">Od autosalonu nebo dealera</div><div class="option-sub">Nové nebo předváděcí vozidlo</div></div><div class="option-radio"></div></button>
-        <button class="option-btn" id="opt-private" onclick="selectOption('screen-auto1','opt-private','screen-autone')"><div class="option-emoji">👤</div><div class="option-text"><div class="option-title">Od soukromé osoby</div><div class="option-sub">Bazar, inzerce, rodina</div></div><div class="option-radio"></div></button>
-        <button class="option-btn" id="opt-abroad" onclick="selectOption('screen-auto1','opt-abroad','screen-autone')"><div class="option-emoji">🌍</div><div class="option-text"><div class="option-title">Ze zahraničí</div><div class="option-sub">Dovoz ze zemí EU nebo mimo EU</div></div><div class="option-radio"></div></button>
+      <div class="sit-hero">
+        <div class="sit-hero-circle">🚗</div>
+        <div class="sit-hero-name">Koupě auta</div>
+      </div>
+      <div class="screen-content">
+        <div class="sit-tax-card">
+          <div class="sit-tax-icon">🚗</div>
+          <div>
+            <div class="sit-tax-label">Daňová souvislost</div>
+            <div class="sit-tax-text">Za přepis vozidla platíte poplatek 800 Kč, který jde do státního rozpočtu. Povinné ručení (POV) ze zákona musí mít každé vozidlo — pojistné se odvádí pojišťovnám, ale náhradní plnění z Garančního fondu spravuje stát.</div>
+          </div>
+        </div>
+        <div class="sit-meta">Koupě auta · 4 kroky · Poplatek 800 Kč za přepis</div>
+        <div class="sit-progress-wrap">
+          <div class="sit-progress-row">
+            <span class="sit-progress-counter">0 / 4 kroků</span>
+            <button class="sit-start-btn" onclick="startSituation('screen-auto1','Koupě auta',this)">Sledovat</button>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="sit-steps">
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Sepsat a podepsat kupní smlouvu</div>
+              <span class="sit-badge sit-badge--doc">DOKLAD</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Povinné ze zákona při každém prodeji vozidla. Smlouva musí obsahovat: identifikaci obou stran, VIN vozidla, kupní cenu a datum převodu. Při koupi od dealera smlouvu připravuje prodejce.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Kupní smlouva musí mít</div>
+                <div class="sit-brings-item">Jméno, adresu a rodné číslo obou stran</div>
+                <div class="sit-brings-item">VIN (číslo karoserie) a SPZ vozidla</div>
+                <div class="sit-brings-item">Kupní cenu a datum předání</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Sjednat povinné ručení (POV)</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">POV musí být sjednáno nejpozději v den přepisu vozidla (při koupi od soukromé osoby) nebo před vyjetím z parkoviště dealera. Jízda bez POV = pokuta až 20 000 Kč + náhrada škody z vlastní kapsy.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Přihlásit vozidlo na úřadě do 10 dnů</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Na obecním úřadě s rozšířenou působností (ORP) do 10 pracovních dnů od koupě. Poplatek 800 Kč za přepis. Dealer to může zařídit za vás — ověřte předem.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Kupní smlouva (originál)</div>
+                <div class="sit-brings-item">Technický průkaz vozidla (velký i malý)</div>
+                <div class="sit-brings-item">Zelená karta (doklad o POV)</div>
+                <div class="sit-brings-item">Správní poplatek 800 Kč</div>
+                <div class="sit-brings-item">OP kupujícího</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Zajistit platnou STK</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Vozidlo starší 4 let musí mít platnou STK. Nová vozidla od dealera mají STK v ceně. Při koupi od soukromé osoby zkontrolujte platnost — STK se provádí na stanicích technické kontroly, cena cca 500–900 Kč.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sit-completion" hidden>
+          <div class="sit-completion-emoji">🚗</div>
+          <div class="sit-completion-title">Auto je vaše!</div>
+          <div style="font-size:14px;color:var(--c-text-sub)">Všechny kroky splněny. Šťastnou jízdu!</div>
+          <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEMOVITOST -->
+    <div id="screen-nemovitost" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Koupě nemovitosti</div><div class="top-bar-spacer"></div></div>
+      <div class="sit-hero">
+        <div class="sit-hero-circle">🏡</div>
+        <div class="sit-hero-name">Koupě nemovitosti</div>
+      </div>
+      <div class="screen-content">
+        <div class="sit-tax-card">
+          <div class="sit-tax-icon">🏡</div>
+          <div>
+            <div class="sit-tax-label">Daňová souvislost</div>
+            <div class="sit-tax-text">Při koupi nemovitosti platíš daň z nabytí nemovitosti — 4 % z kupní ceny. U bytu za 5 mil. Kč to je 200 000 Kč do státní kasy. Zároveň máš nárok na odpočet úroků z hypotéky až 150 000 Kč ročně.</div>
+          </div>
+        </div>
+        <div class="sit-meta">Koupě nemovitosti · 8 kroků · Daň 4 % z ceny · Hypotéka až 90 % LTV</div>
+        <div class="sit-progress-wrap">
+          <div class="sit-progress-row">
+            <span class="sit-progress-counter">0 / 8 kroků</span>
+            <button class="sit-start-btn" onclick="startSituation('screen-nemovitost','Koupě nemovitosti',this)">Sledovat</button>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="sit-steps">
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Podepsat rezervační smlouvu</div>
+              <span class="sit-badge sit-badge--doc">DOKLAD</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Složení rezervační zálohy (typicky 50–100 000 Kč) a podpis rezervační smlouvy. Zajistí, že prodávající nemovitost nabídne jinému kupci. Záloha se zpravidla odečítá od kupní ceny — zkontrolujte podmínky vrácení.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Občanský průkaz</div>
+                <div class="sit-brings-item">Potvrzení o příjmu (pro jistotu)</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Získat schválení hypotéky</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Žádost o hypoteční úvěr u banky. Součástí je odhad nemovitosti bankovním odhadcem (3 000–5 000 Kč). Banka schvaluje výši úvěru, úrokovou sazbu a podmínky. Porovnejte nabídky alespoň 3 bank nebo využijte hypotečního poradce.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co banka požaduje</div>
+                <div class="sit-brings-item">Potvrzení o příjmu od zaměstnavatele</div>
+                <div class="sit-brings-item">Daňová přiznání za poslední 2 roky (OSVČ)</div>
+                <div class="sit-brings-item">Výpis z katastru nemovitosti</div>
+                <div class="sit-brings-item">Rezervační smlouva nebo smlouva o smlouvě budoucí</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Podepsat kupní smlouvu</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Podpis kupní smlouvy ideálně u notáře nebo advokáta (5 000–15 000 Kč). Právník chrání vaše zájmy a ověří, že nemovitost není zatížena zástavou nebo věcným břemenem. U hypotéky obvykle smlouvu připravuje banka.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Občanský průkaz obou stran</div>
+                <div class="sit-brings-item">Rezervační smlouva</div>
+                <div class="sit-brings-item">Schválená hypotéka (příslib úvěru)</div>
+              </div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Podat návrh na vklad do katastru</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Návrh na vklad vlastnického práva do katastru nemovitostí. Správní poplatek 2 000 Kč. Katastr má na vyřízení 30 dní. Vlastnictví přechází až zápisem do katastru — ne podpisem smlouvy. Podat lze online na portálu ČÚZK nebo osobně.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Podat přiznání k dani z nabytí</div>
+              <span class="sit-badge sit-badge--doc">DANĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Daňové přiznání podat do konce 3. kalendářního měsíce po měsíci, v němž byl proveden zápis do katastru. Daň činí 4 % z kupní ceny (nebo zjištěné ceny, je-li vyšší). U bytu za 5 mil. Kč = 200 000 Kč. Přiznání se podává na finančním úřadě příslušném podle polohy nemovitosti.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Sjednat pojištění nemovitosti</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Při hypotéce povinné — banka vyžaduje pojištění nemovitosti jako podmínku pro čerpání úvěru. Pojištění musí být sjednáno a doloženo bance před prvním čerpáním. Srovnejte nabídky online — ceny se výrazně liší.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Přepsat energie na nového majitele</div>
+              <span class="sit-badge sit-badge--online">ONLINE</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Do 30 dnů od převzetí nemovitosti přepište elektřinu, plyn a vodu na své jméno. Kontaktujte dodavatele a předejte stavy měřičů ke dni převzetí klíčů. Nezapomeňte také na internet a případně služby správce bytového domu.</div>
+            </div>
+          </div>
+          <div class="sit-step">
+            <div class="sit-step-row" onclick="toggleStep(this)">
+              <div class="sit-check" onclick="checkStep(event,this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="sit-step-name">Přihlásit se k trvalému pobytu</div>
+              <span class="sit-badge sit-badge--osobne">OSOBNĚ</span>
+              <svg class="sit-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sit-step-body">
+              <div class="sit-step-desc">Přihlášení k trvalému pobytu na nové adrese na místním obecním úřadě (dle nové adresy). Jako vlastník nemovitosti stačí doložit výpis z katastru — není třeba souhlas majitele. Bezplatné.</div>
+              <div class="sit-brings">
+                <div class="sit-brings-title">Co s sebou</div>
+                <div class="sit-brings-item">Občanský průkaz</div>
+                <div class="sit-brings-item">Výpis z katastru nemovitostí (LV)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sit-completion" hidden>
+          <div class="sit-completion-emoji">🏡</div>
+          <div class="sit-completion-title">Nemovitost je vaše!</div>
+          <div style="font-size:14px;color:var(--c-text-sub)">Všechny kroky splněny. Vítejte v novém domově.</div>
+          <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+        </div>
       </div>
     </div>
 
@@ -465,8 +1223,68 @@
       </div></div>
       <div class="menu-section"><div class="menu-section-title">Nastavení</div><div class="menu-list">
         <div class="menu-item" onclick="navigateTo('screen-nastaveni','forward')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M18.66 5.34l1.41-1.41"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Nastavení účtu</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      </div></div>
+      <!-- Moje odznaky -->
+      <div class="menu-section">
+        <div class="menu-section-title">Moje odznaky</div>
+        <div class="badges-grid">
+
+          <div class="badge-card">
+            <div class="badge-card-icon">🏅</div>
+            <div class="badge-card-name">Přispívatel 2026</div>
+            <div class="badge-card-desc">Platíš daně. Díky.</div>
+          </div>
+
+          <div class="badge-card">
+            <div class="badge-card-icon">🚌</div>
+            <div class="badge-card-name">MHD Hrdina</div>
+            <div class="badge-card-desc">Jezdíš MHD místo auta.</div>
+          </div>
+
+          <div class="badge-card">
+            <div class="badge-card-icon">🌳</div>
+            <div class="badge-card-name">Parkový návštěvník</div>
+            <div class="badge-card-desc">Využíváš veřejné parky.</div>
+          </div>
+
+          <div class="badge-card">
+            <div class="badge-card-icon">🏗️</div>
+            <div class="badge-card-name">Stavitel města</div>
+            <div class="badge-card-desc">Tvoje daně šly na 3 projekty v okolí.</div>
+          </div>
+
+          <div class="badge-card badge-card--locked">
+            <div class="badge-card-icon">📚</div>
+            <div class="badge-card-name">Knihomol</div>
+            <div class="badge-card-desc">Navštiv veřejnou knihovnu.</div>
+          </div>
+
+          <div class="badge-card badge-card--locked">
+            <div class="badge-card-icon">🚴</div>
+            <div class="badge-card-name">Cyklista</div>
+            <div class="badge-card-desc">Jeď po nové cyklostezce.</div>
+          </div>
+
+          <div class="badge-card badge-card--locked">
+            <div class="badge-card-icon">🏊</div>
+            <div class="badge-card-name">Plavec</div>
+            <div class="badge-card-desc">Využij veřejný bazén nebo koupaliště.</div>
+          </div>
+
+          <div class="badge-card badge-card--locked">
+            <div class="badge-card-icon">♻️</div>
+            <div class="badge-card-name">Třídič</div>
+            <div class="badge-card-desc">Využij sběrné místo ve tvém okolí.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="menu-section"><div class="menu-section-title">Další</div><div class="menu-list">
+        <div class="menu-item" onclick="navigateTo('screen-report','forward')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="7 9 12 9 17 9"/><polyline points="7 13 12 13"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Měsíční report</div><div class="menu-item-sub">Tvůj přehled za květen 2026</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
         <div class="menu-item" onclick="navigateTo('screen-feedback','forward')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Zpětná vazba</div><div class="menu-item-sub">Sdělte nám svůj názor</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
       </div></div>
+
       <div style="height:var(--sp-md)"></div>
     </div>
 
@@ -536,6 +1354,82 @@
         <span>Profil</span>
       </button>
     </nav>
+
+    <!-- REPORT -->
+    <div id="screen-report" class="screen has-nav">
+
+      <div class="top-bar">
+        <button class="top-bar-back" onclick="navigateTo('screen-home','back')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="top-bar-title">Květen 2026</div>
+        <div class="top-bar-spacer"></div>
+      </div>
+
+      <div class="screen-content">
+
+        <!-- Hero -->
+        <div class="report-hero">
+          <div class="report-hero-label">Tento měsíc jsi přispěl</div>
+          <div class="report-hero-value" id="report-total">4 029 Kč</div>
+          <div class="report-hero-sub">Díky. Bez tebe by to nefungovalo.</div>
+        </div>
+
+        <!-- Tento měsíc v číslech -->
+        <div>
+          <div class="section-label" style="padding:0 0 var(--sp-sm);">Tento měsíc v číslech</div>
+          <div class="report-numbers">
+            <div class="report-num-card">
+              <div class="report-num-dot" style="background:#094672;"></div>
+              <div class="report-num-label">Důchody</div>
+              <div class="report-num-value" id="report-duchody">1 330 Kč</div>
+            </div>
+            <div class="report-num-card">
+              <div class="report-num-dot" style="background:#1e7a87;"></div>
+              <div class="report-num-label">Školství</div>
+              <div class="report-num-value" id="report-skolstvi">1 048 Kč</div>
+            </div>
+            <div class="report-num-card">
+              <div class="report-num-dot" style="background:#2d5f8a;"></div>
+              <div class="report-num-label">Doprava</div>
+              <div class="report-num-value" id="report-doprava">967 Kč</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Věděl jsi, že... -->
+        <div>
+          <div class="section-label" style="padding:0 0 var(--sp-sm);">Věděl jsi, že...</div>
+          <div class="card">
+            <div style="font-size:28px;">🏗️</div>
+            <div style="font-size:15px;font-weight:600;color:var(--c-text);line-height:1.4;">
+              V květnu se z daní Pražanů opravilo 14 km chodníků.
+            </div>
+            <div style="font-size:14px;color:var(--c-text-sub);">
+              Tvůj příspěvek na tuto akci: <strong style="color:var(--c-text);" id="report-chodnik">~24 Kč</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nový odznak -->
+        <div>
+          <div class="section-label" style="padding:0 0 var(--sp-sm);">Nový odznak</div>
+          <div class="report-badge-card">
+            <div class="report-badge-icon">🏅</div>
+            <div class="report-badge-body">
+              <div class="report-badge-name">Přispívatel – Máj 2026</div>
+              <div class="report-badge-desc">Zaplatil jsi daně. Díky.</div>
+            </div>
+            <span class="badge badge-yellow">Nové</span>
+          </div>
+        </div>
+
+        <!-- Akce -->
+        <button class="btn-primary" onclick="navigateTo('screen-profil','forward')">Zobrazit můj profil</button>
+        <button class="btn-secondary" onclick="navigateTo('screen-home','back')">Zpět na přehled</button>
+
+      </div>
+    </div>
 
   </div><!-- /#app -->
 

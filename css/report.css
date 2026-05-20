@@ -1,0 +1,84 @@
+/* Hero card */
+.report-hero {
+  background: var(--c-primary);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg) var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+.report-hero-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.report-hero-value {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.report-hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-top: var(--sp-xs);
+}
+
+/* 3-column number cards */
+.report-numbers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-sm);
+}
+.report-num-card {
+  background: var(--c-bg-card);
+  border-radius: var(--r-md);
+  padding: var(--sp-sm) var(--sp-sm) var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.report-num-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-full);
+}
+.report-num-label {
+  font-size: 12px;
+  color: var(--c-text-sub);
+  font-weight: 500;
+}
+.report-num-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+/* Badge card */
+.report-badge-card {
+  background: var(--c-bg-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+}
+.report-badge-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+.report-badge-body {
+  flex: 1;
+}
+.report-badge-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+.report-badge-desc {
+  font-size: 13px;
+  color: var(--c-text-sub);
+  margin-top: 2px;
+}
