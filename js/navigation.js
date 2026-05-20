@@ -99,10 +99,12 @@ function switchTab(id) {
   if (!nextEl) return;
 
   if (prevEl) prevEl.classList.remove('active');
-  nextEl.classList.add('active');
+  nextEl.classList.add('active', 'fade-in');
   nextEl.scrollTop = 0;
   App.current = id;
   _updateNav(id);
+
+  setTimeout(() => nextEl.classList.remove('fade-in'), 200);
 }
 
 function _updateNav(screenId) {

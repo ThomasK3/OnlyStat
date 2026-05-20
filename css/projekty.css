@@ -1,12 +1,29 @@
-.projekty-header {
-  background: var(--c-bg-card);
-  padding: var(--sp-md);
+/* Fixed header: top-bar + location banner + chips — never scrolls */
+.proj-screen {
+  overflow: hidden !important;
+}
+
+.proj-fixed-header {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-sm);
+  background: var(--c-bg);
 }
-.projekty-header-title { font-size: 20px; font-weight: 700; color: var(--c-text); }
-.projekty-header-sub { font-size: 13px; color: var(--c-text-sub); }
+
+.proj-fixed-header .top-bar {
+  position: relative;
+  top: auto;
+}
+
+.proj-location-banner {
+  display: flex;
+  gap: var(--sp-sm);
+  align-items: flex-start;
+  padding: var(--sp-md);
+  background: var(--c-bg-card);
+  border-top: 1px solid var(--c-divider);
+  border-bottom: 1px solid var(--c-divider);
+}
 
 .proj-chips {
   display: flex;
@@ -16,6 +33,7 @@
   scrollbar-width: none;
 }
 .proj-chips::-webkit-scrollbar { display: none; }
+
 .proj-chip {
   padding: 6px 14px;
   border-radius: var(--r-full);
@@ -35,7 +53,17 @@
   border-color: var(--c-primary);
 }
 
-.proj-list { display: flex; flex-direction: column; gap: var(--sp-sm); padding: 0 var(--sp-md) var(--sp-md); }
+/* Scrollable area below the fixed header */
+.proj-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.proj-scroll-area::-webkit-scrollbar { display: none; }
+
+.proj-list { display: flex; flex-direction: column; gap: var(--sp-sm); padding: var(--sp-md); }
 
 .proj-card {
   background: #fff;
