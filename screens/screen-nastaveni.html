@@ -1,0 +1,97 @@
+<div id="screen-nastaveni" class="screen">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <button class="top-bar-back" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="top-bar-title">Nastavení</div>
+    <div class="top-bar-spacer"></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:var(--sp-md);padding:var(--sp-md);">
+
+    <!-- Účet -->
+    <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-text-sub);">Účet</div>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="menu-item-text">
+          <div class="menu-item-title">Osobní údaje</div>
+          <div class="menu-item-sub">Tomáš Kanuch · Praha 2</div>
+        </div>
+        <div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="menu-item-text">
+          <div class="menu-item-title">Adresa a lokalita</div>
+          <div class="menu-item-sub">Vinohrady, Praha 2</div>
+        </div>
+        <div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+        </div>
+        <div class="menu-item-text">
+          <div class="menu-item-title">Propojení s finanční správou</div>
+          <div class="menu-item-sub">Propojeno přes BankID</div>
+        </div>
+        <span class="badge badge-green">Aktivní</span>
+      </div>
+    </div>
+
+    <!-- Oznámení -->
+    <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-text-sub);">Oznámení</div>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        </div>
+        <div class="menu-item-text">
+          <div class="menu-item-title">Push notifikace</div>
+          <div class="menu-item-sub">Upomínky a novinky</div>
+        </div>
+        <div style="width:44px;height:24px;background:var(--c-primary);border-radius:var(--r-full);position:relative;cursor:pointer;">
+          <div style="position:absolute;right:2px;top:2px;width:20px;height:20px;background:#fff;border-radius:50%;"></div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="menu-item-text">
+          <div class="menu-item-title">E-mailová oznámení</div>
+          <div class="menu-item-sub">tomkanuch150@gmail.com</div>
+        </div>
+        <div style="width:44px;height:24px;background:var(--c-divider);border-radius:var(--r-full);position:relative;cursor:pointer;">
+          <div style="position:absolute;left:2px;top:2px;width:20px;height:20px;background:#fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- O aplikaci -->
+    <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-text-sub);">O aplikaci</div>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-item-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div class="menu-item-text">
+          <div class="menu-item-title">OnlyStát</div>
+          <div class="menu-item-sub">Verze 1.0 · Prototyp</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-secondary" style="color:var(--c-red);border-color:var(--c-red);">Odhlásit se</button>
+
+  </div>
+
+  <div style="height:var(--sp-md)"></div>
+</div>

@@ -1,0 +1,51 @@
+.situace-header {
+  background: linear-gradient(160deg, var(--c-teal) 0%, var(--c-accent) 100%);
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+}
+.situace-header-title { font-size: 22px; font-weight: 700; color: #fff; }
+.situace-header-sub { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+.situace-active-card {
+  background: var(--c-bg-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  margin: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  cursor: pointer;
+}
+.situace-active-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--c-text-sub); }
+.situace-active-title { font-size: 16px; font-weight: 600; color: var(--c-text); }
+.situace-active-progress { display: flex; align-items: center; gap: var(--sp-sm); }
+.situace-active-steps { font-size: 13px; color: var(--c-text-sub); }
+
+.situace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+  padding: 0 var(--sp-md);
+}
+.situace-card {
+  background: var(--c-bg-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.situace-card:active { background: var(--c-divider); }
+.situace-card-emoji { font-size: 28px; }
+.situace-card-title { font-size: 14px; font-weight: 600; color: var(--c-text); }
+.situace-card-sub { font-size: 12px; color: var(--c-text-sub); }
+.situace-card-steps {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-text-sub);
+  background: rgba(9,70,114,0.07);
+  border-radius: var(--r-full);
+  padding: 2px 8px;
+  align-self: flex-start;
+}

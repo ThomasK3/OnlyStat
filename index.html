@@ -1,1187 +1,556 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Občanský portál – Prototyp</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>OnlyStát – Občanský portál</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/dane.css">
+  <link rel="stylesheet" href="css/projekty.css">
+  <link rel="stylesheet" href="css/situace.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <link rel="stylesheet" href="css/ukoly.css">
+  <link rel="stylesheet" href="css/quiz.css">
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="css/feedback.css">
 </head>
 <body>
-<div id="app">
+  <div id="app">
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Hlavní stránka (screen-home)
-     Origin: Figma frame [8:11200] "1" – 393×1798
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-home" class="screen active">
+    <!-- ========== SCREENS ========== -->
 
-  <!-- Sticky top bar -->
-  <div class="top-bar">
-    <div class="user-info">
-      <div class="avatar">A</div>
-      <span class="user-name">Občan</span>
-    </div>
-    <div class="bell-btn">
-      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 20c1.1 0 2-.9 2-2H8c0 1.1.9 2 2 2zm6-6V9c0-3.07-1.64-5.64-4.5-6.32V2c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C5.63 3.36 4 5.92 4 9v5l-2 2v1h16v-1l-2-2z" fill="#094672"/></svg>
-    </div>
-  </div>
-
-  <!-- Hero greeting + search -->
-  <div style="padding: 0 15px 0;">
-    <h1 style="font-size:28px;font-weight:700;color:#094672;line-height:1.2;padding-top:8px;">Dobré ráno,<br>Avatare.</h1>
-    <p style="font-size:14px;font-weight:400;color:#727780;margin-top:6px;line-height:1.5;">Váš digitální přístup k státní správě na jednom místě.</p>
-  </div>
-  <div class="search-wrap" onclick="go('screen-dane')" style="cursor:pointer;">
-    <div class="search-box">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#727780"/></svg>
-      <input type="text" placeholder="Jak vám můžeme pomoci?" readonly>
-    </div>
-  </div>
-
-  <!-- Daňová stopa hero card -->
-  <div class="hero-banner" style="margin-top:20px;" onclick="go('screen-dane')" role="button">
-    <div class="hero-label">MOJE DANĚ &amp; PŘÍNOS</div>
-    <div class="hero-title">Přehled příspěvků 2024</div>
-    <div class="hero-sub">Letos jste přispěli:</div>
-    <div class="hero-amount">48 350 Kč</div>
-    <div class="hero-chart-bar"><div class="fill" style="width:65%"></div></div>
-    <div style="padding:0 16px 16px;display:flex;justify-content:flex-end;">
-      <span style="font-size:14px;font-weight:600;color:#2d5f8a;cursor:pointer;">Zobrazit detail</span>
-    </div>
-  </div>
-
-  <!-- Životní situace section -->
-  <div class="section-header" style="padding-top:28px;">
-    <span class="section-title">Životní situace</span>
-    <span class="section-link" onclick="go('screen-situace')">Všechny situace</span>
-  </div>
-  <div class="card-grid">
-    <div class="life-card" onclick="go('screen-stehovani')">
-      <div class="card-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="#2d5f8a"/></svg>
-      </div>
-      <h3>Stěhování</h3>
-      <p>Změna trvalého pobytu a nahlášení adresy.</p>
-    </div>
-    <div class="life-card" onclick="go('screen-narozeni')">
-      <div class="card-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#2d5f8a"/></svg>
-      </div>
-      <h3>Narození dítěte</h3>
-      <p>Rodný list, příspěvky a pojištění.</p>
-    </div>
-    <div class="life-card">
-      <div class="card-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" fill="#2d5f8a"/></svg>
-      </div>
-      <h3>Nové auto</h3>
-      <p>Registrace vozidla a technický průkaz.</p>
-    </div>
-    <div class="life-card" onclick="go('screen-doklady')">
-      <div class="card-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" fill="#2d5f8a"/></svg>
-      </div>
-      <h3>Ztráta dokladů</h3>
-      <p>Nahlášení ztráty a žádost o nové průkazy.</p>
-    </div>
-  </div>
-
-  <!-- All situations CTA -->
-  <div style="padding:20px 15px 0;">
-    <div onclick="go('screen-situace')" class="btn-primary" style="line-height:53px;text-align:center;font-size:14px;font-weight:700;color:#fff;background:#2d5f8a;border-radius:9999px;height:53px;cursor:pointer;">Všechny situace</div>
-  </div>
-
-  <!-- Notifications section -->
-  <div class="section-header" style="padding-top:28px;">
-    <span class="section-title">Moje notifikace</span>
-  </div>
-  <div style="padding:0 15px;">
-    <div style="background:#ebf2f9;border-radius:12px;padding:14px 16px;margin-bottom:10px;">
-      <div style="font-size:14px;font-weight:600;color:#094672;margin-bottom:4px;">Platnost pasu končí</div>
-      <div style="font-size:11px;font-weight:600;color:#7a8fa6;">Za 30 dní vyprší platnost vašeho cestovního pasu.</div>
-    </div>
-    <div style="background:#ebf2f9;border-radius:12px;padding:14px 16px;margin-bottom:10px;">
-      <div style="font-size:14px;font-weight:600;color:#094672;margin-bottom:4px;">Přeplatek na dani</div>
-      <div style="font-size:11px;font-weight:600;color:#7a8fa6;">Vaše žádost o vrácení přeplatku byla schválena.</div>
-    </div>
-  </div>
-
-  <!-- Feedback section -->
-  <div style="padding:0 15px 8px;margin-top:24px;">
-    <div style="background:#ebf2f9;border-radius:12px;padding:16px 16px 16px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;" onclick="go('screen-feedback')" role="button">
-      <div style="background:#c8e9ed;border-radius:16px;width:48px;height:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="#2d5f8a"/></svg>
-      </div>
-      <div>
-        <div style="font-size:18px;font-weight:600;color:#094672;line-height:1.3;">Zpětná vazba</div>
-        <div style="font-size:12px;font-weight:400;color:#7a8fa6;">Pomozte nám se zlepšovat</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <!-- Bottom nav -->
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')">
-      <div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt=""></div>
-      <span class="nav-label" style="color:#d0e4ff;">Domů</span>
-    </div>
-    <div class="nav-item services" onclick="go('screen-ukoly')">
-      <div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div>
-      <span class="nav-label">Služby</span>
-    </div>
-    <div class="nav-item map" onclick="go('screen-mapa')">
-      <div class="nav-icon">
-        <svg width="23" height="21" viewBox="0 0 23 21" fill="none"><path d="M21.1 5L15.5 3.71C15.5 3.6 15.54 3.52 15.54 3.41C15.54 1.52 14.02 0 12.16 0C10.27 0 8.75 1.52 8.75 3.41C8.75 3.79 8.87 4.28 9.09 4.85L8 5.08L3.03 3.68C2.31 3.49 1.55 3.6 0.95 4.05C0.34 4.51 0 5.19 0 5.95V16.79C0 17.85 0.72 18.79 1.74 19.06L7.73 20.76C7.73 20.76 7.73 20.76 7.77 20.76C7.84 20.76 7.92 20.8 8 20.8C8.07 20.8 8.11 20.8 8.18 20.8L15.08 19.36L20.08 20.54C20.27 20.57 20.42 20.61 20.61 20.61C21.14 20.61 21.67 20.42 22.09 20.08C22.66 19.63 23 18.95 23 18.23V7.31C22.96 6.21 22.2 5.27 21.1 5ZM12.13 1.71C13.07 1.71 13.79 2.46 13.79 3.41C13.79 3.83 13.26 5.08 12.09 6.9C10.91 5.08 10.38 3.86 10.38 3.41C10.42 2.46 11.18 1.71 12.13 1.71ZM9.81 6.4C10.23 7.16 10.72 7.92 11.18 8.56C11.37 8.87 11.75 9.06 12.09 9.06C12.47 9.06 12.81 8.87 13 8.56C13.38 7.99 13.79 7.39 14.17 6.74V17.73L8.83 18.87V6.63L9.81 6.4ZM1.74 16.75V5.95C1.74 5.72 1.86 5.53 2.01 5.42C2.16 5.3 2.39 5.27 2.58 5.3L7.12 6.59V18.79L2.2 17.39C1.93 17.32 1.74 17.05 1.74 16.75ZM21.26 18.15C21.26 18.42 21.11 18.6 20.99 18.68C20.92 18.76 20.69 18.87 20.42 18.79L15.88 17.73V5.53L20.73 6.67C21.03 6.74 21.26 7.01 21.26 7.31V18.15Z" fill="#7a8fa6"/></svg>
-      </div>
-      <span class="nav-label">Mapa</span>
-    </div>
-    <div class="nav-item profile">
-      <div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div>
-      <span class="nav-label">Profil</span>
-    </div>
-  </div>
-</div>
-<!-- /screen-home -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Moje daňová stopa (screen-dane)
-     Origin: Figma frame [8:11316] "2" – 393×1410
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-dane" class="screen">
-
-  <div class="top-bar" style="background:rgba(244,251,253,0.9);">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-home')">‹</span>
-      <span class="page-title">Občanský portál</span>
-    </div>
-  </div>
-
-  <!-- Hero dark card -->
-  <div style="background:#1e4b74;margin:16px 15px 0;border-radius:20px;padding:20px;">
-    <div style="font-size:22px;font-weight:600;color:#fff;margin-bottom:6px;">Moje daňová stopa</div>
-    <div style="font-size:11px;font-weight:600;color:#a3c4e0;line-height:1.5;margin-bottom:12px;">Transparentní přehled o tom, jak vaše příspěvky pomáhají rozvíjet naši společnost.</div>
-    <div style="font-size:11px;font-weight:600;color:#a3c4e0;margin-bottom:4px;">celkový roční příspěvek</div>
-    <div style="font-size:22px;font-weight:600;color:#fff;margin-bottom:16px;">48 350 Kč</div>
-
-    <!-- Tab bar -->
-    <div style="display:flex;gap:8px;margin-bottom:16px;">
-      <div style="background:#fff;border-radius:8px;padding:8px 20px;font-size:14px;font-weight:600;color:#1e4b74;cursor:pointer;">Celostátní</div>
-      <div style="background:transparent;border-radius:8px;padding:8px 20px;font-size:14px;font-weight:600;color:#2d5f8a;cursor:pointer;">Lokální</div>
-    </div>
-
-    <!-- Donut chart placeholder -->
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-      <div style="position:relative;width:100px;height:100px;">
-        <svg width="100" height="100" viewBox="0 0 100 100">
-          <!-- Donut segments approximate -->
-          <circle cx="50" cy="50" r="38" fill="none" stroke="#1e7a87" stroke-width="18" stroke-dasharray="78 161" stroke-dashoffset="0"/>
-          <circle cx="50" cy="50" r="38" fill="none" stroke="#56b0ba" stroke-width="18" stroke-dasharray="62 177" stroke-dashoffset="-78"/>
-          <circle cx="50" cy="50" r="38" fill="none" stroke="#98d4db" stroke-width="18" stroke-dasharray="57 182" stroke-dashoffset="-140"/>
-          <circle cx="50" cy="50" r="38" fill="none" stroke="#2d598a" stroke-width="18" stroke-dasharray="44 195" stroke-dashoffset="-197"/>
-          <text x="50" y="46" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Daňová stopa</text>
-          <text x="50" y="58" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">48 350 Kč</text>
-        </svg>
-      </div>
-      <div style="flex:1;">
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-          <span style="font-size:14px;font-weight:600;color:#56b0ba;">26 %</span>
-          <span style="font-size:14px;font-weight:600;color:#1e7a87;">33 %</span>
+    <!-- HOME -->
+    <div id="screen-home" class="screen has-nav">
+      <div class="home-header">
+        <div class="home-header-top">
+          <div>
+            <div class="home-greeting">Dobrý den,</div>
+            <div class="home-name">Tomáš 👋</div>
+          </div>
+          <button class="home-avatar-btn" onclick="switchTab('screen-profil')">TK</button>
         </div>
-        <div style="display:flex;justify-content:space-between;">
-          <span style="font-size:14px;font-weight:600;color:#98d4db;">24 %</span>
-          <span style="font-size:14px;font-weight:600;color:#2d5f8a;">17 %</span>
+        <div class="home-tax-card">
+          <div>
+            <div class="home-tax-label">Odvedeno na daních letos</div>
+            <div class="home-tax-amount">48 350 Kč</div>
+            <div class="home-tax-sub">za leden–duben 2025</div>
+          </div>
+          <div class="home-tax-right">
+            <div class="home-tax-pill">+8,4 % vs. loni</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div style="font-size:11px;font-weight:600;color:#727780;line-height:1.5;">Vaše daně přímo financují klíčové pilíře společnosti. Data jsou založena na průměrném rozdělení státního rozpočtu.</div>
-  </div>
 
-  <!-- Detailní rozpis -->
-  <div class="section-header"><span class="section-title">Detailní rozpis</span></div>
-  <div style="padding:0 15px;">
-    <div style="background:#ebf2f9;border-radius:12px;overflow:hidden;">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(9,70,114,0.06);">
-        <div>
-          <div style="width:12px;height:12px;border-radius:3px;background:#1e7a87;display:inline-block;margin-right:8px;vertical-align:middle;"></div>
-          <span style="font-size:14px;font-weight:600;color:#1e7a87;">Důchody</span>
+      <div class="home-quick-actions">
+        <button class="quick-action-btn" onclick="navigateTo('screen-dane','forward')">
+          <div class="quick-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="7" y1="14" x2="10" y2="14"/><line x1="7" y1="17" x2="13" y2="17"/></svg>
+          </div>
+          <div class="quick-action-title">Moje daně</div>
+          <div class="quick-action-sub">Co platím a za co</div>
+        </button>
+        <button class="quick-action-btn" onclick="navigateTo('screen-projekty','forward')">
+          <div class="quick-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="3 11 12 2 21 11"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg>
+          </div>
+          <div class="quick-action-title">Projekty u mě</div>
+          <div class="quick-action-sub">8 projektů poblíž</div>
+        </button>
+        <button class="quick-action-btn" onclick="switchTab('screen-situace')">
+          <div class="quick-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><polyline points="9 12 11 14 15 10"/><line x1="9" y1="7" x2="15" y2="7"/></svg>
+          </div>
+          <div class="quick-action-title">Životní situace</div>
+          <div class="quick-action-sub">Průvodci krok za krokem</div>
+        </button>
+        <button class="quick-action-btn" onclick="navigateTo('screen-ukoly','forward')">
+          <div class="quick-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="quick-action-title">Moje úkoly</div>
+          <div class="quick-action-sub">3 čekají na vyřešení</div>
+        </button>
+      </div>
+
+      <div class="home-section">
+        <div class="home-section-header">
+          <div class="home-section-title">Aktuality</div>
+          <div class="home-section-link">Vše</div>
         </div>
-        <span style="font-size:14px;font-weight:600;color:#1e7a87;">19 340 Kč</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(9,70,114,0.06);">
-        <div>
-          <div style="width:12px;height:12px;border-radius:3px;background:#56b0ba;display:inline-block;margin-right:8px;vertical-align:middle;"></div>
-          <span style="font-size:14px;font-weight:600;color:#56b0ba;">Školství</span>
+        <div class="news-card" onclick="navigateTo('screen-s8','forward')">
+          <div class="news-icon">🚗</div>
+          <div class="news-body">
+            <div class="news-title">Nová pravidla pro přeregistraci vozidla od 1. 7. 2025</div>
+            <div class="news-sub">Dopravní správa · 2 dny</div>
+            <div class="news-badge"><span class="badge badge-orange">Doporučujeme přečíst</span></div>
+          </div>
         </div>
-        <span style="font-size:14px;font-weight:600;color:#56b0ba;">12 088 Kč</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(9,70,114,0.06);">
-        <div>
-          <div style="width:12px;height:12px;border-radius:3px;background:#98d4db;display:inline-block;margin-right:8px;vertical-align:middle;"></div>
-          <span style="font-size:14px;font-weight:600;color:#98d4db;">Doprava</span>
+        <div class="news-card" onclick="navigateTo('screen-narozeni','forward')">
+          <div class="news-icon">👶</div>
+          <div class="news-body">
+            <div class="news-title">Rodičovský příspěvek 2025 — nové podmínky a limity</div>
+            <div class="news-sub">MPSV · 5 dní</div>
+            <div class="news-badge"><span class="badge badge-blue">Nové</span></div>
+          </div>
         </div>
-        <span style="font-size:14px;font-weight:600;color:#98d4db;">9 670 Kč</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;">
-        <div>
-          <div style="width:12px;height:12px;border-radius:3px;background:#2d598a;display:inline-block;margin-right:8px;vertical-align:middle;"></div>
-          <span style="font-size:14px;font-weight:600;color:#2d598a;">Obrana</span>
-        </div>
-        <span style="font-size:14px;font-weight:600;color:#2d598a;">7 252 Kč</span>
-      </div>
-    </div>
-    <div style="text-align:center;padding:16px 0;font-size:14px;font-weight:600;color:#094672;cursor:pointer;">Zobrazit všechny kategorie</div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <!-- Bottom nav (services active) -->
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')" style="background:transparent;">
-      <div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt="" style="filter:brightness(0.5)"></div>
-      <span class="nav-label" style="color:#7a8fa6;">Domů</span>
-    </div>
-    <div class="nav-item services" onclick="go('screen-ukoly')" style="background:#094672;border-radius:12px;">
-      <div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt="" style="filter:brightness(10)"></div>
-      <span class="nav-label" style="color:#d0e4ff;">Služby</span>
-    </div>
-    <div class="nav-item map" onclick="go('screen-mapa')">
-      <div class="nav-icon"><svg width="23" height="21" viewBox="0 0 23 21" fill="none"><path d="M21.1 5L15.5 3.71C15.5 3.6 15.54 3.52 15.54 3.41C15.54 1.52 14.02 0 12.16 0C10.27 0 8.75 1.52 8.75 3.41C8.75 3.79 8.87 4.28 9.09 4.85L8 5.08L3.03 3.68C2.31 3.49 1.55 3.6 0.95 4.05C0.34 4.51 0 5.19 0 5.95V16.79C0 17.85 0.72 18.79 1.74 19.06L7.73 20.76L8 20.8L8.18 20.8L15.08 19.36L20.08 20.54C20.27 20.57 20.42 20.61 20.61 20.61C21.14 20.61 21.67 20.42 22.09 20.08C22.66 19.63 23 18.95 23 18.23V7.31C22.96 6.21 22.2 5.27 21.1 5ZM12.13 1.71C13.07 1.71 13.79 2.46 13.79 3.41C13.79 3.83 13.26 5.08 12.09 6.9C10.91 5.08 10.38 3.86 10.38 3.41C10.42 2.46 11.18 1.71 12.13 1.71ZM14.17 6.74V17.73L8.83 18.87V6.63L9.81 6.4C10.23 7.16 10.72 7.92 11.18 8.56C11.37 8.87 11.75 9.06 12.09 9.06C12.47 9.06 12.81 8.87 13 8.56C13.38 7.99 13.79 7.39 14.17 6.74ZM1.74 16.75V5.95C1.74 5.72 1.86 5.53 2.01 5.42C2.16 5.3 2.39 5.27 2.58 5.3L7.12 6.59V18.79L2.2 17.39C1.93 17.32 1.74 17.05 1.74 16.75ZM21.26 18.15C21.26 18.42 21.11 18.6 20.99 18.68C20.92 18.76 20.69 18.87 20.42 18.79L15.88 17.73V5.53L20.73 6.67C21.03 6.74 21.26 7.01 21.26 7.31V18.15Z" fill="#7a8fa6"/></svg></div>
-      <span class="nav-label">Mapa</span>
-    </div>
-    <div class="nav-item profile">
-      <div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div>
-      <span class="nav-label">Profil</span>
-    </div>
-  </div>
-</div>
-<!-- /screen-dane -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Životní situace (screen-situace)
-     Origin: Figma frame [8:10630] – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-situace" class="screen">
-
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-home')">‹</span>
-      <span class="page-title" style="font-size:28px;font-weight:700;color:#1e3a5f;">Životní situace</span>
-    </div>
-  </div>
-
-  <!-- Search -->
-  <div class="search-wrap">
-    <div class="search-box">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#727780"/></svg>
-      <input type="text" placeholder="Např. narození dítěte...">
-    </div>
-  </div>
-
-  <!-- Category chips -->
-  <div class="chips">
-    <div class="chip active">Rodina</div>
-    <div class="chip">Bydlení</div>
-    <div class="chip">Práce</div>
-    <div class="chip">Bezpečnost</div>
-    <div class="chip">Vzdělávání</div>
-  </div>
-
-  <!-- List of situations -->
-  <div class="situation-list">
-    <div class="situation-item" onclick="go('screen-doklady')">
-      <span>Ztráta dokladů</span><span class="chevron">›</span>
-    </div>
-    <div class="situation-item" onclick="go('screen-narozeni')">
-      <span>Narození dítěte</span><span class="chevron">›</span>
-    </div>
-    <div class="situation-item">
-      <span>Rozvod</span><span class="chevron">›</span>
-    </div>
-    <div class="situation-item">
-      <span>Ztráta zaměstnání</span><span class="chevron">›</span>
-    </div>
-    <div class="situation-item">
-      <span>Studium v zahraničí</span><span class="chevron">›</span>
-    </div>
-    <div class="situation-item" onclick="go('screen-stehovani')">
-      <span>Stěhování</span><span class="chevron">›</span>
-    </div>
-  </div>
-
-  <div style="padding:16px 15px 0;text-align:center;">
-    <div style="font-size:16px;font-weight:500;color:#2d5f8a;cursor:pointer;">‹ Načíst další</div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <!-- Back home button -->
-  <div style="padding:0 15px 16px;">
-    <div onclick="go('screen-home')" class="btn-primary">Zpátky na homepage</div>
-  </div>
-
-  <!-- Bottom nav -->
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt=""></div><span class="nav-label" style="color:#d0e4ff;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')"><div class="nav-icon"><svg width="23" height="21" viewBox="0 0 23 21" fill="none"><path d="M21.1 5L15.5 3.71C15.5 3.6 15.54 3.52 15.54 3.41C15.54 1.52 14.02 0 12.16 0C10.27 0 8.75 1.52 8.75 3.41C8.75 3.79 8.87 4.28 9.09 4.85L8 5.08L3.03 3.68C2.31 3.49 1.55 3.6 0.95 4.05C0.34 4.51 0 5.19 0 5.95V16.79C0 17.85 0.72 18.79 1.74 19.06L7.73 20.76L8 20.8L8.18 20.8L15.08 19.36L20.08 20.54C20.42 20.61 20.61 20.61C21.14 20.61 21.67 20.42 22.09 20.08C22.66 19.63 23 18.95 23 18.23V7.31C22.96 6.21 22.2 5.27 21.1 5ZM12.13 1.71C13.07 1.71 13.79 2.46 13.79 3.41C13.79 3.83 13.26 5.08 12.09 6.9C10.91 5.08 10.38 3.86 10.38 3.41C10.42 2.46 11.18 1.71 12.13 1.71ZM14.17 6.74V17.73L8.83 18.87V6.63L9.81 6.4C10.23 7.16 10.72 7.92 11.18 8.56C11.37 8.87 11.75 9.06 12.09 9.06C12.47 9.06 12.81 8.87 13 8.56C13.38 7.99 13.79 7.39 14.17 6.74ZM1.74 16.75V5.95C1.74 5.72 1.86 5.53 2.01 5.42C2.16 5.3 2.39 5.27 2.58 5.3L7.12 6.59V18.79L2.2 17.39C1.93 17.32 1.74 17.05 1.74 16.75ZM21.26 18.15C21.26 18.42 21.11 18.6 20.99 18.68C20.92 18.76 20.69 18.87 20.42 18.79L15.88 17.73V5.53L20.73 6.67C21.03 6.74 21.26 7.01 21.26 7.31V18.15Z" fill="#7a8fa6"/></svg></div><span class="nav-label">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-situace -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Životní situace – Stěhování (screen-stehovani)
-     Origin: Figma frame [8:10919] – 393×922
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-stehovani" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-situace')">‹</span>
-      <span class="page-title" style="font-size:28px;font-weight:700;color:#1e3a5f;">Stěhování</span>
-    </div>
-  </div>
-  <div class="detail-content">
-    <h2 class="detail-title">Co si zařídit s úřady</h2>
-    <p class="detail-lead">Změna adresy s sebou nese i nezbytné papírování. Tím nejdůležitějším krokem je změna trvalého pobytu na obecním úřadě.</p>
-    <!-- Warning box -->
-    <div style="background:rgba(122,92,46,0.08);border-left:3px solid #7a5c2e;border-radius:8px;padding:14px 16px;margin-bottom:20px;">
-      <div style="font-size:14px;font-weight:400;color:#7a5c2e;margin-bottom:4px;">Důležité upozornění:</div>
-      <div style="font-size:14px;font-weight:400;color:#7a5c2e;line-height:1.5;">O vydání nového občanského průkazu musíte požádat do 15 dnů od změny trvalého pobytu.</div>
-    </div>
-  </div>
-
-  <div style="padding:0 15px 20px;">
-    <div onclick="go('screen-s12')" class="btn-primary">Pokračovat na kompletní průvodce</div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <!-- Bottom nav -->
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt=""></div><span class="nav-label" style="color:#d0e4ff;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')"><div class="nav-icon"><svg width="20" height="20" viewBox="0 0 23 21" fill="none"><path d="M21.1 5L15.5 3.71C15.54 3.41 15.54 1.52 14.02 0 12.16 0C10.27 0 8.75 1.52 8.75 3.41C8.75 3.79 8.87 4.28 9.09 4.85L8 5.08L3.03 3.68C2.31 3.49 1.55 3.6 0.95 4.05C0.34 4.51 0 5.19 0 5.95V16.79C0 17.85 0.72 18.79 1.74 19.06L7.73 20.76L15.08 19.36L20.08 20.54C20.42 20.61 21.14 20.61 21.67 20.42 22.09 20.08C22.66 19.63 23 18.95 23 18.23V7.31C22.96 6.21 22.2 5.27 21.1 5Z" fill="#7a8fa6"/></svg></div><span class="nav-label">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-stehovani -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Životní situace – Narození dítěte (screen-narozeni)
-     Origin: Figma frame [8:10821] – 393×1022
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-narozeni" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-situace')">‹</span>
-      <span class="page-title" style="font-size:28px;font-weight:700;color:#1e3a5f;">Narození dítěte</span>
-    </div>
-  </div>
-  <div class="detail-content">
-    <h2 class="detail-title">Co dělat po narození dítěte</h2>
-    <p class="detail-lead">Průvodce zajišťuje administrativní integraci nového občana do systémů sociálního zabezpečení, zdravotní péče a státní správy.</p>
-    <div style="background:rgba(122,92,46,0.08);border-left:3px solid #7a5c2e;border-radius:8px;padding:14px 16px;margin-bottom:20px;">
-      <div style="font-size:14px;font-weight:400;color:#7a5c2e;margin-bottom:4px;">Financování péče:</div>
-      <div style="font-size:14px;font-weight:400;color:#7a5c2e;line-height:1.5;">Náklady na zdravotní péči spojenou s porodem a standardní poporodní asistenci jsou plně hrazeny z veřejného zdravotního pojištění.</div>
-    </div>
-  </div>
-  <div style="padding:0 15px 20px;">
-    <div onclick="go('screen-ukoly')" class="btn-primary">Pokračovat na kompletní průvodce</div>
-  </div>
-  <div class="spacer"></div>
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt=""></div><span class="nav-label" style="color:#d0e4ff;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt=""></div><span class="nav-label">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-narozeni -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Životní situace – Ztráta dokladů (screen-doklady)
-     Origin: Figma frame [8:10858] – 393×937
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-doklady" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-situace')">‹</span>
-      <span class="page-title" style="font-size:28px;font-weight:700;color:#1e3a5f;">Ztráta dokladů</span>
-    </div>
-  </div>
-  <div class="detail-content">
-    <h2 class="detail-title">Co dělat při ztrátě dokladů</h2>
-    <p class="detail-lead">V případě ztráty nebo odcizení osobních dokladů je nezbytné provést jednoznačná opatření k ochraně vaší identity a zahájit správní řízení vedoucí k vydání náhradních dokumentů.</p>
-    <div style="background:rgba(122,92,46,0.08);border-left:3px solid #7a5c2e;border-radius:8px;padding:14px 16px;margin-bottom:20px;">
-      <div style="font-size:14px;font-weight:400;color:#7a5c2e;margin-bottom:4px;">Provozní náklady:</div>
-      <div style="font-size:14px;font-weight:400;color:#7a5c2e;line-height:1.5;">Výroba a logistika personalizovaného dokladu s elektronickým čipem stojí ročně průměrně 180 Kč na občana.</div>
-    </div>
-  </div>
-  <div style="padding:0 15px 20px;">
-    <div onclick="go('screen-ukoly')" class="btn-primary">Pokračovat na kompletní průvodce</div>
-  </div>
-  <div class="spacer"></div>
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt=""></div><span class="nav-label" style="color:#d0e4ff;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt=""></div><span class="nav-label">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-doklady -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Moje služby / To-Do (screen-ukoly)
-     Origin: Figma frame [8:11805] "14" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-ukoly" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-home')">‹</span>
-      <span class="page-title" style="font-size:22px;font-weight:600;color:#1e3a5f;">Moje služby</span>
-    </div>
-  </div>
-
-  <!-- Usage summary -->
-  <div style="padding:12px 15px 0;">
-    <div style="background:#f0f7f0;border-radius:12px;padding:14px 16px;">
-      <div style="font-size:14px;font-weight:600;color:#000;margin-bottom:2px;">Využíváte služby za ~ 19 200 Kč</div>
-      <div style="font-size:12px;font-weight:400;color:#7e93a9;">Z vašeho příspěvku 48 350 Kč</div>
-      <div style="margin-top:10px;background:#e0e8e0;border-radius:3px;height:6px;overflow:hidden;">
-        <div style="width:40%;height:100%;background:#3a9e7e;border-radius:3px;"></div>
-      </div>
-      <div style="font-size:12px;font-weight:400;color:#000;margin-top:4px;">40%</div>
-    </div>
-  </div>
-
-  <!-- Life situations in progress -->
-  <div class="section-header"><span style="font-size:16px;font-weight:500;color:#000;">Vaše životní situace</span></div>
-
-  <!-- Task card: Stěhování -->
-  <div class="task-card">
-    <div class="task-header">
-      <span class="task-title">Stěhování</span>
-      <span class="task-step">3 / 6</span>
-    </div>
-    <div class="task-meta">Do jiné obce · Auto · Založeno 15.3.</div>
-    <div class="progress-bar"><div class="fill" style="width:50%;"></div></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
-      <div><span class="status-badge warn">Rozpracováno</span></div>
-      <span style="font-size:11px;font-weight:600;color:#2d5f8a;">50%</span>
-    </div>
-    <div style="margin-top:8px;font-size:11px;font-weight:600;color:#000;">Další krok</div>
-    <div style="font-size:10px;font-weight:400;color:#000;">Přepis energií na novou adresu</div>
-  </div>
-
-  <!-- Task card: Narození dítěte -->
-  <div class="task-card">
-    <div class="task-header">
-      <span class="task-title">Narození dítěte</span>
-    </div>
-    <div class="task-meta">Uloženo 2.4. · 8 kroků čeká</div>
-    <div style="margin-top:6px;"><span class="status-badge ok">Čeká</span></div>
-  </div>
-
-  <!-- Task card: Ztráta dokladů -->
-  <div class="task-card">
-    <div class="task-header">
-      <span class="task-title">Ztráta dokladů</span>
-    </div>
-    <div class="task-meta">Dokončeno 18.3. · 3 kroky</div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-      <span class="status-badge" style="color:#399e7e;background:rgba(57,158,126,0.1);">Hotovo</span>
-      <span style="font-size:11px;font-weight:600;color:#399e7e;">Vše vyřízeno za 12 dní.</span>
-    </div>
-  </div>
-
-  <div style="padding:16px 15px 0;">
-    <div onclick="go('screen-situace')" style="display:block;width:100%;height:53px;background:#094672;border-radius:9999px;font-size:14px;font-weight:700;color:#fff;border:none;cursor:pointer;text-align:center;line-height:53px;">+ Nová životní situace</div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')" style="background:transparent;"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt="" style="filter:brightness(0.5)"></div><span class="nav-label" style="color:#7a8fa6;">Domů</span></div>
-    <div class="nav-item services" style="background:#094672;border-radius:12px;"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt="" style="filter:brightness(10)"></div><span class="nav-label" style="color:#d0e4ff;">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt=""></div><span class="nav-label">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-ukoly -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Stěhování – To-Do List (screen-s12)
-     Origin: Figma frame [8:11064] "iPhone 16 - screen 12" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-s12" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-stehovani')">‹</span>
-      <span class="page-title" style="font-size:28px;font-weight:700;color:#1e3a5f;">To-Do list</span>
-    </div>
-  </div>
-
-  <div style="padding:12px 15px 0;display:flex;justify-content:space-between;align-items:center;">
-    <div>
-      <div style="font-size:16px;font-weight:500;color:#3d4f5f;">Váš progress</div>
-      <div style="font-size:14px;font-weight:400;color:#7a8fa6;">splněno 0 z 3 úkolů</div>
-    </div>
-    <div style="font-size:16px;font-weight:500;color:#3a9e7e;">0%</div>
-  </div>
-
-  <!-- Questionnaire step -->
-  <div style="padding:16px 15px 0;">
-    <div onclick="go('screen-s13')" style="background:#ebf2f9;border-radius:12px;padding:14px 16px;cursor:pointer;margin-bottom:12px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-        <div style="flex:1;">
-          <span style="background:rgba(30,122,135,0.1);color:#1e7a87;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin-bottom:8px;display:inline-block;">ONLINE</span>
-          <div style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.5;">Registrace k místnímu poplatku za odpady.</div>
-          <div style="font-size:11px;font-weight:600;color:#3d4f5f;margin-top:4px;">Detaily</div>
-        </div>
-        <span style="font-size:15px;font-weight:400;color:#3d4f5f;margin-left:8px;">›</span>
-      </div>
-    </div>
-
-    <!-- Main task: Změna trvalého pobytu -->
-    <div onclick="go('screen-s13')" style="background:#ebf2f9;border-radius:12px;padding:14px 16px;cursor:pointer;">
-      <span style="background:rgba(122,92,46,0.1);color:#7a5c2e;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;margin-bottom:8px;display:inline-block;">OSOBNĚ</span>
-      <div style="font-size:18px;font-weight:600;color:#1a2634;line-height:1.3;margin-bottom:6px;">Změna trvalého pobytu</div>
-      <div style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.5;">Ohlášení na ohlašovně v místě nového bydliště.</div>
-    </div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <div style="padding:0 15px 16px;">
-    <div onclick="go('screen-s8')" class="btn-primary">Pokračovat</div>
-  </div>
-
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt=""></div><span class="nav-label" style="color:#d0e4ff;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt=""></div><span class="nav-label">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-s12 -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Detail úkolu – Změna trvalého pobytu (screen-s13)
-     Origin: Figma frame [8:11162] "iPhone 16 - screen 13" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-s13" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-s12')">‹</span>
-      <span class="page-title" style="font-size:28px;font-weight:700;color:#1e3a5f;">Detail úkolu</span>
-    </div>
-  </div>
-  <div style="padding:16px 15px 0;">
-    <div style="font-size:22px;font-weight:600;color:#1a2634;margin-bottom:4px;">Změna trvalého pobytu</div>
-    <span style="background:rgba(122,92,46,0.1);color:#7a5c2e;font-size:16px;font-weight:500;padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:12px;">OSOBNĚ</span>
-    <div style="font-size:14px;font-weight:400;color:#3d4f5f;margin-bottom:16px;">Odhadovaný čas: 20 minut</div>
-    <p style="font-size:14px;font-weight:400;color:#7a8fa6;line-height:1.5;margin-bottom:20px;">Při stěhování je vaší zákonnou povinností ohlásit změnu adresy trvalého bydliště na obecním úřadu příslušného nového místa bydliště.</p>
-
-    <div style="font-size:18px;font-weight:600;color:#3d4f5f;margin-bottom:12px;">Co budete potřebovat?</div>
-    <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(9,70,114,0.06);">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#1e7a87"/></svg>
-      <span style="font-size:16px;font-weight:500;color:#1a2634;">Platný občanský průkaz</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(9,70,114,0.06);">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#1e7a87"/></svg>
-      <span style="font-size:16px;font-weight:500;color:#1a2634;">Doklad o vlastnictví bytu nebo nájemní smlouva</span>
-    </div>
-    <div style="background:rgba(122,92,46,0.08);border-left:3px solid #7a5c2e;border-radius:8px;padding:12px 16px;margin-top:16px;">
-      <div style="font-size:14px;font-weight:600;color:#7a5c2e;margin-bottom:4px;">Důležité upozornění</div>
-      <div style="font-size:12px;font-weight:400;color:#7a5c2e;">Tento úkol musíte splnit nejpozději do 15 dnů.</div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div style="padding:0 15px 16px;">
-    <div onclick="go('screen-s14')" class="btn-primary">Splněno</div>
-  </div>
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt=""></div><span class="nav-label" style="color:#d0e4ff;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt=""></div><span class="nav-label">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-s13 -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Kam se stěhujete? (screen-s8)
-     Origin: Figma frame [8:11730] "iPhone 16 - 8" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-s8" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-s12')">‹</span>
-    </div>
-  </div>
-  <div class="question-screen">
-    <h2 class="question-title" style="font-size:22px;">Kam se stěhujete?</h2>
-    <p style="font-size:16px;font-weight:500;color:#1e3a5f;margin-bottom:24px;line-height:1.5;">Vyberte, jestli se budete stěhovat do jiné obce, nebo jestli se stěhujete v rámci stejné obce.</p>
-
-    <div id="opt-jina" class="option-btn" onclick="selectOption('screen-s8','opt-jina','screen-s9')">
-      <div style="font-size:16px;font-weight:500;color:#1e3a5f;margin-bottom:4px;">Stěhuji se do jiné obce</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;line-height:1.4;">Systém přidá odhlášení poplatků za odpady a nahlášení v novém místě.</div>
-    </div>
-    <div id="opt-stejna" class="option-btn" onclick="selectOption('screen-s8','opt-stejna','screen-s9')">
-      <div style="font-size:16px;font-weight:500;color:#1e3a5f;margin-bottom:4px;">Stěhuji se v rámci obce</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;line-height:1.4;">Systém vyfiltruje jen změnu adresy a ponechá místní poplatky beze změny.</div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div style="padding:0 15px 16px;">
-    <div onclick="go('screen-s9')" class="btn-primary">Pokračovat</div>
-  </div>
-</div>
-<!-- /screen-s8 -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Výběr oblasti (screen-s9)
-     Origin: Figma frame [8:11746] "iPhone 16 - 9" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-s9" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-s8')">‹</span>
-    </div>
-  </div>
-  <div class="question-screen">
-    <h2 class="question-title" style="font-size:22px;">Kam se stěhujete?</h2>
-    <p style="font-size:16px;font-weight:500;color:#1e3a5f;margin-bottom:24px;line-height:1.5;">Vyberte, jestli se budete stěhovat do jiné obce, nebo jestli se stěhujete v rámci stejné obce.</p>
-
-    <div id="opt9-stejna" class="option-btn selected" onclick="selectOption('screen-s9','opt9-stejna','screen-auto1')">
-      <div style="font-size:16px;font-weight:500;color:#1e3a5f;margin-bottom:4px;">Stěhuji se v rámci obce</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;line-height:1.4;">Systém vyfiltruje jen změnu adresy a ponechá místní poplatky beze změny.</div>
-    </div>
-    <div id="opt9-jina" class="option-btn" onclick="selectOption('screen-s9','opt9-jina','screen-auto1')">
-      <div style="font-size:16px;font-weight:500;color:#1e3a5f;margin-bottom:4px;">Stěhuji se do jiné obce</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;line-height:1.4;">Systém přidá odhlášení poplatků za odpady a nahlášení v novém místě.</div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div style="padding:0 15px 16px;">
-    <div onclick="go('screen-auto1')" class="btn-primary">Pokračovat</div>
-  </div>
-</div>
-<!-- /screen-s9 -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Vlastníte auto? (screen-auto1)
-     Origin: Figma frame [8:11763] – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-auto1" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-s9')">‹</span>
-    </div>
-  </div>
-  <div class="question-screen">
-    <h2 class="question-title" style="font-size:22px;">Vlastníte auto?</h2>
-
-    <div onclick="go('screen-autoano')" class="option-btn">
-      <span style="font-size:16px;font-weight:500;color:#2d5f8a;">Ano</span>
-    </div>
-    <div onclick="go('screen-autone')" class="option-btn">
-      <span style="font-size:16px;font-weight:500;color:#2d5f8a;">Ne</span>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div style="padding:0 15px 16px;">
-    <div style="height:53px;border-radius:9999px;border:1.5px solid #2d5f8a;line-height:53px;text-align:center;font-size:14px;font-weight:700;color:#2d5f8a;cursor:pointer;" onclick="go('screen-ukoly')">Pokračovat</div>
-  </div>
-</div>
-<!-- /screen-auto1 -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Auto – ANO (screen-autoano)
-     Origin: Figma frame [8:11777] – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-autoano" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-auto1')">‹</span>
-      <span class="page-title" style="font-size:20px;font-weight:600;color:#1e3a5f;">Registrace vozidla</span>
-    </div>
-  </div>
-  <div style="padding:20px 15px 0;">
-    <p style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.5;margin-bottom:20px;">Při změně trvalého pobytu je nutné přehlásit vozidlo na nové evidenční místo. Máte 10 dní na nahlášení na příslušném odboru dopravy.</p>
-    <div style="background:#ebf2f9;border-radius:12px;padding:14px 16px;">
-      <div style="font-size:14px;font-weight:600;color:#094672;margin-bottom:8px;">Co budete potřebovat:</div>
-      <div style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.8;">• Velký technický průkaz<br>• Malý technický průkaz<br>• Doklad o pojištění<br>• Platný občanský průkaz</div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div style="padding:0 15px 16px;">
-    <div onclick="go('screen-ukoly')" class="btn-primary">Pokračovat</div>
-  </div>
-</div>
-<!-- /screen-autoano -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Auto – NE (screen-autone)
-     Origin: Figma frame [8:11791] – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-autone" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-auto1')">‹</span>
-      <span class="page-title" style="font-size:20px;font-weight:600;color:#1e3a5f;">Shrnutí</span>
-    </div>
-  </div>
-  <div style="padding:20px 15px 0;">
-    <p style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.5;margin-bottom:20px;">Váš průvodce stěhováním byl nastaven. Systém přidal relevantní úkoly bez potřeby přepisu vozidla.</p>
-    <div style="background:#f0f7f4;border-radius:12px;padding:14px 16px;">
-      <div style="font-size:14px;font-weight:600;color:#1e7a87;margin-bottom:4px;">Dobře jste to zvládli!</div>
-      <div style="font-size:12px;font-weight:400;color:#7a8fa6;">3 úkoly čekají na dokončení.</div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div style="padding:0 15px 16px;">
-    <div onclick="go('screen-ukoly')" class="btn-primary">Pokračovat</div>
-  </div>
-</div>
-<!-- /screen-autone -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Lokální mapa (screen-mapa)
-     Origin: Figma frame [8:11424] "iPhone 16 - 6" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-mapa" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-dane')">‹</span>
-      <span class="page-title" style="font-size:22px;font-weight:600;color:#1e3a5f;">Lokální mapa</span>
-    </div>
-  </div>
-
-  <!-- Search -->
-  <div class="search-wrap">
-    <div class="search-box">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#727780"/></svg>
-      <input type="text" placeholder="Jak vám můžeme pomoci?">
-    </div>
-  </div>
-
-  <!-- Map area -->
-  <div class="map-area" style="height:480px;margin:16px 15px 0;border-radius:16px;position:relative;overflow:hidden;background:linear-gradient(135deg,#d4e9f7 0%,#b8d8f0 40%,#e8f4f8 100%);">
-    <!-- Streets simulation -->
-    <svg width="100%" height="100%" viewBox="0 0 363 480" style="position:absolute;top:0;left:0;">
-      <rect width="363" height="480" fill="#d4e9f7"/>
-      <!-- Roads -->
-      <path d="M0 240 H363" stroke="#c0d8ec" stroke-width="14" fill="none"/>
-      <path d="M181 0 V480" stroke="#c0d8ec" stroke-width="14" fill="none"/>
-      <path d="M0 120 H363" stroke="#c8dff0" stroke-width="8" fill="none"/>
-      <path d="M0 360 H363" stroke="#c8dff0" stroke-width="8" fill="none"/>
-      <path d="M90 0 V480" stroke="#c8dff0" stroke-width="8" fill="none"/>
-      <path d="M272 0 V480" stroke="#c8dff0" stroke-width="8" fill="none"/>
-      <!-- Parks -->
-      <rect x="20" y="30" width="60" height="60" fill="#c8e6c9" rx="8"/>
-      <rect x="200" y="280" width="80" height="60" fill="#c8e6c9" rx="8"/>
-      <!-- Buildings -->
-      <rect x="95" y="30" width="70" height="70" fill="#b8cfe0" rx="4"/>
-      <rect x="20" y="150" width="55" height="70" fill="#b8cfe0" rx="4"/>
-      <rect x="200" y="30" width="55" height="70" fill="#b8cfe0" rx="4"/>
-      <rect x="20" y="270" width="60" height="80" fill="#b8cfe0" rx="4"/>
-      <rect x="95" y="380" width="70" height="80" fill="#b8cfe0" rx="4"/>
-      <rect x="280" y="150" width="60" height="70" fill="#b8cfe0" rx="4"/>
-    </svg>
-
-    <!-- Map pins with labels -->
-    <!-- Věda pin -->
-    <div style="position:absolute;top:120px;left:240px;cursor:pointer;z-index:10;" onclick="go('screen-veda')">
-      <div style="background:#094672;border-radius:50% 50% 50% 0;width:28px;height:28px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;">
-        <span style="transform:rotate(45deg);font-size:11px;color:#fff;font-weight:700;">V</span>
-      </div>
-      <div style="margin-top:4px;font-size:11px;font-weight:600;color:#094672;text-align:center;white-space:nowrap;">Věda</div>
-    </div>
-
-    <!-- Elektro pin -->
-    <div style="position:absolute;top:180px;left:250px;cursor:pointer;z-index:10;" onclick="go('screen-elektro')">
-      <div style="background:#1e7a87;border-radius:50% 50% 50% 0;width:28px;height:28px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;">
-        <span style="transform:rotate(45deg);font-size:11px;color:#fff;font-weight:700;">E</span>
-      </div>
-      <div style="margin-top:4px;font-size:11px;font-weight:600;color:#1e7a87;text-align:center;white-space:nowrap;">Elektro</div>
-    </div>
-
-    <!-- Sport pin -->
-    <div style="position:absolute;top:220px;left:260px;cursor:pointer;z-index:10;" onclick="go('screen-sport')">
-      <div style="background:#2d5f8a;border-radius:50% 50% 50% 0;width:28px;height:28px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;">
-        <span style="transform:rotate(45deg);font-size:11px;color:#fff;font-weight:700;">S</span>
-      </div>
-      <div style="margin-top:4px;font-size:11px;font-weight:600;color:#2d5f8a;text-align:center;white-space:nowrap;">Sport</div>
-    </div>
-
-    <!-- Center crosshair -->
-    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:20px;height:20px;border:2px solid #094672;border-radius:50%;"></div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt="" style="filter:brightness(0.5)"></div><span class="nav-label" style="color:#7a8fa6;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" style="background:#094672;border-radius:12px;"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt="" style="filter:brightness(10)"></div><span class="nav-label" style="color:#d0e4ff;">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-<!-- /screen-mapa -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Věda (screen-veda)
-     Origin: Figma frame [8:11465] – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-veda" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-mapa')">‹</span>
-      <span class="page-title" style="font-size:22px;font-weight:600;color:#1e3a5f;">Věda</span>
-    </div>
-  </div>
-  <div style="padding:16px 15px 0;">
-    <div style="background:#ebf2f9;border-radius:16px;padding:20px;">
-      <div style="font-size:16px;font-weight:600;color:#094672;margin-bottom:8px;">Centrum vědy a techniky</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;margin-bottom:12px;">Vyšehradská 12, Praha 2</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Pondělí–Pátek 9:00–18:00</span>
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Bezplatný vstup</span>
-      </div>
-    </div>
-    <div style="margin-top:16px;background:#ebf2f9;border-radius:16px;padding:20px;">
-      <div style="font-size:16px;font-weight:600;color:#094672;margin-bottom:8px;">Přírodovědné muzeum</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;margin-bottom:12px;">Václavské náměstí 68, Praha 1</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Otevřeno denně 10:00–18:00</span>
-      </div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt="" style="filter:brightness(0.5)"></div><span class="nav-label" style="color:#7a8fa6;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')" style="background:#094672;border-radius:12px;"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt="" style="filter:brightness(10)"></div><span class="nav-label" style="color:#d0e4ff;">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Elektro (screen-elektro)
-     Origin: Figma frame [8:11502] – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-elektro" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-mapa')">‹</span>
-      <span class="page-title" style="font-size:22px;font-weight:600;color:#1e3a5f;">Elektro</span>
-    </div>
-  </div>
-  <div style="padding:16px 15px 0;">
-    <div style="background:#ebf2f9;border-radius:16px;padding:20px;">
-      <div style="font-size:16px;font-weight:600;color:#094672;margin-bottom:8px;">Sběrné místo elektroodpadu</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;margin-bottom:12px;">Průmyslová 4, Praha 10</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Po–Pá 8:00–17:00</span>
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Zdarma</span>
-      </div>
-    </div>
-    <div style="margin-top:16px;background:#ebf2f9;border-radius:16px;padding:20px;">
-      <div style="font-size:16px;font-weight:600;color:#094672;margin-bottom:8px;">Opravna elektroniky</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;margin-bottom:12px;">Korunní 34, Praha 2</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Po–So 10:00–20:00</span>
-      </div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt="" style="filter:brightness(0.5)"></div><span class="nav-label" style="color:#7a8fa6;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')" style="background:#094672;border-radius:12px;"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt="" style="filter:brightness(10)"></div><span class="nav-label" style="color:#d0e4ff;">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Sport (screen-sport)
-     Origin: Figma frame [8:11543] – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-sport" class="screen">
-  <div class="top-bar">
-    <div class="user-info">
-      <span class="back-btn" onclick="go('screen-mapa')">‹</span>
-      <span class="page-title" style="font-size:22px;font-weight:600;color:#1e3a5f;">Sport</span>
-    </div>
-  </div>
-  <div style="padding:16px 15px 0;">
-    <div style="background:#ebf2f9;border-radius:16px;padding:20px;">
-      <div style="font-size:16px;font-weight:600;color:#094672;margin-bottom:8px;">Sportovní centrum Příbramská</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;margin-bottom:12px;">Příbramská 1, Praha 10</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Po–Ne 7:00–22:00</span>
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Bazén / Fitness</span>
-      </div>
-    </div>
-    <div style="margin-top:16px;background:#ebf2f9;border-radius:16px;padding:20px;">
-      <div style="font-size:16px;font-weight:600;color:#094672;margin-bottom:8px;">Veřejné hřiště</div>
-      <div style="font-size:13px;font-weight:400;color:#7a8fa6;margin-bottom:12px;">Park Stromovka, Praha 7</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Volný přístup 24/7</span>
-        <span style="background:#c8e9ed;color:#2d5f8a;font-size:11px;font-weight:600;padding:4px 10px;border-radius:9999px;">Zdarma</span>
-      </div>
-    </div>
-  </div>
-  <div class="spacer"></div>
-  <div class="bottom-nav">
-    <div class="nav-item home" onclick="go('screen-home')"><div class="nav-icon"><img src="assets/icons/home.svg" width="16" height="18" alt="" style="filter:brightness(0.5)"></div><span class="nav-label" style="color:#7a8fa6;">Domů</span></div>
-    <div class="nav-item services" onclick="go('screen-ukoly')"><div class="nav-icon"><img src="assets/icons/services.svg" width="16" height="16" alt=""></div><span class="nav-label">Služby</span></div>
-    <div class="nav-item map" onclick="go('screen-mapa')" style="background:#094672;border-radius:12px;"><div class="nav-icon"><img src="assets/icons/I8_11308_192_214.svg" width="20" height="20" alt="" style="filter:brightness(10)"></div><span class="nav-label" style="color:#d0e4ff;">Mapa</span></div>
-    <div class="nav-item profile"><div class="nav-icon"><img src="assets/icons/profile.svg" width="20" height="20" alt=""></div><span class="nav-label">Profil</span></div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Zpětná vazba – formulář (screen-feedback)
-     Origin: Figma frame [8:10532] "6" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-feedback" class="screen">
-
-  <div style="position:sticky;top:0;z-index:50;background:#fff;height:114px;display:flex;align-items:flex-end;justify-content:center;padding:0 24px 16px;">
-    <span onclick="go('screen-home')" style="position:absolute;left:14px;bottom:14px;font-size:30px;font-weight:400;color:#1e3a5f;cursor:pointer;line-height:1;padding:4px 8px;">‹</span>
-    <span style="font-size:22px;font-weight:600;color:#1e3a5f;">Zpětná vazba</span>
-  </div>
-
-  <div style="padding:24px 15px 0;">
-
-    <div style="margin-bottom:24px;">
-      <div style="font-size:14px;font-weight:600;color:#1e3a5f;line-height:1.4;margin-bottom:4px;">Jak se vám dnes v aplikaci pracovalo?</div>
-      <div style="font-size:12px;font-weight:400;color:#7a8fa6;">Vaše názory nám pomáhají se zlepšovat</div>
-    </div>
-
-    <div style="display:flex;justify-content:space-between;margin-bottom:28px;padding:0 8px;">
-      <button onclick="selectEmoji(this)" style="width:60px;height:60px;border-radius:50%;border:1.5px solid #2d5f8a;background:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:all .15s;">:(</button>
-      <button onclick="selectEmoji(this)" style="width:60px;height:60px;border-radius:50%;border:1.5px solid #2d5f8a;background:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:all .15s;">:/</button>
-      <button onclick="selectEmoji(this)" style="width:60px;height:60px;border-radius:50%;border:1.5px solid #2d5f8a;background:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:all .15s;">:)</button>
-      <button onclick="selectEmoji(this)" style="width:60px;height:60px;border-radius:50%;border:1.5px solid #2d5f8a;background:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:all .15s;">:D</button>
-    </div>
-
-    <div style="margin-bottom:12px;">
-      <div style="font-size:14px;font-weight:600;color:#1e3a5f;line-height:1.4;margin-bottom:4px;">Co nejvíce ovlivnilo Vaše vybrané hodnocení?</div>
-      <div style="font-size:12px;font-weight:400;color:#7a8fa6;">Vyberte minimálně dvě pole</div>
-    </div>
-
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
-      <button onclick="toggleTag(this)" style="padding:7px 16px;border-radius:75px;border:1.5px solid #2d5f8a;background:#fff;font-size:12px;font-weight:400;color:#2d5f8a;cursor:pointer;font-family:inherit;transition:all .15s;">Přehlednost</button>
-      <button onclick="toggleTag(this)" style="padding:7px 16px;border-radius:75px;border:1.5px solid #2d5f8a;background:#fff;font-size:12px;font-weight:400;color:#2d5f8a;cursor:pointer;font-family:inherit;transition:all .15s;">Rychlost</button>
-      <button onclick="toggleTag(this)" style="padding:7px 16px;border-radius:75px;border:1.5px solid #2d5f8a;background:#fff;font-size:12px;font-weight:400;color:#2d5f8a;cursor:pointer;font-family:inherit;transition:all .15s;">Srozumitelnost</button>
-      <button onclick="toggleTag(this)" style="padding:7px 16px;border-radius:75px;border:1.5px solid #2d5f8a;background:#fff;font-size:12px;font-weight:400;color:#2d5f8a;cursor:pointer;font-family:inherit;transition:all .15s;">Možnost výběrů</button>
-      <button onclick="toggleTag(this)" style="padding:7px 16px;border-radius:75px;border:1.5px solid #2d5f8a;background:#fff;font-size:12px;font-weight:400;color:#2d5f8a;cursor:pointer;font-family:inherit;transition:all .15s;">Důvěryhodnost</button>
-      <button onclick="toggleTag(this)" style="padding:7px 16px;border-radius:75px;border:1.5px solid #2d5f8a;background:#fff;font-size:12px;font-weight:400;color:#2d5f8a;cursor:pointer;font-family:inherit;transition:all .15s;">Množství detailů</button>
-    </div>
-
-    <textarea placeholder="Napište nám k tomu víc... (nepovinné)" style="width:100%;height:170px;border:1.5px solid #a3c4e0;border-radius:16px;padding:12px 16px;font-family:inherit;font-size:14px;font-weight:400;color:#1e3a5f;resize:none;outline:none;background:#fff;box-sizing:border-box;"></textarea>
-  </div>
-
-  <div style="padding:20px 15px 24px;">
-    <div onclick="go('screen-feedback-done')" style="height:53px;background:#2d5f8a;border-radius:60px;font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;">Potvrdit a odeslat</div>
-  </div>
-</div>
-<!-- /screen-feedback -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: Zpětná vazba – Hotovo! (screen-feedback-done)
-     Origin: Figma frame [8:10518] "7" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-feedback-done" class="screen">
-  <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:156px;min-height:852px;">
-
-    <div style="position:relative;width:150px;height:150px;margin-bottom:24px;">
-      <div style="width:150px;height:150px;border-radius:50%;background:#e6f5f7;border:1.5px solid #56b0ba;"></div>
-      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);">
-        <svg width="72" height="72" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#1e7a87"/></svg>
-      </div>
-    </div>
-
-    <div style="text-align:center;padding:0 24px;margin-bottom:32px;">
-      <div style="font-size:28px;font-weight:600;color:#1e3a5f;line-height:1.3;margin-bottom:8px;">Hotovo!</div>
-      <div style="font-size:14px;font-weight:400;color:#7a8fa6;line-height:1.5;">Vaší zpětné vazby si velmi vážíme.<br>Děkujeme.</div>
-    </div>
-
-    <div style="width:calc(100% - 30px);background:#ebf2f9;border:1.5px solid #d4e4f2;border-radius:16px;padding:16px 20px;margin-bottom:auto;">
-      <div style="font-size:12px;font-weight:700;color:#2d5f8a;margin-bottom:10px;">Shrnutí</div>
-      <div style="font-size:12px;font-weight:700;color:#7a8fa6;margin-bottom:4px;">Hodnocení: Dobré :)</div>
-      <div style="font-size:12px;font-weight:700;color:#7a8fa6;">Kategorie: Rychlost, Množství detailů</div>
-    </div>
-
-    <div style="width:100%;padding:32px 15px 24px;">
-      <div onclick="go('screen-home')" style="height:53px;background:#2d5f8a;border:1.5px solid #a3c4e0;border-radius:9999px;font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;">Zpět na homepage</div>
-    </div>
-  </div>
-</div>
-<!-- /screen-feedback-done -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCREEN: To-Do list – 33 % splněno (screen-s14)
-     Origin: Figma frame [8:11111] "iPhone 16 - screen 14" – 393×852
-═══════════════════════════════════════════════════════════════════════════ -->
-<div id="screen-s14" class="screen" style="background:#f5f8fc;">
-
-  <div style="padding:60px 23px 0;display:flex;align-items:center;justify-content:center;position:relative;">
-    <span onclick="go('screen-s13')" style="position:absolute;left:13px;font-size:30px;font-weight:400;color:#1e3a5f;cursor:pointer;line-height:1;">‹</span>
-    <span style="font-size:28px;font-weight:700;color:#1e3a5f;">To-Do list</span>
-  </div>
-
-  <div style="padding:24px 23px 6px;display:flex;justify-content:space-between;align-items:center;">
-    <span style="font-size:16px;font-weight:500;color:#3d4f5f;">Váš progress</span>
-    <span style="font-size:16px;font-weight:500;color:#3a9e7e;">33%</span>
-  </div>
-  <div style="margin:0 23px 6px;height:12px;background:#f5f8fc;border:1.5px solid #a3c4e0;border-radius:9999px;overflow:hidden;">
-    <div style="width:33%;height:100%;background:#a3c4e0;border-radius:9999px;"></div>
-  </div>
-  <div style="padding:0 23px 20px;font-size:14px;font-weight:400;color:#7a8fa6;">splněno 1 z 3 úkolů</div>
-
-  <!-- Task: Změna trvalého pobytu (done) -->
-  <div onclick="go('screen-s13')" style="margin:0 15px 12px;background:#f5f8fc;border:1.5px solid #2d5f8a;border-radius:12px;padding:14px;cursor:pointer;">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
-      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;">
-        <div style="width:20px;height:20px;border:1.5px solid #2d5f8a;border-radius:4px;flex-shrink:0;margin-top:3px;background:#2d5f8a;display:flex;align-items:center;justify-content:center;">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div>
-          <div style="font-size:18px;font-weight:600;color:#3d4f5f;text-decoration:line-through;line-height:1.3;">Změna trvalého pobytu</div>
-          <div style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.4;margin-top:4px;">Ohlášení na ohlašovně v místě nového bydliště.</div>
+        <div class="news-card" onclick="navigateTo('screen-projekty','forward')">
+          <div class="news-icon">🏗️</div>
+          <div class="news-body">
+            <div class="news-title">ZŠ Na Smetance — rekonstrukce zahájena</div>
+            <div class="news-sub">Praha 2 · 1 týden</div>
+            <div class="news-badge"><span class="badge badge-green">Zahájeno</span></div>
+          </div>
         </div>
       </div>
-      <div style="background:#f6eee0;border-radius:64px;padding:3px 8px;flex-shrink:0;margin-left:8px;">
-        <span style="font-size:11px;font-weight:600;color:#7a5c2e;white-space:nowrap;">OSOBNĚ</span>
-      </div>
-    </div>
-    <div style="text-align:right;font-size:11px;font-weight:600;color:#3d4f5f;">Detaily &gt;</div>
-  </div>
 
-  <!-- Task: Poplatek za komunální odpad -->
-  <div style="margin:0 15px 12px;background:#f5f8fc;border:1px solid #d4e4f2;border-radius:12px;padding:14px;">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
-      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;">
-        <div style="width:20px;height:20px;border:1.5px solid #a3c4e0;border-radius:4px;flex-shrink:0;margin-top:3px;"></div>
-        <div>
-          <div style="font-size:18px;font-weight:600;color:#1a2634;line-height:1.3;">Poplatek za komunální odpad</div>
-          <div style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.4;margin-top:4px;">Registrace k místnímu poplatku za odpady.</div>
+      <div class="feedback-cta" onclick="navigateTo('screen-feedback','forward')">
+        <div style="font-size:28px;">💬</div>
+        <div class="feedback-cta-text">
+          <div class="feedback-cta-title">Jak se vám aplikace líbí?</div>
+          <div class="feedback-cta-sub">Sdělte nám svůj názor — zabere to 2 minuty</div>
+        </div>
+        <div class="feedback-cta-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       </div>
-      <div style="background:#e6f5f7;border-radius:64px;padding:3px 8px;flex-shrink:0;margin-left:8px;">
-        <span style="font-size:11px;font-weight:600;color:#1e7a87;white-space:nowrap;">ONLINE</span>
+
+      <div style="height: var(--sp-md)"></div>
+    </div>
+
+    <!-- DANE -->
+    <div id="screen-dane" class="screen has-nav">
+      <div class="dane-header">
+        <div class="dane-header-title">Moje daně</div>
+        <div class="dane-header-sub">Přehled za rok 2024</div>
+      </div>
+      <div class="dane-tabs">
+        <div class="dane-tab active" data-tab="prehled" onclick="switchDaneTab('prehled')">Přehled</div>
+        <div class="dane-tab" data-tab="historia" onclick="switchDaneTab('historia')">Historie</div>
+        <div class="dane-tab" data-tab="projekty" onclick="switchDaneTab('projekty')">Projekty</div>
+      </div>
+      <div class="dane-panel" data-panel="prehled">
+        <div class="dane-summary-card">
+          <div class="dane-summary-row"><span class="dane-summary-label">Celkem zaplaceno (2024)</span></div>
+          <div class="dane-summary-row"><span class="dane-summary-total">145 320 Kč</span><span class="badge badge-green">Vypočteno</span></div>
+          <div style="height:1px;background:var(--c-divider)"></div>
+          <div class="dane-summary-row"><span class="dane-summary-label">Daň z příjmu FO</span><span class="dane-summary-val">58 400 Kč</span></div>
+          <div class="dane-summary-row"><span class="dane-summary-label">Sociální pojištění</span><span class="dane-summary-val">51 840 Kč</span></div>
+          <div class="dane-summary-row"><span class="dane-summary-label">Zdravotní pojištění</span><span class="dane-summary-val">23 040 Kč</span></div>
+          <div class="dane-summary-row"><span class="dane-summary-label">DPH (odhad)</span><span class="dane-summary-val">12 040 Kč</span></div>
+        </div>
+        <div class="donut-wrapper">
+          <div class="donut-chart">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#094672" stroke-width="14" stroke-dasharray="79 239" stroke-dashoffset="0"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#1e7a87" stroke-width="14" stroke-dasharray="62 239" stroke-dashoffset="-79"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#2d5f8a" stroke-width="14" stroke-dasharray="57 239" stroke-dashoffset="-141"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#c8e9ed" stroke-width="14" stroke-dasharray="40 239" stroke-dashoffset="-198"/>
+            </svg>
+            <div class="donut-center">
+              <div class="donut-center-amount">48 350 Kč</div>
+              <div class="donut-center-label">za rok 2024</div>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item" onclick="navigateTo('screen-s8','forward')">
+              <div class="legend-dot" style="background:#094672"></div>
+              <span class="legend-label">Důchody a soc. dávky</span>
+              <span class="legend-amount">15 955 Kč</span>
+              <span class="legend-pct">33 %</span>
+            </div>
+            <div class="legend-item" onclick="navigateTo('screen-s9','forward')">
+              <div class="legend-dot" style="background:#1e7a87"></div>
+              <span class="legend-label">Školství</span>
+              <span class="legend-amount">12 571 Kč</span>
+              <span class="legend-pct">26 %</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#2d5f8a"></div>
+              <span class="legend-label">Doprava</span>
+              <span class="legend-amount">11 604 Kč</span>
+              <span class="legend-pct">24 %</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#c8e9ed"></div>
+              <span class="legend-label">Obrana</span>
+              <span class="legend-amount">8 220 Kč</span>
+              <span class="legend-pct">17 %</span>
+            </div>
+          </div>
+        </div>
+        <button class="btn-primary" style="margin:0 var(--sp-md) var(--sp-md);" onclick="navigateTo('screen-projekty','forward')">Zobrazit projekty financované z mých daní</button>
+      </div>
+      <div class="dane-panel" data-panel="historia" style="display:none">
+        <div class="dane-summary-card">
+          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2024</span><span class="dane-summary-total">145 320 Kč</span></div>
+          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2023</span><span class="dane-summary-val">138 770 Kč</span></div>
+          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2022</span><span class="dane-summary-val">131 040 Kč</span></div>
+          <div class="dane-summary-row"><span class="dane-summary-label">Rok 2021</span><span class="dane-summary-val">119 500 Kč</span></div>
+        </div>
+        <div style="background:var(--c-bg-card);border-radius:var(--r-lg);padding:var(--sp-md);text-align:center;color:var(--c-text-sub);font-size:14px;">Celkem za 4 roky: <strong style="color:var(--c-text)">534 630 Kč</strong></div>
+      </div>
+      <div class="dane-panel" data-panel="projekty" style="display:none">
+        <div style="padding:var(--sp-md);font-size:14px;color:var(--c-text-sub);line-height:1.6;">Vaše daně financují projekty ve vašem okolí. Chcete vidět konkrétní příklady?</div>
+        <button class="btn-primary" style="margin:0 var(--sp-md);" onclick="navigateTo('screen-projekty','forward')">Zobrazit projekty v okolí</button>
+        <div style="height:var(--sp-md)"></div>
       </div>
     </div>
-    <div style="text-align:right;font-size:11px;font-weight:600;color:#3d4f5f;">Detaily &gt;</div>
-  </div>
 
-  <!-- Task: Přihlášení psa -->
-  <div style="margin:0 15px 24px;background:#f5f8fc;border:1px solid #d4e4f2;border-radius:12px;padding:14px;">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
-      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;">
-        <div style="width:20px;height:20px;border:1.5px solid #a3c4e0;border-radius:4px;flex-shrink:0;margin-top:3px;"></div>
-        <div>
-          <div style="font-size:18px;font-weight:600;color:#1a2634;line-height:1.3;">Přihlášení psa</div>
-          <div style="font-size:14px;font-weight:400;color:#3d4f5f;line-height:1.4;margin-top:4px;">Pokud vlastníte psa, musíte ho přihlásit do 15 dnů.</div>
+    <!-- PROJEKTY -->
+    <div id="screen-projekty" class="screen has-nav">
+      <div class="top-bar">
+        <button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="top-bar-title">Projekty ve vašem okolí</div>
+        <div class="top-bar-spacer"></div>
+      </div>
+      <div style="background:var(--c-bg-card);padding:var(--sp-md);display:flex;gap:var(--sp-sm);align-items:flex-start;">
+        <span style="font-size:20px;">📍</span>
+        <div><div style="font-size:14px;font-weight:600;color:var(--c-text);">Praha 2 – Vinohrady</div><div style="font-size:13px;color:var(--c-text-sub);margin-top:2px;">8 projektů financovaných z vašich daní v okruhu 5 km</div></div>
+      </div>
+      <div class="proj-chips">
+        <div class="proj-chip active" data-cat="vse" onclick="filterProjects('vse')">Vše (8)</div>
+        <div class="proj-chip" data-cat="skolstvi" onclick="filterProjects('skolstvi')">Školství</div>
+        <div class="proj-chip" data-cat="doprava" onclick="filterProjects('doprava')">Doprava</div>
+        <div class="proj-chip" data-cat="zdravi" onclick="filterProjects('zdravi')">Zdravotnictví</div>
+        <div class="proj-chip" data-cat="kultura" onclick="filterProjects('kultura')">Kultura</div>
+        <div class="proj-chip" data-cat="sport" onclick="filterProjects('sport')">Sport</div>
+      </div>
+      <div class="proj-list">
+        <div class="proj-card" data-cat="skolstvi"><div class="proj-card-header"><div class="proj-card-title">Rekonstrukce ZŠ Na Smetance, Praha 2</div><span class="badge badge-green">Probíhá</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>1,2 km · Praha 2</div></div><div class="proj-card-footer"><div class="proj-card-price">28 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~14 Kč</strong></div></div></div>
+        <div class="proj-card" data-cat="doprava"><div class="proj-card-header"><div class="proj-card-title">Cyklostezka Vltavská náplavka</div><span class="badge badge-blue">Plánováno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>0,8 km · Praha 2</div></div><div class="proj-card-footer"><div class="proj-card-price">12 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~6 Kč</strong></div></div></div>
+        <div class="proj-card" data-cat="zdravi"><div class="proj-card-header"><div class="proj-card-title">Rozšíření kapacity Nemocnice Vinohrady</div><span class="badge badge-green">Probíhá</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>2,4 km · Praha 10</div></div><div class="proj-card-footer"><div class="proj-card-price">145 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~72 Kč</strong></div></div></div>
+        <div class="proj-card" data-cat="kultura"><div class="proj-card-header"><div class="proj-card-title">Kulturní centrum Zahrada Praha 10</div><span class="badge badge-orange">Schvalování</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>4,5 km · Praha 10</div></div><div class="proj-card-footer"><div class="proj-card-price">8,5 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~4 Kč</strong></div></div></div>
+        <div class="proj-card" data-cat="sport"><div class="proj-card-header"><div class="proj-card-title">Sportovní hala TJ Sokol Nusle</div><span class="badge badge-blue">Plánováno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>2,0 km · Praha 4</div></div><div class="proj-card-footer"><div class="proj-card-price">18 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~9 Kč</strong></div></div></div>
+        <div class="proj-card" data-cat="doprava"><div class="proj-card-header"><div class="proj-card-title">Nový přechod Ječná × Štěpánská</div><span class="badge badge-green">Dokončeno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>0,5 km · Praha 2</div></div><div class="proj-card-footer"><div class="proj-card-price">2,2 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~1 Kč</strong></div></div></div>
+        <div class="proj-card" data-cat="sport"><div class="proj-card-header"><div class="proj-card-title">Dětské hřiště Stromovka – sekce B</div><span class="badge badge-green">Probíhá</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>1,8 km · Praha 7</div></div><div class="proj-card-footer"><div class="proj-card-price">3,8 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~2 Kč</strong></div></div></div>
+        <div class="proj-card" data-cat="skolstvi"><div class="proj-card-header"><div class="proj-card-title">Rekonstrukce ZMŠ Skalka</div><span class="badge badge-blue">Plánováno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>5,2 km · Praha 10</div></div><div class="proj-card-footer"><div class="proj-card-price">42 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~21 Kč</strong></div></div></div>
+      </div>
+    </div>
+
+    <!-- SITUACE -->
+    <div id="screen-situace" class="screen has-nav">
+      <div class="situace-header">
+        <div class="situace-header-title">Životní situace</div>
+        <div class="situace-header-sub">Průvodci, kteří vám ušetří starosti</div>
+      </div>
+      <div class="situace-active-card" onclick="navigateTo('screen-stehovani','forward')">
+        <div class="situace-active-label">Probíhá</div>
+        <div class="situace-active-title">🏠 Stěhování do nového bytu</div>
+        <div class="situace-active-progress">
+          <div class="progress-bar" style="flex:1"><div class="progress-fill" style="width:60%;background:var(--c-teal)"></div></div>
+          <span class="situace-active-steps">3 / 5 kroků</span>
         </div>
       </div>
-      <div style="background:#e6f5f7;border-radius:64px;padding:3px 8px;flex-shrink:0;margin-left:8px;">
-        <span style="font-size:11px;font-weight:600;color:#1e7a87;white-space:nowrap;">ONLINE</span>
+      <div style="padding:var(--sp-md) var(--sp-md) var(--sp-sm);font-size:17px;font-weight:700;color:var(--c-text);">Začít novou situaci</div>
+      <div class="situace-grid">
+        <div class="situace-card" onclick="navigateTo('screen-narozeni','forward')"><div class="situace-card-emoji">👶</div><div class="situace-card-title">Narodilo se miminko</div><div class="situace-card-sub">Rodičovský příspěvek, porodné</div><div class="situace-card-steps">7 kroků</div></div>
+        <div class="situace-card" onclick="navigateTo('screen-stehovani','forward')"><div class="situace-card-emoji">🏠</div><div class="situace-card-title">Stěhování</div><div class="situace-card-sub">Přihlášení, změna adres</div><div class="situace-card-steps">5 kroků</div></div>
+        <div class="situace-card" onclick="navigateTo('screen-auto1','forward')"><div class="situace-card-emoji">🚗</div><div class="situace-card-title">Koupě auta</div><div class="situace-card-sub">Registrace, pojištění, STK</div><div class="situace-card-steps">4 kroky</div></div>
+        <div class="situace-card" onclick="navigateTo('screen-doklady','forward')"><div class="situace-card-emoji">📄</div><div class="situace-card-title">Výměna dokladů</div><div class="situace-card-sub">OP, pas, řidičák</div><div class="situace-card-steps">3 kroky</div></div>
+        <div class="situace-card" onclick="navigateTo('screen-s12','forward')"><div class="situace-card-emoji">💼</div><div class="situace-card-title">Ztráta zaměstnání</div><div class="situace-card-sub">Podpora, ÚP, dávky</div><div class="situace-card-steps">6 kroků</div></div>
+        <div class="situace-card"><div class="situace-card-emoji">🏡</div><div class="situace-card-title">Koupě nemovitosti</div><div class="situace-card-sub">Daň, katastr, zápis</div><div class="situace-card-steps">8 kroků</div></div>
+      </div>
+      <div style="height:var(--sp-md)"></div>
+    </div>
+
+    <!-- STĚHOVÁNÍ -->
+    <div id="screen-stehovani" class="screen">
+      <div class="top-bar">
+        <button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="top-bar-title">Stěhování</div><div class="top-bar-spacer"></div>
+      </div>
+      <div class="detail-hero"><div class="detail-hero-emoji">🏠</div><div class="detail-hero-title">Stěhování do nového bytu</div><div class="detail-hero-sub">Kompletní průvodce — co zařídit a v jakém pořadí</div><div class="detail-hero-badge">3 / 5 kroků splněno</div></div>
+      <div style="padding:var(--sp-md)"><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div></div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num done"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="step-body"><div class="step-title">Nahlášení nové adresy na obecním úřadě</div><div class="step-desc">Trvalé bydliště jste úspěšně přihlásili na Úřadu MČ Praha 2.</div></div></div>
+        <div class="step-item"><div class="step-num done"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="step-body"><div class="step-title">Aktualizace OP (nová adresa)</div><div class="step-desc">Nový občanský průkaz s aktuální adresou je připraven k vyzvednutí.</div></div></div>
+        <div class="step-item"><div class="step-num done"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="step-body"><div class="step-title">Přepis energií a médií</div><div class="step-desc">ČEZ, plyn a internet přepsány na vaše jméno.</div></div></div>
+        <div class="step-item"><div class="step-num" style="background:var(--c-bg-card);color:var(--c-primary);">4</div><div class="step-body"><div class="step-title">Oznámit změnu adresy zaměstnavateli</div><div class="step-desc">Pošlete aktualizovanou adresu HR oddělení.</div><div class="step-action" onclick="navigateTo('screen-ukoly','forward')">Přidat do úkolů <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div></div>
+        <div class="step-item"><div class="step-num" style="background:var(--c-bg-card);color:var(--c-primary);">5</div><div class="step-body"><div class="step-title">Aktualizace v registru řidičů</div><div class="step-desc">Změna adresy v řidičském průkazu je dobrovolná, ale doporučená.</div></div></div>
+      </div>
+      <div style="padding:var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);">
+        <button class="btn-primary" onclick="navigateTo('screen-s13','forward')">Označit krok 4 jako splněný</button>
+        <button class="btn-secondary" onclick="goBack()">Zpět na situace</button>
       </div>
     </div>
-    <div style="text-align:right;font-size:11px;font-weight:600;color:#3d4f5f;">Detaily &gt;</div>
-  </div>
 
-  <div class="spacer"></div>
+    <!-- NAROZENI -->
+    <div id="screen-narozeni" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Narodilo se miminko</div><div class="top-bar-spacer"></div></div>
+      <div class="detail-hero"><div class="detail-hero-emoji">👶</div><div class="detail-hero-title">Narodilo se vám miminko!</div><div class="detail-hero-sub">Blahopřejeme. Tady je co zařídit — seřazeno podle urgence.</div><div class="detail-hero-badge">7 kroků celkem</div></div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Nahlásit narození na matrice</div><div class="step-desc">Do 1 měsíce od porodu. Nemocnice to obvykle vyřídí za vás.</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Požádat o rodný list</div><div class="step-desc">Vydá ho matriční úřad zdarma.</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Přihlásit dítě k zdravotní pojišťovně</div><div class="step-desc">Do 8 dnů od porodu.</div></div></div>
+        <div class="step-item"><div class="step-num">4</div><div class="step-body"><div class="step-title">Požádat o porodné</div><div class="step-desc">Jednorázová dávka 13 000 Kč na první dítě. Žádost na ÚP ČR.</div></div></div>
+        <div class="step-item"><div class="step-num">5</div><div class="step-body"><div class="step-title">Požádat o rodičovský příspěvek</div><div class="step-desc">Až 300 000 Kč celkem, čerpání do 4 let věku dítěte.</div></div></div>
+        <div class="step-item"><div class="step-num">6</div><div class="step-body"><div class="step-title">Uplatnit daňové zvýhodnění</div><div class="step-desc">Na dítě: 15 204 Kč ročně.</div></div></div>
+        <div class="step-item"><div class="step-num">7</div><div class="step-body"><div class="step-title">Zkontrolovat nárok na přídavek na dítě</div><div class="step-desc">Při příjmu do 2,7násobku životního minima.</div></div></div>
+      </div>
+      <div style="padding:var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat úkoly do mého seznamu</button></div>
+    </div>
 
-  <div style="padding:0 15px 24px;">
-    <div onclick="go('screen-ukoly')" style="height:53px;background:#2d5f8a;border-radius:60px;font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;">Pokračovat</div>
-  </div>
-</div>
-<!-- /screen-s14 -->
+    <!-- DOKLADY -->
+    <div id="screen-doklady" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Výměna dokladů</div><div class="top-bar-spacer"></div></div>
+      <div class="detail-hero"><div class="detail-hero-emoji">📄</div><div class="detail-hero-title">Výměna dokladů</div><div class="detail-hero-sub">Platnost vašeho OP vyprší za 47 dní — začněte včas</div><div class="detail-hero-badge">⚠️ Urgentní</div></div>
+      <div style="background:var(--c-orange-light);border-radius:var(--r-lg);margin:var(--sp-md);padding:var(--sp-md);display:flex;gap:var(--sp-sm);align-items:flex-start;border:1px solid rgba(230,81,0,0.2);">
+        <span style="font-size:20px;">⚠️</span>
+        <div style="font-size:13px;color:var(--c-orange);line-height:1.5;">Váš občanský průkaz vyprší <strong>6. 7. 2025</strong>. S vydáním OP trvá úřadům až 30 dní — požádejte co nejdříve.</div>
+      </div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Objednat termín na úřadě</div><div class="step-desc">Rezervace na MV ČR nebo příslušném obecním úřadě.</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Připravit dokumenty</div><div class="step-desc">Stávající OP nebo pas, fotografie, doklad o adrese, poplatek 200 Kč.</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Vyzvednout nový OP</div><div class="step-desc">Do 30 dnů od podání žádosti.</div></div></div>
+      </div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat do úkolů</button></div>
+    </div>
 
+    <!-- UKOLY -->
+    <div id="screen-ukoly" class="screen has-nav">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Moje úkoly</div><div class="top-bar-spacer"></div></div>
+      <div class="ukoly-header"><div class="ukoly-sub">Úkoly a upomínky z vašich situací</div></div>
+      <div class="ukoly-summary">
+        <div class="ukoly-stat"><div class="ukoly-stat-num">3</div><div class="ukoly-stat-label">Čekají</div></div>
+        <div class="ukoly-stat"><div class="ukoly-stat-num">2</div><div class="ukoly-stat-label">Splněné</div></div>
+        <div class="ukoly-stat"><div class="ukoly-stat-num">1</div><div class="ukoly-stat-label">Urgentní</div></div>
+      </div>
+      <div class="section-label" style="padding:0 var(--sp-md) var(--sp-sm);">Urgentní</div>
+      <div class="todo-list">
+        <div class="todo-item" onclick="navigateTo('screen-doklady','forward')">
+          <div class="todo-urgency high"></div><div class="todo-check"></div>
+          <div class="todo-body"><div class="todo-title">Objednat termín na výměnu OP</div><div class="todo-sub">📄 Výměna dokladů · Deadline: do 6. 6.</div><div class="todo-badge"><span class="badge badge-orange">Do 17 dní</span></div></div>
+        </div>
+      </div>
+      <div class="section-label" style="padding:var(--sp-sm) var(--sp-md);">Čekají na vyřízení</div>
+      <div class="todo-list">
+        <div class="todo-item" onclick="navigateTo('screen-stehovani','forward')"><div class="todo-urgency medium"></div><div class="todo-check"></div><div class="todo-body"><div class="todo-title">Oznámit změnu adresy zaměstnavateli</div><div class="todo-sub">🏠 Stěhování · Krok 4 z 5</div></div></div>
+        <div class="todo-item" onclick="navigateTo('screen-narozeni','forward')"><div class="todo-urgency medium"></div><div class="todo-check"></div><div class="todo-body"><div class="todo-title">Požádat o porodné na ÚP</div><div class="todo-sub">👶 Miminko · Dávka 13 000 Kč</div></div></div>
+      </div>
+      <div class="section-label" style="padding:var(--sp-sm) var(--sp-md);">Splněné</div>
+      <div class="todo-list">
+        <div class="todo-item"><div class="todo-urgency low"></div><div class="todo-check checked"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="todo-body"><div class="todo-title done">Nahlásit nové trvalé bydliště</div><div class="todo-sub">🏠 Stěhování · Splněno 12. 5.</div></div></div>
+        <div class="todo-item"><div class="todo-urgency low"></div><div class="todo-check checked"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><div class="todo-body"><div class="todo-title done">Přihlásit dítě ke zdravotní pojišťovně</div><div class="todo-sub">👶 Miminko · Splněno 8. 5.</div></div></div>
+      </div>
+      <div style="height:var(--sp-md)"></div>
+    </div>
 
-</div><!-- /#app -->
+    <!-- S12 ZTRÁTA ZAMĚSTNÁNÍ -->
+    <div id="screen-s12" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Ztráta zaměstnání</div><div class="top-bar-spacer"></div></div>
+      <div class="detail-hero"><div class="detail-hero-emoji">💼</div><div class="detail-hero-title">Ztráta zaměstnání</div><div class="detail-hero-sub">Co dělat jako první — krok za krokem</div><div class="detail-hero-badge">6 kroků</div></div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Zaregistrovat se na Úřadu práce</div><div class="step-desc">Do 3 pracovních dnů od skončení zaměstnání.</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Požádat o podporu v nezaměstnanosti</div><div class="step-desc">Výše: 65 % průměrného čistého výdělku (první 2 měsíce).</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Oznámit ztrátu příjmu zdravotní pojišťovně</div><div class="step-desc">Registrace na ÚP vás automaticky přihlásí ke zdravotnímu pojištění.</div></div></div>
+        <div class="step-item"><div class="step-num">4</div><div class="step-body"><div class="step-title">Zkontrolovat nárok na sociální dávky</div><div class="step-desc">Přídavek na dítě, příspěvek na bydlení — závisí na příjmech domácnosti.</div><div class="step-action" onclick="navigateTo('screen-s13','forward')">Spočítat nárok → <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div></div>
+        <div class="step-item"><div class="step-num">5</div><div class="step-body"><div class="step-title">Aktualizovat daňové přiznání</div><div class="step-desc">Pokud jste zaměstnání skončili v průběhu roku.</div></div></div>
+        <div class="step-item"><div class="step-num">6</div><div class="step-body"><div class="step-title">Přijmout nabídky rekvalifikace</div><div class="step-desc">ÚP nabízí bezplatné rekvalifikační kurzy.</div></div></div>
+      </div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat úkoly do mého seznamu</button></div>
+    </div>
 
-<!-- Scroll to top -->
-<div id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+    <!-- S13 SPLNĚNO -->
+    <div id="screen-s13" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Krok splněn!</div><div class="top-bar-spacer"></div></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-2xl) var(--sp-md);text-align:center;gap:var(--sp-md);">
+        <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-green-light);display:flex;align-items:center;justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#2e7d32" stroke-width="2.5" style="width:40px;height:40px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div style="font-size:24px;font-weight:700;color:var(--c-text);">Hotovo! 🎉</div>
+        <div style="font-size:15px;color:var(--c-text-sub);line-height:1.6;max-width:280px;">Oznámení změny adresy zaměstnavateli bylo přidáno jako splněné.</div>
+        <div style="background:var(--c-bg-card);border-radius:var(--r-lg);padding:var(--sp-md);width:100%;text-align:left;">
+          <div style="font-size:14px;font-weight:600;color:var(--c-text);margin-bottom:var(--sp-sm);">🏠 Stěhování — pokrok</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:var(--sp-xs);"><span style="font-size:12px;color:var(--c-text-sub);">4 / 5 kroků splněno</span><span style="font-size:12px;font-weight:600;color:var(--c-green);">80 %</span></div>
+        </div>
+        <div style="background:var(--c-accent-light);border-radius:var(--r-lg);padding:var(--sp-md);width:100%;text-align:left;">
+          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-accent);margin-bottom:var(--sp-xs);">Zbývá 1 krok</div>
+          <div style="font-size:14px;font-weight:600;color:var(--c-text);">Aktualizace v registru řidičů</div>
+          <div style="font-size:13px;color:var(--c-text-sub);margin-top:4px;">Dobrovolné, ale doporučené — lze vyřídit online.</div>
+        </div>
+      </div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);">
+        <button class="btn-primary" onclick="navigateTo('screen-s14','forward')">Dokončit poslední krok</button>
+        <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+      </div>
+    </div>
 
-<script>
-// ── Navigation ──────────────────────────────────────────────────────────────
-const _history = [];
-let _current = 'screen-home';
+    <!-- S14 DOKONČENO -->
+    <div id="screen-s14" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Stěhování dokončeno!</div><div class="top-bar-spacer"></div></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-2xl) var(--sp-md);text-align:center;gap:var(--sp-md);">
+        <div style="font-size:64px;">🏠✅</div>
+        <div style="font-size:24px;font-weight:700;color:var(--c-text);">Všechno hotovo!</div>
+        <div style="font-size:15px;color:var(--c-text-sub);line-height:1.6;max-width:280px;">Dokončili jste celý průvodce stěhováním. Váš nový domov je úředně zařízen.</div>
+        <div style="background:linear-gradient(135deg,var(--c-green-light),var(--c-teal-light));border-radius:var(--r-lg);padding:var(--sp-md);width:100%;border:1px solid rgba(46,125,50,0.15);">
+          <div style="font-size:32px;font-weight:700;color:var(--c-green);text-align:center;">100 %</div>
+          <div class="progress-bar" style="margin-top:var(--sp-sm);"><div class="progress-fill" style="width:100%;background:var(--c-green)"></div></div>
+          <div style="font-size:13px;color:var(--c-text-sub);text-align:center;margin-top:var(--sp-xs);">5 / 5 kroků splněno</div>
+        </div>
+      </div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);">
+        <button class="btn-primary" onclick="switchTab('screen-situace')">Zpět na situace</button>
+        <button class="btn-secondary" onclick="switchTab('screen-home')">Domů</button>
+      </div>
+    </div>
 
-function go(id) {
-  const prev = document.getElementById(_current);
-  const next = document.getElementById(id);
-  if (!next || id === _current) return;
-  if (prev) prev.classList.remove('active');
-  next.classList.add('active');
-  _history.push(_current);
-  _current = id;
-  window.scrollTo({ top: 0, behavior: 'instant' });
-}
+    <!-- S8 DŮCHODY -->
+    <div id="screen-s8" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Důchody a sociální dávky</div><div class="top-bar-spacer"></div></div>
+      <div class="info-hero"><div class="info-hero-icon">👴</div><div class="info-hero-title">Důchody a sociální dávky</div><div class="info-hero-sub">33 % vašich daní — největší položka státního rozpočtu</div></div>
+      <div class="info-highlight" style="margin:var(--sp-md);"><div class="info-highlight-amount">15 955 Kč</div><div class="info-highlight-label">z vašich daní ročně šlo do důchodů a dávek</div></div>
+      <div class="info-card"><div class="info-card-title">Co konkrétně platíte</div><div class="info-row"><span class="info-row-label">Starobní důchody</span><span class="info-row-val">9 820 Kč</span></div><div class="info-row"><span class="info-row-label">Invalidní důchody</span><span class="info-row-val">2 490 Kč</span></div><div class="info-row"><span class="info-row-label">Podpora v nezaměstnanosti</span><span class="info-row-val">1 840 Kč</span></div><div class="info-row"><span class="info-row-label">Příspěvky na péči</span><span class="info-row-val">1 805 Kč</span></div></div>
+      <div class="info-card"><div class="info-card-title">Proč je to tolik?</div><div style="font-size:14px;color:var(--c-text-sub);line-height:1.7;">V ČR žije přes <strong style="color:var(--c-text)">2,4 milionu důchodců</strong>. Průměrný starobní důchod je 22 580 Kč měsíčně. Systém je průběžný — aktivní pracující platí na stávající důchodce.</div></div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-dane','forward')">Zpět na přehled daní</button></div>
+    </div>
 
-// Option button selection (single-select within a screen)
-function selectOption(screenId, selectedId, dest) {
-  const screen = document.getElementById(screenId);
-  screen.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-  document.getElementById(selectedId).classList.add('selected');
-  // Brief delay then navigate
-  setTimeout(() => go(dest), 200);
-}
+    <!-- S9 ŠKOLSTVÍ -->
+    <div id="screen-s9" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Školství</div><div class="top-bar-spacer"></div></div>
+      <div class="info-hero"><div class="info-hero-icon">🎓</div><div class="info-hero-title">Školství</div><div class="info-hero-sub">26 % vašich daní jde do vzdělávání — od MŠ po VŠ</div></div>
+      <div class="info-highlight" style="margin:var(--sp-md);"><div class="info-highlight-amount">12 571 Kč</div><div class="info-highlight-label">z vašich daní ročně šlo do školství</div></div>
+      <div class="info-card"><div class="info-card-title">Jak se peníze dělí</div><div class="info-row"><span class="info-row-label">Základní školy</span><span class="info-row-val">4 280 Kč</span></div><div class="info-row"><span class="info-row-label">Střední školy</span><span class="info-row-val">3 140 Kč</span></div><div class="info-row"><span class="info-row-label">Vysoké školy</span><span class="info-row-val">2 890 Kč</span></div><div class="info-row"><span class="info-row-label">Předškolní vzdělávání</span><span class="info-row-val">1 560 Kč</span></div><div class="info-row"><span class="info-row-label">Věda a výzkum</span><span class="info-row-val">701 Kč</span></div></div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);"><button class="btn-primary" onclick="navigateTo('screen-projekty','forward')">Zobrazit všechny projekty</button></div>
+    </div>
 
-// Emoji single-select (feedback)
-function selectEmoji(btn) {
-  const row = btn.parentElement;
-  row.querySelectorAll('button').forEach(b => {
-    b.style.background = '#fff';
-    b.style.color = '#2d5f8a';
-    b.style.borderColor = '#2d5f8a';
-  });
-  btn.style.background = '#2d5f8a';
-  btn.style.color = '#fff';
-  btn.style.borderColor = '#2d5f8a';
-}
+    <!-- AUTO1 -->
+    <div id="screen-auto1" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Koupě auta</div><div class="top-bar-spacer"></div></div>
+      <div class="quiz-hero"><div class="quiz-hero-title">Koupili jste nové auto?</div><div class="quiz-hero-sub">Pomůžeme vám s registrací. Nejprve řeknete, od koho jste ho koupili.</div></div>
+      <div class="option-list">
+        <button class="option-btn" id="opt-dealer" onclick="selectOption('screen-auto1','opt-dealer','screen-autoano')"><div class="option-emoji">🏪</div><div class="option-text"><div class="option-title">Od autosalonu nebo dealera</div><div class="option-sub">Nové nebo předváděcí vozidlo</div></div><div class="option-radio"></div></button>
+        <button class="option-btn" id="opt-private" onclick="selectOption('screen-auto1','opt-private','screen-autone')"><div class="option-emoji">👤</div><div class="option-text"><div class="option-title">Od soukromé osoby</div><div class="option-sub">Bazar, inzerce, rodina</div></div><div class="option-radio"></div></button>
+        <button class="option-btn" id="opt-abroad" onclick="selectOption('screen-auto1','opt-abroad','screen-autone')"><div class="option-emoji">🌍</div><div class="option-text"><div class="option-title">Ze zahraničí</div><div class="option-sub">Dovoz ze zemí EU nebo mimo EU</div></div><div class="option-radio"></div></button>
+      </div>
+    </div>
 
-// Tag multi-select (feedback)
-function toggleTag(btn) {
-  const active = btn.style.background === 'rgb(45, 95, 138)';
-  btn.style.background = active ? '#fff' : '#2d5f8a';
-  btn.style.color = active ? '#2d5f8a' : '#fff';
-}
+    <!-- AUTOANO -->
+    <div id="screen-autoano" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Koupě od dealera</div><div class="top-bar-spacer"></div></div>
+      <div class="detail-hero"><div class="detail-hero-emoji">🏪</div><div class="detail-hero-title">Nové auto od dealera</div><div class="detail-hero-sub">Dealer za vás většinu zařídí</div><div class="detail-hero-badge">4 kroky</div></div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Dealer zaregistruje auto za vás</div><div class="step-desc">Většina dealerů zajistí přihlášení vozidla a STK. Ověřte to při podpisu smlouvy.</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Sjednat povinné ručení (POV)</div><div class="step-desc">Musí být sjednáno před vyjetím z parkoviště dealera.</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Zkontrolovat silniční daň</div><div class="step-desc">Fyzické osoby s osobním autem silniční daň neplatí.</div></div></div>
+        <div class="step-item"><div class="step-num">4</div><div class="step-body"><div class="step-title">Vyzvednutí tabulek a technického průkazu</div><div class="step-desc">Dealer vám předá SPZ, velký a malý technický průkaz.</div></div></div>
+      </div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat do úkolů</button><button class="btn-secondary" onclick="goBack()">Zpět</button></div>
+    </div>
 
-// ── Scroll-to-top button ────────────────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  document.getElementById('scroll-top')
-    .classList.toggle('visible', window.scrollY > 200);
-});
-</script>
+    <!-- AUTONE -->
+    <div id="screen-autone" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Koupě od soukromníka</div><div class="top-bar-spacer"></div></div>
+      <div class="detail-hero"><div class="detail-hero-emoji">👤</div><div class="detail-hero-title">Auto od soukromé osoby</div><div class="detail-hero-sub">Musíte si zařídit více věcí sami</div><div class="detail-hero-badge">6 kroků</div></div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-body"><div class="step-title">Zkontrolovat vozidlo (CARFAX / VIN)</div><div class="step-desc">Před koupí ověřte historii vozidla — nehody, odpočet km, zástavy.</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-body"><div class="step-title">Sepsat kupní smlouvu</div><div class="step-desc">Povinnost ze zákona. Obsahuje: identifikaci stran, VIN, kupní cenu, datum.</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-body"><div class="step-title">Přihlásit vozidlo do 10 dnů</div><div class="step-desc">Na úřadě obce s rozšířenou působností.</div></div></div>
+        <div class="step-item"><div class="step-num">4</div><div class="step-body"><div class="step-title">Sjednat povinné ručení (POV)</div><div class="step-desc">Platné ke dni přihlášení vozidla.</div></div></div>
+        <div class="step-item"><div class="step-num">5</div><div class="step-body"><div class="step-title">Zaplatit správní poplatek</div><div class="step-desc">Za přepis vozidla: 800 Kč.</div></div></div>
+        <div class="step-item"><div class="step-num">6</div><div class="step-body"><div class="step-title">STK (pokud propadla)</div><div class="step-desc">Vozidlo starší 4 let musí mít platnou STK.</div></div></div>
+      </div>
+      <div style="padding:0 var(--sp-md) var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);"><button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat do úkolů</button><button class="btn-secondary" onclick="goBack()">Zpět</button></div>
+    </div>
+
+    <!-- PROFIL -->
+    <div id="screen-profil" class="screen has-nav">
+      <div class="profil-header">
+        <div class="profil-avatar">TK</div>
+        <div class="profil-info"><div class="profil-name">Tomáš Kanuch</div><div class="profil-email">tomkanuch150@gmail.com</div><div class="profil-badge"><span class="badge badge-blue">Ověřen přes BankID</span></div></div>
+      </div>
+      <div class="profil-stats">
+        <div class="profil-stat"><div class="profil-stat-val">48 350 Kč</div><div class="profil-stat-label">Daně letos</div></div>
+        <div class="profil-stat"><div class="profil-stat-val">3</div><div class="profil-stat-label">Aktivní situace</div></div>
+        <div class="profil-stat"><div class="profil-stat-val">5</div><div class="profil-stat-label">Splněné úkoly</div></div>
+      </div>
+      <div class="menu-section"><div class="menu-section-title">Daně a finance</div><div class="menu-list">
+        <div class="menu-item" onclick="switchTab('screen-dane')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Přehled daní</div><div class="menu-item-sub">Za rok 2024 · 145 320 Kč celkem</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="menu-item" onclick="navigateTo('screen-projekty','forward')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="3 11 12 2 21 11"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Projekty ve vašem okolí</div><div class="menu-item-sub">8 projektů · Praha 2</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      </div></div>
+      <div class="menu-section"><div class="menu-section-title">Moje situace</div><div class="menu-list">
+        <div class="menu-item" onclick="switchTab('screen-situace')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Životní situace</div><div class="menu-item-sub">3 aktivní · 1 dokončená</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="menu-item" onclick="navigateTo('screen-ukoly','forward')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Moje úkoly</div><div class="menu-item-sub">3 čekají · 1 urgentní</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      </div></div>
+      <div class="menu-section"><div class="menu-section-title">Nastavení</div><div class="menu-list">
+        <div class="menu-item" onclick="navigateTo('screen-nastaveni','forward')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M18.66 5.34l1.41-1.41"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Nastavení účtu</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="menu-item" onclick="navigateTo('screen-feedback','forward')"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Zpětná vazba</div><div class="menu-item-sub">Sdělte nám svůj názor</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      </div></div>
+      <div style="height:var(--sp-md)"></div>
+    </div>
+
+    <!-- NASTAVENI -->
+    <div id="screen-nastaveni" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Nastavení</div><div class="top-bar-spacer"></div></div>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-md);padding:var(--sp-md);">
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-text-sub);">Účet</div>
+        <div class="menu-list">
+          <div class="menu-item"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Osobní údaje</div><div class="menu-item-sub">Tomáš Kanuch · Praha 2</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+          <div class="menu-item"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Adresa a lokalita</div><div class="menu-item-sub">Vinohrady, Praha 2</div></div><div class="menu-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        </div>
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-text-sub);">Oznámení</div>
+        <div class="menu-list">
+          <div class="menu-item"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="menu-item-text"><div class="menu-item-title">Push notifikace</div><div class="menu-item-sub">Upomínky a novinky</div></div><div style="width:44px;height:24px;background:var(--c-primary);border-radius:var(--r-full);position:relative;cursor:pointer;flex-shrink:0;"><div style="position:absolute;right:2px;top:2px;width:20px;height:20px;background:#fff;border-radius:50%;"></div></div></div>
+        </div>
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-text-sub);">O aplikaci</div>
+        <div class="menu-list"><div class="menu-item"><div class="menu-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="menu-item-text"><div class="menu-item-title">OnlyStát</div><div class="menu-item-sub">Verze 1.0 · Prototyp</div></div></div></div>
+        <button class="btn-secondary" style="color:var(--c-red);border-color:var(--c-red);">Odhlásit se</button>
+      </div>
+      <div style="height:var(--sp-md)"></div>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div id="screen-feedback" class="screen">
+      <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Zpětná vazba</div><div class="top-bar-spacer"></div></div>
+      <div class="feedback-hero"><div class="feedback-hero-emoji">💬</div><div class="feedback-hero-title">Jak se vám to líbí?</div><div class="feedback-hero-sub">Váš názor nám pomůže udělat aplikaci lepší pro všechny</div></div>
+      <div class="feedback-form">
+        <div><div class="feedback-question">Jak hodnotíte OnlyStát celkově?</div><div style="margin-top:var(--sp-sm);"><div class="emoji-row"><button class="emoji-btn" onclick="selectEmoji(this)"><span>😠</span><span>Špatné</span></button><button class="emoji-btn" onclick="selectEmoji(this)"><span>😕</span><span>Ušlo</span></button><button class="emoji-btn" onclick="selectEmoji(this)"><span>😐</span><span>OK</span></button><button class="emoji-btn" onclick="selectEmoji(this)"><span>😊</span><span>Dobré</span></button><button class="emoji-btn active" onclick="selectEmoji(this)"><span>🤩</span><span>Skvělé</span></button></div></div></div>
+        <div><div class="feedback-question">Co se vám líbilo?</div><div style="margin-top:var(--sp-sm);"><div class="feedback-tags"><button class="feedback-tag active" onclick="toggleTag(this)">Přehlednost</button><button class="feedback-tag active" onclick="toggleTag(this)">Užitečné info</button><button class="feedback-tag" onclick="toggleTag(this)">Jednoduchý průvodce</button><button class="feedback-tag" onclick="toggleTag(this)">Přehled daní</button><button class="feedback-tag" onclick="toggleTag(this)">Projekty poblíž</button><button class="feedback-tag" onclick="toggleTag(this)">Rychlost</button></div></div></div>
+        <div><div class="feedback-question">Co bychom mohli zlepšit?</div><textarea class="feedback-textarea" style="margin-top:var(--sp-sm);" placeholder="Napište cokoli — čteme každou zprávu…"></textarea></div>
+        <button class="btn-primary" onclick="navigateTo('screen-feedback-done','forward')">Odeslat zpětnou vazbu</button>
+      </div>
+    </div>
+
+    <!-- FEEDBACK DONE -->
+    <div id="screen-feedback-done" class="screen">
+      <div class="top-bar"><button class="top-bar-back" style="visibility:hidden;"></button><div class="top-bar-title">Zpětná vazba</div><div class="top-bar-spacer"></div></div>
+      <div class="feedback-done">
+        <div class="feedback-done-icon">🙏</div>
+        <div class="feedback-done-title">Díky za zpětnou vazbu!</div>
+        <div class="feedback-done-sub">Přečteme každou zprávu a použijeme ji ke zlepšení aplikace. Pomáháte nám udělat OnlyStát lepší pro všechny občany.</div>
+        <div style="background:var(--c-bg-card);border-radius:var(--r-lg);padding:var(--sp-md);width:100%;text-align:center;"><div style="font-size:13px;color:var(--c-text-sub);">Vaše hodnocení</div><div style="font-size:32px;margin:var(--sp-xs) 0;">🤩</div><div style="font-size:14px;font-weight:600;color:var(--c-text);">Skvělé</div></div>
+        <div style="display:flex;flex-direction:column;gap:var(--sp-sm);width:100%;">
+          <button class="btn-primary" onclick="switchTab('screen-home')">Zpět na hlavní stránku</button>
+          <button class="btn-secondary" onclick="switchTab('screen-situace')">Podívat se na situace</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== BOTTOM NAV ========== -->
+    <nav id="bottom-nav">
+      <button class="nav-tab active" id="nav-home" onclick="switchTab('screen-home')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="3 11 12 2 21 11"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg>
+        <span>Domů</span>
+      </button>
+      <button class="nav-tab" id="nav-dane" onclick="switchTab('screen-dane')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="7" y1="14" x2="10" y2="14"/><line x1="7" y1="17" x2="13" y2="17"/></svg>
+        <span>Daně</span>
+      </button>
+      <button class="nav-tab" id="nav-situace" onclick="switchTab('screen-situace')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><polyline points="9 12 11 14 15 10"/><line x1="9" y1="7" x2="15" y2="7"/></svg>
+        <span>Situace</span>
+      </button>
+      <button class="nav-tab" id="nav-profil" onclick="switchTab('screen-profil')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Profil</span>
+      </button>
+    </nav>
+
+  </div><!-- /#app -->
+
+  <script src="js/navigation.js"></script>
 </body>
 </html>

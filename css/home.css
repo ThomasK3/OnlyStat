@@ -1,0 +1,141 @@
+.home-header {
+  background: linear-gradient(160deg, var(--c-primary) 0%, var(--c-accent) 100%);
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+.home-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-greeting {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+}
+.home-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+.home-avatar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.home-tax-card {
+  background: rgba(255,255,255,0.14);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--sp-xs);
+}
+.home-tax-label { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 500; }
+.home-tax-amount { font-size: 24px; font-weight: 700; color: #fff; }
+.home-tax-sub { font-size: 12px; color: rgba(255,255,255,0.6); }
+.home-tax-right { text-align: right; }
+.home-tax-pill {
+  background: rgba(255,255,255,0.2);
+  border-radius: var(--r-full);
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.home-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+  padding: var(--sp-md);
+}
+.quick-action-btn {
+  background: var(--c-bg-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  border: none;
+  text-align: left;
+  font: inherit;
+}
+.quick-action-btn:active { background: var(--c-divider); }
+.quick-action-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: var(--c-bg-card-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.quick-action-icon svg { width: 20px; height: 20px; color: var(--c-accent); }
+.quick-action-title { font-size: 14px; font-weight: 600; color: var(--c-text); }
+.quick-action-sub { font-size: 12px; color: var(--c-text-sub); }
+
+.home-section { display: flex; flex-direction: column; gap: var(--sp-sm); padding: 0 var(--sp-md); }
+.home-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-section-title { font-size: 17px; font-weight: 700; color: var(--c-text); }
+.home-section-link { font-size: 14px; font-weight: 500; color: var(--c-accent); }
+
+.news-card {
+  background: var(--c-bg-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex;
+  gap: var(--sp-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.news-card:active { background: var(--c-divider); }
+.news-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  background: var(--c-bg-card-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 22px;
+}
+.news-body { flex: 1; }
+.news-title { font-size: 14px; font-weight: 600; color: var(--c-text); line-height: 1.4; }
+.news-sub { font-size: 12px; color: var(--c-text-sub); margin-top: 4px; }
+.news-badge { margin-top: 6px; }
+
+.feedback-cta {
+  background: linear-gradient(135deg, var(--c-accent-light), var(--c-teal-light));
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  cursor: pointer;
+  margin: 0 var(--sp-md);
+  border: 1px solid rgba(30,122,135,0.15);
+}
+.feedback-cta-text { flex: 1; }
+.feedback-cta-title { font-size: 14px; font-weight: 600; color: var(--c-teal); }
+.feedback-cta-sub { font-size: 12px; color: var(--c-accent); margin-top: 2px; }
+.feedback-cta-arrow { color: var(--c-teal); }
+.feedback-cta-arrow svg { width: 20px; height: 20px; }

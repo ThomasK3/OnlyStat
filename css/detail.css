@@ -1,0 +1,60 @@
+/* Shared styles for life-event detail screens (stehovani, narozeni, doklady) */
+.detail-hero {
+  background: linear-gradient(160deg, var(--c-teal) 0%, var(--c-accent) 100%);
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+.detail-hero-emoji { font-size: 40px; }
+.detail-hero-title { font-size: 22px; font-weight: 700; color: #fff; }
+.detail-hero-sub { font-size: 14px; color: rgba(255,255,255,0.75); }
+.detail-hero-badge { align-self: flex-start; background: rgba(255,255,255,0.2); border-radius: var(--r-full); padding: 4px 12px; font-size: 12px; font-weight: 600; color: #fff; }
+
+.steps-list { display: flex; flex-direction: column; padding: var(--sp-md); gap: 0; }
+.step-item {
+  display: flex;
+  gap: var(--sp-md);
+  padding-bottom: var(--sp-md);
+  position: relative;
+}
+.step-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: 0;
+  width: 2px;
+  background: var(--c-divider);
+}
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
+  background: var(--c-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.step-num.done { background: var(--c-green); }
+.step-num.done svg { width: 16px; height: 16px; }
+.step-body { flex: 1; }
+.step-title { font-size: 15px; font-weight: 600; color: var(--c-text); }
+.step-desc { font-size: 13px; color: var(--c-text-sub); margin-top: 4px; line-height: 1.5; }
+.step-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--sp-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-primary);
+  cursor: pointer;
+}
+.step-action svg { width: 14px; height: 14px; }

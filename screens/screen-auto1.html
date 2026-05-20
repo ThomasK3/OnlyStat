@@ -1,0 +1,46 @@
+<div id="screen-auto1" class="screen">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <button class="top-bar-back" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="top-bar-title">Koupě auta</div>
+    <div class="top-bar-spacer"></div>
+  </div>
+
+  <!-- Hero -->
+  <div class="quiz-hero">
+    <div class="quiz-hero-title">Koupili jste nové auto?</div>
+    <div class="quiz-hero-sub">Pomůžeme vám s registrací. Nejprve řeknete, od koho jste ho koupili.</div>
+  </div>
+
+  <!-- Options -->
+  <div class="option-list">
+    <button class="option-btn" id="opt-dealer" onclick="selectOption('screen-auto1','opt-dealer','screen-autoano')">
+      <div class="option-emoji">🏪</div>
+      <div class="option-text">
+        <div class="option-title">Od autosalonu nebo dealera</div>
+        <div class="option-sub">Nové nebo předváděcí vozidlo</div>
+      </div>
+      <div class="option-radio"></div>
+    </button>
+    <button class="option-btn" id="opt-private" onclick="selectOption('screen-auto1','opt-private','screen-autone')">
+      <div class="option-emoji">👤</div>
+      <div class="option-text">
+        <div class="option-title">Od soukromé osoby</div>
+        <div class="option-sub">Bazar, inzerce, rodina</div>
+      </div>
+      <div class="option-radio"></div>
+    </button>
+    <button class="option-btn" id="opt-abroad" onclick="selectOption('screen-auto1','opt-abroad','screen-autone')">
+      <div class="option-emoji">🌍</div>
+      <div class="option-text">
+        <div class="option-title">Ze zahraničí</div>
+        <div class="option-sub">Dovoz ze zemí EU nebo mimo EU</div>
+      </div>
+      <div class="option-radio"></div>
+    </button>
+  </div>
+
+</div>

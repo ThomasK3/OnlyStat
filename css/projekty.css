@@ -1,0 +1,67 @@
+.projekty-header {
+  background: var(--c-bg-card);
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+.projekty-header-title { font-size: 20px; font-weight: 700; color: var(--c-text); }
+.projekty-header-sub { font-size: 13px; color: var(--c-text-sub); }
+
+.proj-chips {
+  display: flex;
+  gap: var(--sp-xs);
+  overflow-x: auto;
+  padding: var(--sp-sm) var(--sp-md);
+  scrollbar-width: none;
+}
+.proj-chips::-webkit-scrollbar { display: none; }
+.proj-chip {
+  padding: 6px 14px;
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1.5px solid var(--c-border);
+  color: var(--c-text-sub);
+  background: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+.proj-chip.active {
+  background: var(--c-primary);
+  color: #fff;
+  border-color: var(--c-primary);
+}
+
+.proj-list { display: flex; flex-direction: column; gap: var(--sp-sm); padding: 0 var(--sp-md) var(--sp-md); }
+
+.proj-card {
+  background: #fff;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-border);
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast);
+}
+.proj-card:active { box-shadow: var(--shadow-md); }
+.proj-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-sm); }
+.proj-card-title { font-size: 15px; font-weight: 600; color: var(--c-text); line-height: 1.4; flex: 1; }
+.proj-card-body { display: flex; flex-direction: column; gap: 6px; }
+.proj-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: 13px;
+  color: var(--c-text-sub);
+}
+.proj-card-meta svg { width: 14px; height: 14px; flex-shrink: 0; }
+.proj-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: var(--sp-xs); border-top: 1px solid var(--c-divider); }
+.proj-card-price { font-size: 13px; font-weight: 600; color: var(--c-primary); }
+.proj-card-my-share { font-size: 12px; color: var(--c-text-sub); }
+.proj-card-my-share strong { color: var(--c-text); }

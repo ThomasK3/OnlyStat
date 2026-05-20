@@ -1,0 +1,84 @@
+<div id="screen-stehovani" class="screen">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <button class="top-bar-back" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="top-bar-title">Stěhování</div>
+    <div class="top-bar-spacer"></div>
+  </div>
+
+  <!-- Hero -->
+  <div class="detail-hero">
+    <div class="detail-hero-emoji">🏠</div>
+    <div class="detail-hero-title">Stěhování do nového bytu</div>
+    <div class="detail-hero-sub">Kompletní průvodce — co zařídit a v jakém pořadí</div>
+    <div class="detail-hero-badge">3 / 5 kroků splněno</div>
+  </div>
+
+  <!-- Progress -->
+  <div style="padding:var(--sp-md)">
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:60%"></div>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-num done">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="step-body">
+        <div class="step-title">Nahlášení nové adresy na obecním úřadě</div>
+        <div class="step-desc">Trvalé bydliště jste úspěšně přihlásili na Úřadu MČ Praha 2.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num done">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="step-body">
+        <div class="step-title">Aktualizace OP (nová adresa)</div>
+        <div class="step-desc">Nový občanský průkaz s aktuální adresou je připraven k vyzvednutí.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num done">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="step-body">
+        <div class="step-title">Přepis energií a médií</div>
+        <div class="step-desc">ČEZ, plyn a internet přepsány na vaše jméno.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--c-bg-card);color:var(--c-primary);">4</div>
+      <div class="step-body">
+        <div class="step-title">Oznámit změnu adresy zaměstnavateli</div>
+        <div class="step-desc">Pošlete aktualizovanou adresu HR oddělení, aby byl upraven váš daňový formulář.</div>
+        <div class="step-action" onclick="navigateTo('screen-ukoly','forward')">
+          Přidat do úkolů
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--c-bg-card);color:var(--c-primary);">5</div>
+      <div class="step-body">
+        <div class="step-title">Aktualizace v registru řidičů (řidičský průkaz)</div>
+        <div class="step-desc">Změna adresy v řidičském průkazu je dobrovolná, ale doporučená.</div>
+        <div class="step-action">
+          Online na Portálu občana
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);">
+    <button class="btn-primary" onclick="navigateTo('screen-s13','forward')">Označit krok 4 jako splněný</button>
+    <button class="btn-secondary" onclick="goBack()">Zpět na situace</button>
+  </div>
+</div>

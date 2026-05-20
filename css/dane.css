@@ -1,0 +1,99 @@
+.dane-header {
+  background: linear-gradient(160deg, var(--c-primary) 0%, var(--c-primary-mid) 100%);
+  padding: var(--sp-lg) var(--sp-md) var(--sp-md);
+}
+.dane-header-title { font-size: 22px; font-weight: 700; color: #fff; }
+.dane-header-sub { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+.dane-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--c-divider);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.dane-tab {
+  flex: 1;
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-sub);
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all var(--transition-fast);
+}
+.dane-tab.active {
+  color: var(--c-primary);
+  border-bottom-color: var(--c-primary);
+}
+
+.dane-panel { padding: var(--sp-md); display: flex; flex-direction: column; gap: var(--sp-md); }
+
+/* Donut chart */
+.donut-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-md);
+  padding: var(--sp-md) 0;
+}
+.donut-chart {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+.donut-chart svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.donut-center-amount { font-size: 20px; font-weight: 700; color: var(--c-text); }
+.donut-center-label { font-size: 11px; color: var(--c-text-sub); margin-top: 2px; }
+
+.legend { display: flex; flex-direction: column; gap: var(--sp-sm); width: 100%; }
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) 0;
+  border-bottom: 1px solid var(--c-divider);
+  cursor: pointer;
+}
+.legend-item:last-child { border-bottom: none; }
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend-label { flex: 1; font-size: 14px; font-weight: 500; color: var(--c-text); }
+.legend-amount { font-size: 14px; font-weight: 600; color: var(--c-text); }
+.legend-pct { font-size: 12px; color: var(--c-text-sub); margin-left: var(--sp-xs); }
+
+/* Yearly summary card */
+.dane-summary-card {
+  background: var(--c-bg-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+.dane-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dane-summary-label { font-size: 14px; color: var(--c-text-sub); }
+.dane-summary-val { font-size: 14px; font-weight: 600; color: var(--c-text); }
+.dane-summary-total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--c-primary);
+}

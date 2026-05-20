@@ -1,0 +1,71 @@
+:root {
+  /* Colors */
+  --c-bg: #ffffff;
+  --c-bg-card: #ebf2f9;
+  --c-bg-card-icon: #c8e9ed;
+  --c-bg-subtle: #f4fbfd;
+  --c-primary: #094672;
+  --c-primary-mid: #2d5f8a;
+  --c-primary-light: #5b8ab0;
+  --c-accent: #1e7a87;
+  --c-accent-light: #e6f6f8;
+  --c-teal: #006a68;
+  --c-teal-light: #e0f2f1;
+  --c-green: #2e7d32;
+  --c-green-light: #e8f5e9;
+  --c-orange: #e65100;
+  --c-orange-light: #fff3e0;
+  --c-red: #c62828;
+  --c-red-light: #ffebee;
+  --c-yellow: #f9a825;
+  --c-yellow-light: #fff9c4;
+
+  /* Text */
+  --c-text: #0d1b2a;
+  --c-text-sub: #7a8fa6;
+  --c-text-muted: #b0bec5;
+  --c-text-on-primary: #ffffff;
+
+  /* Nav */
+  --c-nav-bg: rgba(244, 251, 253, 0.92);
+  --c-nav-border: rgba(9, 70, 114, 0.1);
+  --c-nav-active: #094672;
+  --c-nav-inactive: #b0c4d8;
+
+  /* Borders */
+  --c-border: rgba(9, 70, 114, 0.1);
+  --c-divider: #e8eef4;
+
+  /* Fonts */
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --sp-xs: 4px;
+  --sp-sm: 8px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 32px;
+  --sp-2xl: 48px;
+
+  /* Border radius */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(9, 70, 114, 0.08);
+  --shadow-md: 0 4px 12px rgba(9, 70, 114, 0.12);
+  --shadow-lg: 0 8px 24px rgba(9, 70, 114, 0.16);
+  --shadow-nav: 0 -1px 0 var(--c-nav-border), 0 -4px 16px rgba(9, 70, 114, 0.06);
+
+  /* Layout */
+  --app-width: 393px;
+  --bottom-nav-height: 72px;
+  --top-bar-height: 56px;
+
+  /* Animation */
+  --transition-screen: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms ease;
+}

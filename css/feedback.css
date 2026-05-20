@@ -1,0 +1,86 @@
+.feedback-hero {
+  background: linear-gradient(160deg, var(--c-teal) 0%, var(--c-accent) 100%);
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  align-items: center;
+  text-align: center;
+}
+.feedback-hero-emoji { font-size: 48px; }
+.feedback-hero-title { font-size: 22px; font-weight: 700; color: #fff; }
+.feedback-hero-sub { font-size: 14px; color: rgba(255,255,255,0.75); }
+
+.feedback-form { display: flex; flex-direction: column; gap: var(--sp-md); padding: var(--sp-md); }
+.feedback-question { font-size: 16px; font-weight: 600; color: var(--c-text); }
+
+.emoji-row { display: flex; justify-content: space-around; padding: var(--sp-sm) 0; }
+.emoji-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--sp-sm);
+  border-radius: var(--r-md);
+  background: var(--c-bg-card);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font: inherit;
+  min-width: 56px;
+}
+.emoji-btn:active, .emoji-btn.active {
+  background: #fff;
+  border-color: var(--c-primary);
+}
+.emoji-btn span:first-child { font-size: 26px; }
+.emoji-btn span:last-child { font-size: 11px; color: var(--c-text-sub); }
+
+.feedback-tags { display: flex; flex-wrap: wrap; gap: var(--sp-xs); }
+.feedback-tag {
+  padding: 8px 14px;
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1.5px solid var(--c-border);
+  color: var(--c-text-sub);
+  background: var(--c-bg-card);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font: inherit;
+}
+.feedback-tag.active {
+  background: var(--c-primary);
+  color: #fff;
+  border-color: var(--c-primary);
+}
+
+.feedback-textarea {
+  width: 100%;
+  background: var(--c-bg-card);
+  border: none;
+  border-radius: var(--r-md);
+  padding: var(--sp-md);
+  font: inherit;
+  font-size: 15px;
+  color: var(--c-text);
+  resize: none;
+  outline: none;
+  min-height: 90px;
+}
+.feedback-textarea::placeholder { color: var(--c-text-sub); }
+
+/* Done screen */
+.feedback-done {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-2xl) var(--sp-md);
+  text-align: center;
+  gap: var(--sp-md);
+}
+.feedback-done-icon { font-size: 64px; }
+.feedback-done-title { font-size: 24px; font-weight: 700; color: var(--c-text); }
+.feedback-done-sub { font-size: 15px; color: var(--c-text-sub); line-height: 1.6; max-width: 280px; }

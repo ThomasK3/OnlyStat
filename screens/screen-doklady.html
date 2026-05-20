@@ -1,0 +1,81 @@
+<div id="screen-doklady" class="screen">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <button class="top-bar-back" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="top-bar-title">Výměna dokladů</div>
+    <div class="top-bar-spacer"></div>
+  </div>
+
+  <!-- Hero -->
+  <div class="detail-hero">
+    <div class="detail-hero-emoji">📄</div>
+    <div class="detail-hero-title">Výměna dokladů</div>
+    <div class="detail-hero-sub">Platnost vašeho OP vyprší za 47 dní — začněte včas</div>
+    <div class="detail-hero-badge">⚠️ Urgentní</div>
+  </div>
+
+  <!-- Alert card -->
+  <div style="background:var(--c-orange-light);border-radius:var(--r-lg);margin:var(--sp-md);padding:var(--sp-md);display:flex;gap:var(--sp-sm);align-items:flex-start;border:1px solid rgba(230,81,0,0.2);">
+    <span style="font-size:20px;">⚠️</span>
+    <div style="font-size:13px;color:var(--c-orange);line-height:1.5;">Váš občanský průkaz vyprší <strong>6. 7. 2025</strong>. S vydáním OP trvá úřadům až 30 dní — požádejte co nejdříve.</div>
+  </div>
+
+  <!-- Steps -->
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Objednat termín na úřadě</div>
+        <div class="step-desc">Rezervace na MV ČR nebo příslušném obecním úřadě. Online nebo telefonicky.</div>
+        <div class="step-action">
+          Rezervovat online →
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Připravit dokumenty</div>
+        <div class="step-desc">Stávající OP nebo pas, 1× fotografie (nebo digitální biometrické foto na místě), doklad o adrese, správní poplatek 200 Kč.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Vyzvednout nový OP</div>
+        <div class="step-desc">Do 30 dnů od podání žádosti. Budete informováni SMS nebo e-mailem.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related -->
+  <div style="padding:0 var(--sp-md) var(--sp-md);">
+    <div style="font-size:15px;font-weight:700;color:var(--c-text);margin-bottom:var(--sp-sm);">Vyměnit zároveň</div>
+    <div class="card-white" style="display:flex;flex-direction:column;gap:0;">
+      <div class="row-item" onclick="navigateTo('screen-ukoly','forward')">
+        <div class="row-item-icon"><span style="font-size:20px;">🛂</span></div>
+        <div class="row-item-text">
+          <div class="row-item-title">Cestovní pas</div>
+          <div class="row-item-sub">Platnost: 2028 · Nevyžaduje výměnu</div>
+        </div>
+        <div class="row-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="row-item">
+        <div class="row-item-icon"><span style="font-size:20px;">🚗</span></div>
+        <div class="row-item-text">
+          <div class="row-item-title">Řidičský průkaz</div>
+          <div class="row-item-sub">Platnost: 2032 · Nevyžaduje výměnu</div>
+        </div>
+        <div class="row-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:0 var(--sp-md) var(--sp-md);">
+    <button class="btn-primary" onclick="navigateTo('screen-ukoly','forward')">Přidat do úkolů</button>
+  </div>
+</div>

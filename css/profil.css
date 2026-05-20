@@ -1,0 +1,69 @@
+.profil-header {
+  background: linear-gradient(160deg, var(--c-primary) 0%, var(--c-primary-mid) 100%);
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+}
+.profil-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-full);
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.profil-info { flex: 1; }
+.profil-name { font-size: 20px; font-weight: 700; color: #fff; }
+.profil-email { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+.profil-badge { margin-top: 6px; align-self: flex-start; }
+
+.profil-stats {
+  display: flex;
+  gap: var(--sp-sm);
+  padding: var(--sp-md);
+}
+.profil-stat {
+  flex: 1;
+  background: var(--c-bg-card);
+  border-radius: var(--r-md);
+  padding: var(--sp-md);
+  text-align: center;
+}
+.profil-stat-val { font-size: 22px; font-weight: 700; color: var(--c-primary); }
+.profil-stat-label { font-size: 11px; color: var(--c-text-sub); margin-top: 2px; }
+
+.menu-section { padding: 0 var(--sp-md); margin-bottom: var(--sp-md); }
+.menu-section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--c-text-sub); padding: var(--sp-sm) 0; }
+.menu-list { background: #fff; border-radius: var(--r-lg); border: 1px solid var(--c-border); overflow: hidden; }
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  padding: var(--sp-md);
+  border-bottom: 1px solid var(--c-divider);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item:active { background: var(--c-bg-card); }
+.menu-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: var(--c-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-item-icon svg { width: 18px; height: 18px; color: var(--c-primary); }
+.menu-item-text { flex: 1; }
+.menu-item-title { font-size: 15px; font-weight: 500; color: var(--c-text); }
+.menu-item-sub { font-size: 12px; color: var(--c-text-sub); margin-top: 1px; }
+.menu-item-chevron { color: var(--c-text-muted); }
+.menu-item-chevron svg { width: 16px; height: 16px; }

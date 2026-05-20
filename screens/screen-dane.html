@@ -1,0 +1,126 @@
+<div id="screen-dane" class="screen has-nav">
+
+  <!-- Header -->
+  <div class="dane-header">
+    <div class="dane-header-title">Moje daně</div>
+    <div class="dane-header-sub">Přehled za rok 2024</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="dane-tabs" id="dane-tabs">
+    <div class="dane-tab active" data-tab="prehled" onclick="switchDaneTab('prehled')">Přehled</div>
+    <div class="dane-tab" data-tab="historia" onclick="switchDaneTab('historia')">Historie</div>
+    <div class="dane-tab" data-tab="projekty" onclick="switchDaneTab('projekty')">Projekty</div>
+  </div>
+
+  <!-- Panel: Přehled -->
+  <div class="dane-panel" data-panel="prehled">
+
+    <!-- Total -->
+    <div class="dane-summary-card">
+      <div class="dane-summary-row">
+        <span class="dane-summary-label">Celkem zaplaceno (2024)</span>
+      </div>
+      <div class="dane-summary-row">
+        <span class="dane-summary-total">145 320 Kč</span>
+        <span class="badge badge-green">Vypočteno</span>
+      </div>
+      <div style="height:1px;background:var(--c-divider)"></div>
+      <div class="dane-summary-row">
+        <span class="dane-summary-label">Daň z příjmu FO</span>
+        <span class="dane-summary-val">58 400 Kč</span>
+      </div>
+      <div class="dane-summary-row">
+        <span class="dane-summary-label">Sociální pojištění</span>
+        <span class="dane-summary-val">51 840 Kč</span>
+      </div>
+      <div class="dane-summary-row">
+        <span class="dane-summary-label">Zdravotní pojištění</span>
+        <span class="dane-summary-val">23 040 Kč</span>
+      </div>
+      <div class="dane-summary-row">
+        <span class="dane-summary-label">DPH (odhad)</span>
+        <span class="dane-summary-val">12 040 Kč</span>
+      </div>
+    </div>
+
+    <!-- Donut chart -->
+    <div class="donut-wrapper">
+      <div class="donut-chart">
+        <svg viewBox="0 0 100 100">
+          <!-- Důchody 33% -->
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#094672" stroke-width="14"
+            stroke-dasharray="79 239" stroke-dashoffset="0"/>
+          <!-- Školství 26% -->
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#1e7a87" stroke-width="14"
+            stroke-dasharray="62 239" stroke-dashoffset="-79"/>
+          <!-- Doprava 24% -->
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#2d5f8a" stroke-width="14"
+            stroke-dasharray="57 239" stroke-dashoffset="-141"/>
+          <!-- Obrana 17% -->
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#c8e9ed" stroke-width="14"
+            stroke-dasharray="40 239" stroke-dashoffset="-198"/>
+        </svg>
+        <div class="donut-center">
+          <div class="donut-center-amount">48 350 Kč</div>
+          <div class="donut-center-label">za rok 2024</div>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="legend-item" onclick="navigateTo('screen-s8','forward')">
+          <div class="legend-dot" style="background:#094672"></div>
+          <span class="legend-label">Důchody a soc. dávky</span>
+          <span class="legend-amount">15 955 Kč</span>
+          <span class="legend-pct">33 %</span>
+        </div>
+        <div class="legend-item" onclick="navigateTo('screen-s9','forward')">
+          <div class="legend-dot" style="background:#1e7a87"></div>
+          <span class="legend-label">Školství</span>
+          <span class="legend-amount">12 571 Kč</span>
+          <span class="legend-pct">26 %</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#2d5f8a"></div>
+          <span class="legend-label">Doprava</span>
+          <span class="legend-amount">11 604 Kč</span>
+          <span class="legend-pct">24 %</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#c8e9ed"></div>
+          <span class="legend-label">Obrana</span>
+          <span class="legend-amount">8 220 Kč</span>
+          <span class="legend-pct">17 %</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" style="margin:0 var(--sp-md) var(--sp-md);" onclick="navigateTo('screen-projekty','forward')">
+      Zobrazit projekty financované z mých daní
+    </button>
+  </div>
+
+  <!-- Panel: Historie -->
+  <div class="dane-panel" data-panel="historia" style="display:none">
+    <div class="dane-summary-card">
+      <div class="dane-summary-row"><span class="dane-summary-label">Rok 2024</span><span class="dane-summary-total">145 320 Kč</span></div>
+      <div class="dane-summary-row"><span class="dane-summary-label">Rok 2023</span><span class="dane-summary-val">138 770 Kč</span></div>
+      <div class="dane-summary-row"><span class="dane-summary-label">Rok 2022</span><span class="dane-summary-val">131 040 Kč</span></div>
+      <div class="dane-summary-row"><span class="dane-summary-label">Rok 2021</span><span class="dane-summary-val">119 500 Kč</span></div>
+    </div>
+    <div style="background:var(--c-bg-card);border-radius:var(--r-lg);padding:var(--sp-md);text-align:center;color:var(--c-text-sub);font-size:14px;">
+      Celkem za 4 roky: <strong style="color:var(--c-text)">534 630 Kč</strong>
+    </div>
+  </div>
+
+  <!-- Panel: Projekty -->
+  <div class="dane-panel" data-panel="projekty" style="display:none">
+    <div style="padding:var(--sp-md);font-size:14px;color:var(--c-text-sub);line-height:1.6;">
+      Vaše daně financují projekty ve vašem okolí. Chcete vidět konkrétní příklady?
+    </div>
+    <button class="btn-primary" style="margin:0 var(--sp-md);" onclick="navigateTo('screen-projekty','forward')">
+      Zobrazit projekty v okolí
+    </button>
+    <div style="height:var(--sp-md)"></div>
+  </div>
+
+</div>
