@@ -69,12 +69,19 @@
   --transition-fast: 150ms ease;
 
   /* ── New design system (home screen redesign) ── */
-  --c-cyan:           #0AA4BC;
+  --c-cyan:           #0AA4BC;   /* brand accent — buttony, badge, grafy */
   --c-cyan-light:     #7DD3E5;
   --c-cyan-pale:      #F0FAFC;
   --c-cyan-ghost:     #E0F7FB;
   --c-navy:           #0E2A47;
   --c-navy-light:     #1F4E7A;
+
+  /* Tab hero + card palette */
+  --c-teal-hero:      #0891B2;   /* Home hero */
+  --c-sky:            #60A5FA;   /* Daně pulled-up card */
+  --c-green-hero:     #047857;   /* Situace hero */
+  --c-teal-dark:      #0F766E;   /* Projekty hero */
+  --c-amber:          #FBBF24;   /* Projekty pulled-up card */
   --c-yellow-warm:    #F5A623;
   --c-mint:           #10B981;
   --c-bg-soft:        #F5F8FA;

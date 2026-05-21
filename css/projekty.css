@@ -6,9 +6,9 @@
   padding: 22px var(--s-screen-x) 28px;
 }
 
-/* ── Summary card (dark navy, pulled-up) ─── */
+/* ── Summary card (sky on teal-dark hero) ─── */
 .proj-summary-card {
-  background: var(--c-navy);
+  background: var(--c-sky);
   border-radius: var(--r-card-lg);
   padding: 16px 20px;
   overflow: hidden;

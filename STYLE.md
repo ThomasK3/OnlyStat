@@ -24,17 +24,24 @@ Při práci na každém dalším screenu: otevři tenhle soubor, nekopíruj hodn
 
 ```css
 /* Brand */
---c-cyan:        #0AA4BC;   /* primární brand, hero pozadí */
+--c-cyan:        #0AA4BC;   /* primární brand, badge, grafy */
 --c-cyan-light:  #7DD3E5;   /* eyebrow na dark kartách, badge text */
 --c-cyan-pale:   #F0FAFC;   /* impact row pozadí, chip pozadí */
---c-cyan-ghost:  #E0F7FB;   /* (rezerva, nepoužito na home) */
+--c-cyan-ghost:  #E0F7FB;   /* (rezerva, nepoužito) */
 --c-navy:        #0E2A47;   /* primární text, dark karty, aktivní nav */
 --c-navy-light:  #1F4E7A;   /* (rezerva) */
+
+/* Tab identity — hero a pulled-up karty */
+--c-teal-hero:   #0891B2;   /* Home hero */
+--c-teal-dark:   #0F766E;   /* Projekty hero */
+--c-green-hero:  #047857;   /* Situace hero */
+--c-sky:         #60A5FA;   /* Daně + Projekty pulled-up karta */
+--c-amber:       #FBBF24;   /* Situace pulled-up karta */
 
 /* Akcenty */
 --c-yellow-warm: #F5A623;   /* warning, situace border, situace eyebrow */
 /* pozn: žlutá dekorativní orb = #FFD43B (hardcoded, není token) */
---c-mint:        #10B981;   /* success (zatím nepoužito na home) */
+--c-mint:        #10B981;   /* success (zatím nepoužito) */
 /* pozn: urgentní červená = #E14D2A (hardcoded v home.css jako .list-dot--urgent) */
 
 /* Povrchy */
@@ -123,7 +130,19 @@ Při práci na každém dalším screenu: otevři tenhle soubor, nekopíruj hodn
 </div>
 ```
 
-Klíčové hodnoty: `background: var(--c-cyan)`, `padding: 16px 22px 60px`, `border-radius: 0 0 var(--r-hero-bottom) var(--r-hero-bottom)`.
+Klíčové hodnoty: `background: var(--c-teal-hero)`, `padding: 16px 22px 60px`, `border-radius: 0 0 var(--r-hero-bottom) var(--r-hero-bottom)`.
+
+#### Hero barevné varianty (tab identity)
+
+Každý hlavní tab má vlastní barvu hero — vizuální identita sekce. Přidáváš modifier třídu vedle `.hero`.
+
+| Tab | Třída | Pozadí | Orb--lg |
+|-----|-------|--------|---------|
+| Home | `.hero` (default) | `var(--c-teal-hero)` | `var(--c-navy)` opacity 0.14 |
+| Daně | `.hero.hero--navy` | `var(--c-navy)` | `var(--c-teal-hero)` |
+| Projekty | `.hero.hero--teal-dark` | `var(--c-teal-dark)` | `rgba(255,255,255,0.1)` |
+| Situace | `.hero.hero--green` | `var(--c-green-hero)` | `rgba(255,255,255,0.1)` |
+| Profil | `.hero.hero--amber` | `var(--c-amber)` | `var(--c-navy)` opacity 0.1 |
 
 ### 4.2 · Pulled-up karta
 
@@ -132,6 +151,34 @@ Karta s `margin: -36px var(--s-screen-x) 0` se vyšplhá přes zaoblený spodek 
 ```html
 <div class="card-pulled">
   <div class="contribution-card">...</div>
+</div>
+```
+
+#### Barva pulled-up karty (per-tab)
+
+Každá sekce má kontrastní kartu k hero. Použij color-modifier + `card--light` pro světlé karty.
+
+| Tab | Hero | Karta | Třídy |
+|-----|------|-------|-------|
+| Home | teal `#0891B2` | navy | `.contribution-card` (default, bílý text) |
+| Daně | navy `#0E2A47` | sky `#60A5FA` | `.contribution-card.contribution-card--sky.card--light` |
+| Projekty | teal-dark `#0F766E` | sky `#60A5FA` | `.proj-summary-card.card--light` |
+| Situace | green `#047857` | amber `#FBBF24` | `.contribution-card.contribution-card--amber.card--light` |
+| Profil | amber `#FBBF24` | green `#047857` | `.contribution-card.contribution-card--green` (bílý text, bez card--light) |
+
+#### Utility třída `card--light`
+
+Přepisuje bílý/cyan text na tmavý navy — nutné na všech světlých kartách (sky, amber).  
+Definice v `css/home.css`, použitelná na libovolné komponentě.
+
+```html
+<!-- světlá karta s tmavým textem -->
+<div class="contribution-card contribution-card--sky card--light">
+  <div class="eyebrow eyebrow--light">...</div>   <!-- → rgba(14,42,71,0.65) -->
+  <div class="card-title-light">...</div>          <!-- → var(--c-navy) -->
+  <div class="hero-number-big">...</div>           <!-- → var(--c-navy) -->
+  <div class="meta-light">...</div>                <!-- → rgba(14,42,71,0.55) -->
+  <div class="badge-soft">...</div>                <!-- → rgba(14,42,71,0.1) bg -->
 </div>
 ```
 
@@ -167,7 +214,9 @@ Karta s `margin: -36px var(--s-screen-x) 0` se vyšplhá přes zaoblený spodek 
 
 ## 5 · Komponenty
 
-### 5.1 · Contribution card (dark navy)
+### 5.1 · Contribution card
+
+**Dark varianta (Home — default):**
 
 ```html
 <div class="contribution-card" onclick="navigateTo('screen-dane','forward')">
@@ -191,8 +240,18 @@ Karta s `margin: -36px var(--s-screen-x) 0` se vyšplhá přes zaoblený spodek 
 </div>
 ```
 
-`badge-soft`: bg `rgba(125,211,229,0.2)`, text `var(--c-cyan-light)`.  
+`badge-soft` na dark kartě: bg `rgba(125,211,229,0.2)`, text `var(--c-cyan-light)`.  
 `orb-deco`: pozice `bottom: -30px; right: -30px`, `opacity: 0.18`.
+
+**Světlá varianta (Daně / Situace) — přidej color-modifier + `card--light`:**
+
+```html
+<div class="contribution-card contribution-card--sky card--light">
+  <!-- stejná struktura, card--light přepíše barvy textu na navy -->
+</div>
+```
+
+Dostupné color-modifiery: `.contribution-card--sky` · `.contribution-card--amber`
 
 ### 5.2 · Aktivní situace karta
 
@@ -386,7 +445,7 @@ Po každém screenu: commit + `/clear`.
 ## 9 · Pravidla (co NEDĚLAT)
 
 1. **Žádné hardcoded hex barvy** mimo `variables.css` — vše přes `var(--c-...)`.  
-   Výjimky: `#E14D2A` (urgentní červená), `#FFD43B` (žlutá orb), `#8B6914` (situace eyebrow) — zatím nemají token.
+   Výjimky: `#E14D2A` (urgentní červená), `#FFD43B` (žlutá orb), `#8B6914` (eyebrow na warm bg `.active-situation-eyebrow`) — zatím nemají token.
 2. **Žádný `font-weight: 600`** — heading = 700, body = 500 nebo 400.
 3. **Žádné drop shadows ani gradienty** — hloubka přes color contrast a border-radius.
 4. **Žádné `!important`.**
