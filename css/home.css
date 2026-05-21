@@ -179,6 +179,7 @@
 }
 .contribution-card--amber { background: var(--c-amber); }
 .contribution-card--sky   { background: var(--c-sky); }
+.contribution-card--teal  { background: var(--c-teal-hero); }
 .contribution-card--mint  { background: var(--c-mint); }
 .contribution-card--green { background: var(--c-green-hero); }
 

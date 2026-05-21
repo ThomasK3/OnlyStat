@@ -35,7 +35,7 @@ Při práci na každém dalším screenu: otevři tenhle soubor, nekopíruj hodn
 --c-teal-hero:   #0891B2;   /* Home hero */
 --c-teal-dark:   #0F766E;   /* Projekty hero */
 --c-green-hero:  #047857;   /* Situace hero */
---c-sky:         #60A5FA;   /* Daně + Projekty pulled-up karta */
+--c-sky:         #60A5FA;   /* Projekty pulled-up karta */
 --c-amber:       #FBBF24;   /* Situace pulled-up karta */
 
 /* Akcenty */
@@ -161,7 +161,7 @@ Každá sekce má kontrastní kartu k hero. Použij color-modifier + `card--ligh
 | Tab | Hero | Karta | Třídy |
 |-----|------|-------|-------|
 | Home | teal `#0891B2` | navy | `.contribution-card` (default, bílý text) |
-| Daně | navy `#0E2A47` | sky `#60A5FA` | `.contribution-card.contribution-card--sky.card--light` |
+| Daně | navy `#0E2A47` | teal `#0891B2` | `.contribution-card.contribution-card--teal` (bílý text, bez card--light) |
 | Projekty | teal-dark `#0F766E` | sky `#60A5FA` | `.proj-summary-card.card--light` |
 | Situace | green `#047857` | amber `#FBBF24` | `.contribution-card.contribution-card--amber.card--light` |
 | Profil | amber `#FBBF24` | green `#047857` | `.contribution-card.contribution-card--green` (bílý text, bez card--light) |
@@ -393,7 +393,47 @@ Výška: `72px` (`--bottom-nav-height`).
 
 ---
 
-## 6 · Home screen — 7 modulů
+## 6 · Detail screeny (sub-screeny)
+
+Screeny otevírané přes `navigateTo()` — **ne** main tapy s bottom navem.
+
+**Pravidla:**
+- `class="screen"` bez `has-nav` — bottom nav se nezobrazuje
+- Začínají `top-bar` (sticky, z `global.css`) s back buttonem
+- **Žádný hero, žádný pull-up trik**
+- Tokeny, typografie a spacing jsou stejné jako u main screenů
+- Každý screen má vlastní layout — žádná povinná šablona
+
+**Top bar pattern:**
+```html
+<div class="top-bar">
+  <button class="top-bar-back" onclick="goBack()"><!-- SVG šipka vlevo --></button>
+  <div class="top-bar-title">Název screenu</div>
+  <div class="top-bar-spacer"></div>  <!-- nebo akční tlačítko napravo -->
+</div>
+```
+
+**Page header (volitelný) — inline stats místo hero:**
+
+Když screen potřebuje kontext (lokace, počty, sumy) — nezobrazuj hero, ale kompaktní textový blok pod top barem.
+
+```html
+<div class="proj-page-header">
+  <div class="proj-page-eyebrow">📍 Ostrava-Poruba · 5 km</div>
+  <h2 class="proj-page-title">Tvoje daně staví.</h2>
+  <div class="proj-page-stats">8 projektů · 259 mil. Kč · tvůj příspěvek ~129 Kč</div>
+</div>
+```
+
+| Třída | Velikost | Váha | Barva |
+|-------|----------|------|-------|
+| `.proj-page-eyebrow` | 11px | 700 | `var(--c-text-soft)`, uppercase, 1.2px spacing |
+| `.proj-page-title` | 22px | 700 | `var(--c-text)`, -0.025em |
+| `.proj-page-stats` | 12px | 700 | `var(--c-text-soft)`, tnum |
+
+---
+
+## 7 · Home screen — 7 modulů
 
 | # | Modul | Třída / pattern | Personalizace |
 |---|---|---|---|
