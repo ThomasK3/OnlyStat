@@ -67,4 +67,34 @@
 
   /* Animation */
   --transition-fast: 150ms ease;
+
+  /* ── New design system (home screen redesign) ── */
+  --c-cyan:           #0AA4BC;
+  --c-cyan-light:     #7DD3E5;
+  --c-cyan-pale:      #F0FAFC;
+  --c-cyan-ghost:     #E0F7FB;
+  --c-navy:           #0E2A47;
+  --c-navy-light:     #1F4E7A;
+  --c-yellow-warm:    #F5A623;
+  --c-mint:           #10B981;
+  --c-bg-soft:        #F5F8FA;
+  --c-bg-tint:        #F0FAFC;
+  --c-bg-warm:        #FFF7E0;
+  --c-text-soft:      #8A99AB;
+  --c-text-light:     #B8D4E5;
+  --c-text-on-cyan:   #FFFFFF;
+  --c-border-soft:    rgba(14,42,71,0.06);
+  --c-border-strong:  rgba(14,42,71,0.15);
+  --r-pill:           999px;
+  --r-card-lg:        18px;
+  --r-card:           16px;
+  --r-card-sm:        14px;
+  --r-icon:           10px;
+  --r-hero-bottom:    32px;
+  --s-screen-x:       18px;
+  --s-section:        22px;
+  --s-card:           14px;
+  --fw-regular:       400;
+  --fw-medium:        500;
+  --fw-bold:          700;
 }

@@ -216,6 +216,10 @@ function finishOnboarding() {
   switchTab('screen-home');
 }
 
+function initHome() {
+  // Placeholder for future dynamic personalization from localStorage/userData
+}
+
 /* Init on load */
 document.addEventListener('DOMContentLoaded', () => {
   if (!localStorage.getItem('onboarding_done')) {
@@ -226,4 +230,5 @@ document.addEventListener('DOMContentLoaded', () => {
     startEl.classList.add('active');
     _updateNav(App.current);
   }
+  initHome();
 });
