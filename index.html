@@ -241,231 +241,386 @@
 
     <!-- DANE -->
     <div id="screen-dane" class="screen has-nav">
+
       <!-- Hero -->
-      <div class="dane-hero">
-        <div class="dane-hero-label">Moje daňová stopa</div>
-        <div class="dane-hero-sublabel">celkový roční příspěvek</div>
-        <div class="dane-hero-value">48 350 Kč</div>
-        <div class="dane-hero-bar-wrap">
-          <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
-          <div class="dane-hero-bar-sub">68 % průměru zaměstnanců v ČR</div>
+      <div class="hero">
+        <div class="orb orb--lg"></div>
+        <div class="orb orb--yellow"></div>
+        <div class="hero-top-bar">
+          <div class="hero-top-left">
+            <div class="dane-hero-avatar">TK</div>
+            <span class="hero-top-name">Tomáš Kanucha</span>
+          </div>
+          <button class="hero-search-btn" aria-label="Hledat">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
         </div>
-      </div>
-      <!-- Tabs -->
-      <div class="dane-tabs">
-        <div class="dane-tab active" data-tab="celostatni" onclick="switchDaneTab('celostatni')">Celostátní</div>
-        <div class="dane-tab" data-tab="lokalni" onclick="switchDaneTab('lokalni')">Lokální</div>
-      </div>
-
-      <!-- Celostátní panel -->
-      <div class="dane-panel" data-panel="celostatni">
-        <!-- Donut chart -->
-        <div class="donut-wrapper">
-          <div class="donut-chart">
-            <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#006a68" stroke-width="13" stroke-dasharray="79 239" stroke-dashoffset="0"/>
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#1e7a87" stroke-width="13" stroke-dasharray="62 239" stroke-dashoffset="-79"/>
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#2d5f8a" stroke-width="13" stroke-dasharray="57 239" stroke-dashoffset="-141"/>
-              <circle cx="50" cy="50" r="38" fill="none" stroke="#094672" stroke-width="13" stroke-dasharray="41 239" stroke-dashoffset="-198"/>
-            </svg>
-            <div class="donut-center">
-              <div class="donut-center-amount">48 350 Kč</div>
-              <div class="donut-center-label">za rok 2024</div>
-            </div>
-          </div>
-          <div class="legend">
-            <div class="legend-item">
-              <div class="legend-dot" style="background:#006a68"></div>
-              <span class="legend-label">Důchody a soc. dávky</span>
-              <span class="legend-amount">19 340 Kč</span>
-              <span class="legend-pct">33 %</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background:#1e7a87"></div>
-              <span class="legend-label">Školství</span>
-              <span class="legend-amount">12 088 Kč</span>
-              <span class="legend-pct">26 %</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background:#2d5f8a"></div>
-              <span class="legend-label">Doprava</span>
-              <span class="legend-amount">9 670 Kč</span>
-              <span class="legend-pct">24 %</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background:#094672"></div>
-              <span class="legend-label">Obrana a bezpečnost</span>
-              <span class="legend-amount">7 252 Kč</span>
-              <span class="legend-pct">17 %</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section label -->
-        <div class="section-label" style="padding:0">Podrobný rozpis</div>
-
-        <!-- Breakdown rows -->
-        <div class="dane-breakdown">
-          <div class="dane-breakdown-row" onclick="navigateTo('screen-s8','forward')">
-            <div class="dane-breakdown-icon" style="background:#e0f2f1">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#006a68" stroke-width="2" style="width:20px;height:20px"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Důchody a soc. dávky</span>
-                <span class="dane-breakdown-amount">19 340 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Platíš na starobní důchody, invaliditu a podporu v nezaměstnanosti.</div>
-              <div class="dane-breakdown-bar"><div style="width:33%;background:#006a68"></div></div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="dane-breakdown-row" onclick="navigateTo('screen-s9','forward')">
-            <div class="dane-breakdown-icon" style="background:#e6f6f8">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#1e7a87" stroke-width="2" style="width:20px;height:20px"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Školství a vzdělávání</span>
-                <span class="dane-breakdown-amount">12 088 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Financuješ školy od MŠ po vysoké školy a vědecký výzkum.</div>
-              <div class="dane-breakdown-bar"><div style="width:26%;background:#1e7a87"></div></div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="dane-breakdown-row">
-            <div class="dane-breakdown-icon" style="background:#ebf2f9">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#2d5f8a" stroke-width="2" style="width:20px;height:20px"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Doprava a infrastruktura</span>
-                <span class="dane-breakdown-amount">9 670 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Dálnice, silnice, železnice a veřejná doprava po celé republice.</div>
-              <div class="dane-breakdown-bar"><div style="width:24%;background:#2d5f8a"></div></div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="dane-breakdown-row">
-            <div class="dane-breakdown-icon" style="background:#e8eef4">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#094672" stroke-width="2" style="width:20px;height:20px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Obrana a bezpečnost</span>
-                <span class="dane-breakdown-amount">7 252 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Armáda, policie a záchranné složky chrání stát i tebe každý den.</div>
-              <div class="dane-breakdown-bar"><div style="width:17%;background:#094672"></div></div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--c-text-muted);flex-shrink:0;margin-top:2px"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </div>
-
-        <button class="btn-primary" onclick="navigateTo('screen-projekty','forward')">Zobrazit projekty financované z mých daní</button>
+        <div class="dane-hero-eyebrow">Tvůj daňový rok</div>
+        <h1 class="hero-greeting">Kam tečou<br>tvoje peníze.</h1>
+        <p class="hero-subtitle">Přehled za rok 2026 · celkem 48 350 Kč ročně</p>
       </div>
 
-      <!-- Lokální panel -->
-      <div class="dane-panel" data-panel="lokalni" style="display:none">
-        <div class="dane-local-card">
-          <div class="dane-local-label">Praha 2 – Vinohrady</div>
-          <div class="dane-local-value">~2 780 Kč</div>
-          <div class="dane-local-sub">Odhadovaný roční příspěvek do obecního a krajského rozpočtu</div>
+      <!-- Pulled-up card (contribution summary) -->
+      <div class="card-pulled">
+        <div class="contribution-card">
+          <div class="orb-deco"></div>
+          <div class="row-spread">
+            <div>
+              <div class="eyebrow eyebrow--light">Zaplaceno letos</div>
+              <div class="card-title-light">Příspěvek 2026.</div>
+            </div>
+            <div class="badge-soft">+4 029 Kč v květnu</div>
+          </div>
+          <div class="hero-number">
+            <div class="hero-number-big">23 840</div>
+            <div class="hero-number-unit">Kč</div>
+          </div>
+          <div class="meta-light">z 48 350 Kč ročního příspěvku · 49 %</div>
+          <div class="contribution-progress">
+            <div class="contribution-progress-fill" style="width:49%"></div>
+          </div>
+          <button class="btn-pill btn-pill--white" onclick="navigateTo('screen-projekty','forward')">Kam přesně to teče →</button>
         </div>
-        <div class="section-label" style="padding:0">Kam jdou lokální daně</div>
-        <div class="dane-breakdown">
-          <div class="dane-breakdown-row">
-            <div class="dane-breakdown-icon" style="background:#e0f2f1">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#006a68" stroke-width="2" style="width:20px;height:20px"><polygon points="3 11 12 2 21 11"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Správa obce</span>
-                <span class="dane-breakdown-amount">~890 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Radnice, úřad, komunální služby a správa obecního majetku.</div>
-              <div class="dane-breakdown-bar"><div style="width:32%;background:#006a68"></div></div>
-            </div>
-          </div>
-          <div class="dane-breakdown-row">
-            <div class="dane-breakdown-icon" style="background:#e6f6f8">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#1e7a87" stroke-width="2" style="width:20px;height:20px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Místní školství</span>
-                <span class="dane-breakdown-amount">~720 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Základní a mateřské školy zřizované Prahou 2.</div>
-              <div class="dane-breakdown-bar"><div style="width:26%;background:#1e7a87"></div></div>
-            </div>
-          </div>
-          <div class="dane-breakdown-row">
-            <div class="dane-breakdown-icon" style="background:#ebf2f9">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#2d5f8a" stroke-width="2" style="width:20px;height:20px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Místní doprava a opravy</span>
-                <span class="dane-breakdown-amount">~610 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Opravy chodníků, ulic a lokální infrastruktury MČ Praha 2.</div>
-              <div class="dane-breakdown-bar"><div style="width:22%;background:#2d5f8a"></div></div>
-            </div>
-          </div>
-          <div class="dane-breakdown-row">
-            <div class="dane-breakdown-icon" style="background:#e8eef4">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#094672" stroke-width="2" style="width:20px;height:20px"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <div class="dane-breakdown-body">
-              <div class="dane-breakdown-top">
-                <span class="dane-breakdown-name">Kultura a sport</span>
-                <span class="dane-breakdown-amount">~560 Kč</span>
-              </div>
-              <div class="dane-breakdown-sub">Kulturní domy, hřiště, parky a sportovní zařízení v okolí.</div>
-              <div class="dane-breakdown-bar"><div style="width:20%;background:#094672"></div></div>
-            </div>
-          </div>
-        </div>
-        <button class="btn-primary" onclick="navigateTo('screen-projekty','forward')">Zobrazit projekty v okolí</button>
       </div>
+
+      <!-- Dane body -->
+      <div class="dane-body">
+
+        <!-- Donut chart section -->
+        <section>
+          <h2 class="section-title">Jak se to rozděluje.</h2>
+          <p class="section-sub">Z ročního příspěvku 48 350 Kč.</p>
+          <div class="section-body">
+            <div class="dane-donut-card">
+              <div class="dane-donut-wrap">
+                <div class="dane-donut-chart">
+                  <svg viewBox="0 0 100 100">
+                    <!-- Důchody a soc. dávky 33% -->
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#0E2A47" stroke-width="14"
+                      stroke-dasharray="79 239" stroke-dashoffset="0"/>
+                    <!-- Školství 26% -->
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#0AA4BC" stroke-width="14"
+                      stroke-dasharray="62 239" stroke-dashoffset="-79"/>
+                    <!-- Doprava 24% -->
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#7DD3E5" stroke-width="14"
+                      stroke-dasharray="57 239" stroke-dashoffset="-141"/>
+                    <!-- Obrana 17% -->
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#F5A623" stroke-width="14"
+                      stroke-dasharray="41 239" stroke-dashoffset="-198"/>
+                  </svg>
+                  <div class="dane-donut-center">
+                    <div class="dane-donut-center-amount">48 350</div>
+                    <div class="dane-donut-center-label">Kč / rok</div>
+                  </div>
+                </div>
+                <div class="dane-legend">
+                  <div class="dane-legend-item" onclick="navigateTo('screen-s8','forward')">
+                    <div class="dane-legend-dot dane-legend-dot--navy"></div>
+                    <span class="dane-legend-label">Důchody a soc. dávky</span>
+                    <span class="dane-legend-amount">15 956 Kč</span>
+                    <span class="dane-legend-pct">33 %</span>
+                  </div>
+                  <div class="dane-legend-item" onclick="navigateTo('screen-s9','forward')">
+                    <div class="dane-legend-dot dane-legend-dot--cyan"></div>
+                    <span class="dane-legend-label">Školství</span>
+                    <span class="dane-legend-amount">12 571 Kč</span>
+                    <span class="dane-legend-pct">26 %</span>
+                  </div>
+                  <div class="dane-legend-item">
+                    <div class="dane-legend-dot dane-legend-dot--cyan-light"></div>
+                    <span class="dane-legend-label">Doprava</span>
+                    <span class="dane-legend-amount">11 604 Kč</span>
+                    <span class="dane-legend-pct">24 %</span>
+                  </div>
+                  <div class="dane-legend-item">
+                    <div class="dane-legend-dot dane-legend-dot--yellow"></div>
+                    <span class="dane-legend-label">Obrana</span>
+                    <span class="dane-legend-amount">8 220 Kč</span>
+                    <span class="dane-legend-pct">17 %</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Concrete impact section -->
+        <section>
+          <h2 class="section-title">Co za to konkrétně dostáváš.</h2>
+          <p class="section-sub">Týdenní ekvivalenty z tvého příspěvku.</p>
+          <div class="section-body">
+            <div class="impact-list">
+              <div class="impact-row">
+                <div class="impact-icon impact-icon--cyan">🏫</div>
+                <div class="impact-body">
+                  <div class="impact-title">8 obědů ve školní jídelně</div>
+                  <div class="impact-desc">ZŠ Ostrava-Poruba, průměrný oběd 30 Kč</div>
+                </div>
+                <div class="impact-amount">242 Kč</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-icon impact-icon--navy">🛤️</div>
+                <div class="impact-body">
+                  <div class="impact-title">11 jízd MHD pro studenty</div>
+                  <div class="impact-desc">Dopravní podnik Ostrava, průměr 20 Kč/jízda</div>
+                </div>
+                <div class="impact-amount">223 Kč</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-icon impact-icon--yellow">🧓</div>
+                <div class="impact-body">
+                  <div class="impact-title">7 hodin domácí péče o seniora</div>
+                  <div class="impact-desc">Pečovatelská služba, průměr 44 Kč/hodina</div>
+                </div>
+                <div class="impact-amount">307 Kč</div>
+              </div>
+            </div>
+            <button class="btn-link">Více příkladů →</button>
+          </div>
+        </section>
+
+        <!-- Tax source breakdown -->
+        <section>
+          <h2 class="section-title">Z čeho platíš.</h2>
+          <p class="section-sub">Roční souhrn odvodů za rok 2026.</p>
+          <div class="section-body">
+            <div class="list-card">
+              <div class="dane-tax-row">
+                <div class="dane-tax-icon impact-icon--navy">💼</div>
+                <div class="dane-tax-body">
+                  <div class="dane-tax-label">Daň z příjmu FO</div>
+                  <div class="dane-tax-sub">15 % ze základu daně</div>
+                </div>
+                <div class="dane-tax-amount">19 700 Kč</div>
+              </div>
+              <div class="dane-tax-row">
+                <div class="dane-tax-icon impact-icon--cyan">🤝</div>
+                <div class="dane-tax-body">
+                  <div class="dane-tax-label">Sociální pojištění</div>
+                  <div class="dane-tax-sub">6,5 % hrubé mzdy</div>
+                </div>
+                <div class="dane-tax-amount">16 770 Kč</div>
+              </div>
+              <div class="dane-tax-row">
+                <div class="dane-tax-icon impact-icon--yellow">🏥</div>
+                <div class="dane-tax-body">
+                  <div class="dane-tax-label">Zdravotní pojištění</div>
+                  <div class="dane-tax-sub">4,5 % hrubé mzdy</div>
+                </div>
+                <div class="dane-tax-amount">8 100 Kč</div>
+              </div>
+              <div class="dane-tax-row">
+                <div class="dane-tax-icon impact-icon--cyan">🛒</div>
+                <div class="dane-tax-body">
+                  <div class="dane-tax-label">DPH (odhad)</div>
+                  <div class="dane-tax-sub">Ze spotřeby domácnosti</div>
+                </div>
+                <div class="dane-tax-amount">3 780 Kč</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA — projekty -->
+        <div class="local-card" onclick="navigateTo('screen-projekty','forward')">
+          <div class="local-card-deco"></div>
+          <div class="local-card-eyebrow">Konkrétní výsledky</div>
+          <div class="local-card-title">Tvoje daně staví.</div>
+          <div class="local-card-meta">8 projektů ve tvém okolí financovaných z tvých daní. Podívej se, co za ně vzniká.</div>
+          <div class="local-card-actions">
+            <button class="btn-pill btn-pill--cyan">Zobrazit projekty →</button>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
     <!-- PROJEKTY -->
-    <div id="screen-projekty" class="screen has-nav proj-screen">
-      <div class="proj-fixed-header">
-        <div class="top-bar">
-          <button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <div class="top-bar-title">Projekty ve vašem okolí</div>
-          <div class="top-bar-spacer"></div>
+    <div id="screen-projekty" class="screen has-nav">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="orb orb--lg"></div>
+        <div class="orb orb--yellow"></div>
+        <div class="hero-top-bar">
+          <div class="hero-top-left">
+            <div class="dane-hero-avatar">TK</div>
+            <span class="hero-top-name">Tomáš Kanucha</span>
+          </div>
+          <button class="hero-search-btn" aria-label="Hledat">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
         </div>
-        <div class="proj-location-banner">
-          <span style="font-size:20px;">📍</span>
-          <div><div style="font-size:14px;font-weight:600;color:var(--c-text);">Praha 2 – Vinohrady</div><div style="font-size:13px;color:var(--c-text-sub);margin-top:2px;">8 projektů financovaných z vašich daní v okruhu 5 km</div></div>
-        </div>
-        <div class="proj-chips">
-          <div class="proj-chip active" data-cat="vse" onclick="filterProjects('vse')">Vše (8)</div>
-          <div class="proj-chip" data-cat="skolstvi" onclick="filterProjects('skolstvi')">Školství</div>
-          <div class="proj-chip" data-cat="doprava" onclick="filterProjects('doprava')">Doprava</div>
-          <div class="proj-chip" data-cat="zdravi" onclick="filterProjects('zdravi')">Zdravotnictví</div>
-          <div class="proj-chip" data-cat="kultura" onclick="filterProjects('kultura')">Kultura</div>
-          <div class="proj-chip" data-cat="sport" onclick="filterProjects('sport')">Sport</div>
+        <div class="dane-hero-eyebrow">Ve tvém okolí · 5 km</div>
+        <h1 class="hero-greeting">Tvoje daně<br>staví.</h1>
+        <p class="hero-subtitle">8 projektů financovaných z tvých daní · Ostrava-Poruba</p>
+      </div>
+
+      <!-- Pulled-up summary card -->
+      <div class="card-pulled">
+        <div class="proj-summary-card">
+          <div class="orb-deco"></div>
+          <div class="row-spread">
+            <div>
+              <div class="eyebrow eyebrow--light">Celkový rozpočet projektů</div>
+              <div class="card-title-light">259 mil. Kč.</div>
+            </div>
+            <div class="badge-soft">8 projektů</div>
+          </div>
+          <div class="hero-number">
+            <div class="hero-number-big">~129</div>
+            <div class="hero-number-unit">Kč</div>
+          </div>
+          <div class="meta-light">tvůj příspěvek na všechny projekty dohromady</div>
+          <button class="btn-pill btn-pill--white">Zobrazit na mapě →</button>
         </div>
       </div>
-      <div class="proj-scroll-area">
-      <div class="proj-list">
-        <div class="proj-card" data-cat="skolstvi"><div class="proj-card-header"><div class="proj-card-title">Rekonstrukce ZŠ Na Smetance, Praha 2</div><span class="badge badge-green">Probíhá</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>1,2 km · Praha 2</div></div><div class="proj-card-footer"><div class="proj-card-price">28 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~14 Kč</strong></div></div></div>
-        <div class="proj-card" data-cat="doprava"><div class="proj-card-header"><div class="proj-card-title">Cyklostezka Vltavská náplavka</div><span class="badge badge-blue">Plánováno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>0,8 km · Praha 2</div></div><div class="proj-card-footer"><div class="proj-card-price">12 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~6 Kč</strong></div></div></div>
-        <div class="proj-card" data-cat="zdravi"><div class="proj-card-header"><div class="proj-card-title">Rozšíření kapacity Nemocnice Vinohrady</div><span class="badge badge-green">Probíhá</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>2,4 km · Praha 10</div></div><div class="proj-card-footer"><div class="proj-card-price">145 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~72 Kč</strong></div></div></div>
-        <div class="proj-card" data-cat="kultura"><div class="proj-card-header"><div class="proj-card-title">Kulturní centrum Zahrada Praha 10</div><span class="badge badge-orange">Schvalování</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>4,5 km · Praha 10</div></div><div class="proj-card-footer"><div class="proj-card-price">8,5 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~4 Kč</strong></div></div></div>
-        <div class="proj-card" data-cat="sport"><div class="proj-card-header"><div class="proj-card-title">Sportovní hala TJ Sokol Nusle</div><span class="badge badge-blue">Plánováno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>2,0 km · Praha 4</div></div><div class="proj-card-footer"><div class="proj-card-price">18 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~9 Kč</strong></div></div></div>
-        <div class="proj-card" data-cat="doprava"><div class="proj-card-header"><div class="proj-card-title">Nový přechod Ječná × Štěpánská</div><span class="badge badge-green">Dokončeno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>0,5 km · Praha 2</div></div><div class="proj-card-footer"><div class="proj-card-price">2,2 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~1 Kč</strong></div></div></div>
-        <div class="proj-card" data-cat="sport"><div class="proj-card-header"><div class="proj-card-title">Dětské hřiště Stromovka – sekce B</div><span class="badge badge-green">Probíhá</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>1,8 km · Praha 7</div></div><div class="proj-card-footer"><div class="proj-card-price">3,8 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~2 Kč</strong></div></div></div>
-        <div class="proj-card" data-cat="skolstvi"><div class="proj-card-header"><div class="proj-card-title">Rekonstrukce ZMŠ Skalka</div><span class="badge badge-blue">Plánováno</span></div><div class="proj-card-body"><div class="proj-card-meta"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>5,2 km · Praha 10</div></div><div class="proj-card-footer"><div class="proj-card-price">42 mil. Kč</div><div class="proj-card-my-share">Váš příspěvek: <strong>~21 Kč</strong></div></div></div>
+
+      <!-- Projekty body -->
+      <div class="proj-body">
+
+        <!-- Filter section -->
+        <section>
+          <div class="section-header">
+            <span class="section-header-title">Projekty v okolí.</span>
+            <span class="section-header-link">📍 Ostrava-Poruba</span>
+          </div>
+          <div class="chips-bar">
+            <div class="proj-chip active" data-cat="vse" onclick="filterProjects('vse')">Vše (8)</div>
+            <div class="proj-chip" data-cat="skolstvi" onclick="filterProjects('skolstvi')">🏫 Školství</div>
+            <div class="proj-chip" data-cat="doprava" onclick="filterProjects('doprava')">🛣️ Doprava</div>
+            <div class="proj-chip" data-cat="zdravi" onclick="filterProjects('zdravi')">🏥 Zdravotnictví</div>
+            <div class="proj-chip" data-cat="kultura" onclick="filterProjects('kultura')">🎭 Kultura</div>
+            <div class="proj-chip" data-cat="sport" onclick="filterProjects('sport')">⚽ Sport</div>
+          </div>
+          <div class="proj-list">
+
+            <div class="proj-card" data-cat="skolstvi">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Školství</div>
+                  <div class="proj-card-title">Rekonstrukce ZŠ Ostrava-Poruba</div>
+                  <div class="proj-card-meta">📍 1,2 km · Ostrava-Poruba</div>
+                </div>
+                <span class="proj-status proj-status--active">Probíhá</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">28 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~14 Kč</span>
+              </div>
+            </div>
+
+            <div class="proj-card" data-cat="doprava">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Doprava</div>
+                  <div class="proj-card-title">Nová cyklostezka Hlavní třída</div>
+                  <div class="proj-card-meta">📍 0,8 km · Ostrava-Poruba</div>
+                </div>
+                <span class="proj-status proj-status--planned">Plánováno</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">12 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~6 Kč</span>
+              </div>
+            </div>
+
+            <div class="proj-card" data-cat="zdravi">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Zdravotnictví</div>
+                  <div class="proj-card-title">Rozšíření kapacity FN Ostrava</div>
+                  <div class="proj-card-meta">📍 2,4 km · Ostrava-Poruba</div>
+                </div>
+                <span class="proj-status proj-status--active">Probíhá</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">145 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~72 Kč</span>
+              </div>
+            </div>
+
+            <div class="proj-card" data-cat="kultura">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Kultura</div>
+                  <div class="proj-card-title">Revitalizace Slezskoostravského hradu</div>
+                  <div class="proj-card-meta">📍 4,5 km · Slezská Ostrava</div>
+                </div>
+                <span class="proj-status proj-status--review">Schvalování</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">8,5 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~4 Kč</span>
+              </div>
+            </div>
+
+            <div class="proj-card" data-cat="sport">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Sport</div>
+                  <div class="proj-card-title">Sportovní hala TJ Baník Ostrava</div>
+                  <div class="proj-card-meta">📍 2,0 km · Ostrava-Jih</div>
+                </div>
+                <span class="proj-status proj-status--planned">Plánováno</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">18 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~9 Kč</span>
+              </div>
+            </div>
+
+            <div class="proj-card" data-cat="doprava">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Doprava</div>
+                  <div class="proj-card-title">Nové přechody ulice Českobratrská</div>
+                  <div class="proj-card-meta">📍 0,5 km · Ostrava-Poruba</div>
+                </div>
+                <span class="proj-status proj-status--done">Dokončeno</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">2,2 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~1 Kč</span>
+              </div>
+            </div>
+
+            <div class="proj-card" data-cat="sport">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Sport</div>
+                  <div class="proj-card-title">Dětské hřiště Dubina – sekce B</div>
+                  <div class="proj-card-meta">📍 1,8 km · Ostrava-Jih</div>
+                </div>
+                <span class="proj-status proj-status--active">Probíhá</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">3,8 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~2 Kč</span>
+              </div>
+            </div>
+
+            <div class="proj-card" data-cat="skolstvi">
+              <div class="proj-card-top">
+                <div>
+                  <div class="proj-card-eyebrow">Školství</div>
+                  <div class="proj-card-title">Rekonstrukce ZMŠ Hrabůvka</div>
+                  <div class="proj-card-meta">📍 5,2 km · Ostrava-Jih</div>
+                </div>
+                <span class="proj-status proj-status--planned">Plánováno</span>
+              </div>
+              <div class="proj-card-footer">
+                <span class="proj-card-budget">42 mil. Kč</span>
+                <span class="proj-card-share">Tvůj příspěvek ~21 Kč</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
       </div>
-      </div>
+
     </div>
 
     <!-- SITUACE -->
