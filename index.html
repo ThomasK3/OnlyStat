@@ -1071,25 +1071,28 @@
     <!-- S12 ZTRÁTA ZAMĚSTNÁNÍ -->
     <div id="screen-s12" class="screen">
       <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Ztráta zaměstnání</div><div class="top-bar-spacer"></div></div>
-      <div class="sit-hero">
-        <div class="sit-hero-circle">💼</div>
-        <div class="sit-hero-name">Ztráta zaměstnání</div>
+      <div class="sit-detail-header">
+        <div class="sit-detail-hero">
+          <div class="sit-detail-circle">💼</div>
+          <div>
+            <div class="sit-detail-title">Ztráta zaměstnání</div>
+            <div class="sit-detail-meta">Ztráta zaměstnání · 6 kroků · Podpora až 65 % mzdy</div>
+          </div>
+        </div>
+        <div class="sit-progress-wrap">
+          <div class="sit-progress-row">
+            <span class="sit-progress-counter">0 / 6 kroků</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
       </div>
-      <div class="screen-content">
+      <div class="sit-detail-body">
         <div class="sit-tax-card">
           <div class="sit-tax-icon">💼</div>
           <div>
             <div class="sit-tax-label">Daňová souvislost</div>
             <div class="sit-tax-text">Podpora v nezaměstnanosti a příspěvky ÚP jsou financovány ze sociálního pojistného — 6,5 % z vaší hrubé mzdy, které jste platili každý měsíc jako zaměstnanec.</div>
           </div>
-        </div>
-        <div class="sit-meta">Ztráta zaměstnání · 6 kroků · Podpora až 65 % mzdy</div>
-        <div class="sit-progress-wrap">
-          <div class="sit-progress-row">
-            <span class="sit-progress-counter">0 / 6 kroků</span>
-            <button class="sit-start-btn" onclick="startSituation('screen-s12','Ztráta zaměstnání',this)">Sledovat</button>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         </div>
         <div class="sit-steps">
           <div class="sit-step">
@@ -1171,6 +1174,10 @@
           <div style="font-size:14px;color:var(--c-text-sub)">Splnili jste všechny kroky po ztrátě zaměstnání.</div>
           <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
         </div>
+      </div>
+      <div class="sit-bottom-bar">
+        <button class="sit-btn-ghost" onclick="goBack()">Zpět</button>
+        <button class="sit-btn-primary" onclick="startSituation('screen-s12','Ztráta zaměstnání',this)">Sledovat situaci</button>
       </div>
     </div>
 
