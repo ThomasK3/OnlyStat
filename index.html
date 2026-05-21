@@ -446,25 +446,26 @@
         <div class="top-bar-spacer"></div>
       </div>
 
-      <!-- Body -->
-      <div class="proj-body">
-        <section>
+      <!-- Tinted header zone (page header + filter chips) -->
+      <div class="proj-screen-header">
+        <div class="proj-page-header">
+          <div class="proj-page-eyebrow">📍 Ostrava-Poruba · 5 km</div>
+          <h2 class="proj-page-title">Tvoje daně staví.</h2>
+          <div class="proj-page-stats">8 projektů · 259 mil. Kč celkem · tvůj příspěvek ~129 Kč</div>
+        </div>
+        <div class="chips-bar">
+          <div class="proj-chip active" data-cat="vse" onclick="filterProjects('vse')">Vše (8)</div>
+          <div class="proj-chip" data-cat="skolstvi" onclick="filterProjects('skolstvi')">🏫 Školství</div>
+          <div class="proj-chip" data-cat="doprava" onclick="filterProjects('doprava')">🛣️ Doprava</div>
+          <div class="proj-chip" data-cat="zdravi" onclick="filterProjects('zdravi')">🏥 Zdravotnictví</div>
+          <div class="proj-chip" data-cat="kultura" onclick="filterProjects('kultura')">🎭 Kultura</div>
+          <div class="proj-chip" data-cat="sport" onclick="filterProjects('sport')">⚽ Sport</div>
+        </div>
+      </div>
 
-          <!-- Inline page header -->
-          <div class="proj-page-header">
-            <div class="proj-page-eyebrow">📍 Ostrava-Poruba · 5 km</div>
-            <h2 class="proj-page-title">Tvoje daně staví.</h2>
-            <div class="proj-page-stats">8 projektů · 259 mil. Kč celkem · tvůj příspěvek ~129 Kč</div>
-          </div>
-          <div class="chips-bar">
-            <div class="proj-chip active" data-cat="vse" onclick="filterProjects('vse')">Vše (8)</div>
-            <div class="proj-chip" data-cat="skolstvi" onclick="filterProjects('skolstvi')">🏫 Školství</div>
-            <div class="proj-chip" data-cat="doprava" onclick="filterProjects('doprava')">🛣️ Doprava</div>
-            <div class="proj-chip" data-cat="zdravi" onclick="filterProjects('zdravi')">🏥 Zdravotnictví</div>
-            <div class="proj-chip" data-cat="kultura" onclick="filterProjects('kultura')">🎭 Kultura</div>
-            <div class="proj-chip" data-cat="sport" onclick="filterProjects('sport')">⚽ Sport</div>
-          </div>
-          <div class="proj-list">
+      <!-- Cards -->
+      <div class="proj-body">
+        <div class="proj-list">
 
             <div class="proj-card" data-cat="skolstvi">
               <div class="proj-card-image"><img src="https://loremflickr.com/800/450/school,building?lock=6" alt="Rekonstrukce ZŠ"></div>
@@ -611,7 +612,6 @@
             </div>
 
           </div>
-        </section>
 
       </div>
 
