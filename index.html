@@ -437,54 +437,24 @@
     </div>
 
     <!-- PROJEKTY -->
-    <div id="screen-projekty" class="screen has-nav">
+    <div id="screen-projekty" class="screen">
 
-      <!-- Hero -->
-      <div class="hero hero--teal-dark">
-        <div class="orb orb--lg"></div>
-        <div class="orb orb--yellow"></div>
-        <div class="hero-top-bar">
-          <div class="hero-top-left">
-            <div class="dane-hero-avatar">TK</div>
-            <span class="hero-top-name">Tomáš Kanucha</span>
-          </div>
-          <button class="hero-search-btn" aria-label="Hledat">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </button>
-        </div>
-        <div class="dane-hero-eyebrow">Ve tvém okolí · 5 km</div>
-        <h1 class="hero-greeting">Tvoje daně<br>staví.</h1>
-        <p class="hero-subtitle">8 projektů financovaných z tvých daní · Ostrava-Poruba</p>
+      <!-- Top bar -->
+      <div class="top-bar">
+        <button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="top-bar-title">Projekty v okolí</div>
+        <div class="top-bar-spacer"></div>
       </div>
 
-      <!-- Pulled-up summary card -->
-      <div class="card-pulled">
-        <div class="proj-summary-card card--light">
-          <div class="orb-deco"></div>
-          <div class="row-spread">
-            <div>
-              <div class="eyebrow eyebrow--light">Celkový rozpočet projektů</div>
-              <div class="card-title-light">259 mil. Kč.</div>
-            </div>
-            <div class="badge-soft">8 projektů</div>
-          </div>
-          <div class="hero-number">
-            <div class="hero-number-big">~129</div>
-            <div class="hero-number-unit">Kč</div>
-          </div>
-          <div class="meta-light">tvůj příspěvek na všechny projekty dohromady</div>
-          <button class="btn-pill btn-pill--white">Zobrazit na mapě →</button>
-        </div>
-      </div>
-
-      <!-- Projekty body -->
+      <!-- Body -->
       <div class="proj-body">
-
-        <!-- Filter section -->
         <section>
-          <div class="section-header">
-            <span class="section-header-title">Projekty v okolí.</span>
-            <span class="section-header-link">📍 Ostrava-Poruba</span>
+
+          <!-- Inline page header -->
+          <div class="proj-page-header">
+            <div class="proj-page-eyebrow">📍 Ostrava-Poruba · 5 km</div>
+            <h2 class="proj-page-title">Tvoje daně staví.</h2>
+            <div class="proj-page-stats">8 projektů · 259 mil. Kč celkem · tvůj příspěvek ~129 Kč</div>
           </div>
           <div class="chips-bar">
             <div class="proj-chip active" data-cat="vse" onclick="filterProjects('vse')">Vše (8)</div>
@@ -497,122 +467,146 @@
           <div class="proj-list">
 
             <div class="proj-card" data-cat="skolstvi">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Školství</div>
-                  <div class="proj-card-title">Rekonstrukce ZŠ Ostrava-Poruba</div>
-                  <div class="proj-card-meta">📍 1,2 km · Ostrava-Poruba</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/school,building?lock=6" alt="Rekonstrukce ZŠ"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Školství</div>
+                    <div class="proj-card-title">Rekonstrukce ZŠ Ostrava-Poruba</div>
+                    <div class="proj-card-meta">📍 1,2 km · Ostrava-Poruba</div>
+                  </div>
+                  <span class="proj-status proj-status--active">Probíhá</span>
                 </div>
-                <span class="proj-status proj-status--active">Probíhá</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">28 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~14 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">28 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~14 Kč</span>
+                </div>
               </div>
             </div>
 
             <div class="proj-card" data-cat="doprava">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Doprava</div>
-                  <div class="proj-card-title">Nová cyklostezka Hlavní třída</div>
-                  <div class="proj-card-meta">📍 0,8 km · Ostrava-Poruba</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/cycling,path?lock=2" alt="Nová cyklostezka"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Doprava</div>
+                    <div class="proj-card-title">Nová cyklostezka Hlavní třída</div>
+                    <div class="proj-card-meta">📍 0,8 km · Ostrava-Poruba</div>
+                  </div>
+                  <span class="proj-status proj-status--planned">Plánováno</span>
                 </div>
-                <span class="proj-status proj-status--planned">Plánováno</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">12 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~6 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">12 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~6 Kč</span>
+                </div>
               </div>
             </div>
 
             <div class="proj-card" data-cat="zdravi">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Zdravotnictví</div>
-                  <div class="proj-card-title">Rozšíření kapacity FN Ostrava</div>
-                  <div class="proj-card-meta">📍 2,4 km · Ostrava-Poruba</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/hospital,building?lock=1" alt="FN Ostrava"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Zdravotnictví</div>
+                    <div class="proj-card-title">Rozšíření kapacity FN Ostrava</div>
+                    <div class="proj-card-meta">📍 2,4 km · Ostrava-Poruba</div>
+                  </div>
+                  <span class="proj-status proj-status--active">Probíhá</span>
                 </div>
-                <span class="proj-status proj-status--active">Probíhá</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">145 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~72 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">145 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~72 Kč</span>
+                </div>
               </div>
             </div>
 
             <div class="proj-card" data-cat="kultura">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Kultura</div>
-                  <div class="proj-card-title">Revitalizace Slezskoostravského hradu</div>
-                  <div class="proj-card-meta">📍 4,5 km · Slezská Ostrava</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/castle,medieval?lock=4" alt="Slezskoostravský hrad"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Kultura</div>
+                    <div class="proj-card-title">Revitalizace Slezskoostravského hradu</div>
+                    <div class="proj-card-meta">📍 4,5 km · Slezská Ostrava</div>
+                  </div>
+                  <span class="proj-status proj-status--review">Schvalování</span>
                 </div>
-                <span class="proj-status proj-status--review">Schvalování</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">8,5 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~4 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">8,5 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~4 Kč</span>
+                </div>
               </div>
             </div>
 
             <div class="proj-card" data-cat="sport">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Sport</div>
-                  <div class="proj-card-title">Sportovní hala TJ Baník Ostrava</div>
-                  <div class="proj-card-meta">📍 2,0 km · Ostrava-Jih</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/sports,hall,indoor?lock=3" alt="Sportovní hala"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Sport</div>
+                    <div class="proj-card-title">Sportovní hala TJ Baník Ostrava</div>
+                    <div class="proj-card-meta">📍 2,0 km · Ostrava-Jih</div>
+                  </div>
+                  <span class="proj-status proj-status--planned">Plánováno</span>
                 </div>
-                <span class="proj-status proj-status--planned">Plánováno</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">18 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~9 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">18 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~9 Kč</span>
+                </div>
               </div>
             </div>
 
             <div class="proj-card" data-cat="doprava">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Doprava</div>
-                  <div class="proj-card-title">Nové přechody ulice Českobratrská</div>
-                  <div class="proj-card-meta">📍 0,5 km · Ostrava-Poruba</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/crosswalk,street?lock=2" alt="Přechody pro chodce"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Doprava</div>
+                    <div class="proj-card-title">Nové přechody ulice Českobratrská</div>
+                    <div class="proj-card-meta">📍 0,5 km · Ostrava-Poruba</div>
+                  </div>
+                  <span class="proj-status proj-status--done">Dokončeno</span>
                 </div>
-                <span class="proj-status proj-status--done">Dokončeno</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">2,2 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~1 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">2,2 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~1 Kč</span>
+                </div>
               </div>
             </div>
 
             <div class="proj-card" data-cat="sport">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Sport</div>
-                  <div class="proj-card-title">Dětské hřiště Dubina – sekce B</div>
-                  <div class="proj-card-meta">📍 1,8 km · Ostrava-Jih</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/children,playground?lock=4" alt="Dětské hřiště"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Sport</div>
+                    <div class="proj-card-title">Dětské hřiště Dubina – sekce B</div>
+                    <div class="proj-card-meta">📍 1,8 km · Ostrava-Jih</div>
+                  </div>
+                  <span class="proj-status proj-status--active">Probíhá</span>
                 </div>
-                <span class="proj-status proj-status--active">Probíhá</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">3,8 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~2 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">3,8 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~2 Kč</span>
+                </div>
               </div>
             </div>
 
             <div class="proj-card" data-cat="skolstvi">
-              <div class="proj-card-top">
-                <div>
-                  <div class="proj-card-eyebrow">Školství</div>
-                  <div class="proj-card-title">Rekonstrukce ZMŠ Hrabůvka</div>
-                  <div class="proj-card-meta">📍 5,2 km · Ostrava-Jih</div>
+              <div class="proj-card-image"><img src="https://loremflickr.com/800/450/kindergarten,school?lock=2" alt="ZMŠ Hrabůvka"></div>
+              <div class="proj-card-content">
+                <div class="proj-card-top">
+                  <div>
+                    <div class="proj-card-eyebrow">Školství</div>
+                    <div class="proj-card-title">Rekonstrukce ZMŠ Hrabůvka</div>
+                    <div class="proj-card-meta">📍 5,2 km · Ostrava-Jih</div>
+                  </div>
+                  <span class="proj-status proj-status--planned">Plánováno</span>
                 </div>
-                <span class="proj-status proj-status--planned">Plánováno</span>
-              </div>
-              <div class="proj-card-footer">
-                <span class="proj-card-budget">42 mil. Kč</span>
-                <span class="proj-card-share">Tvůj příspěvek ~21 Kč</span>
+                <div class="proj-card-footer">
+                  <span class="proj-card-budget">42 mil. Kč</span>
+                  <span class="proj-card-share">Tvůj příspěvek ~21 Kč</span>
+                </div>
               </div>
             </div>
 
