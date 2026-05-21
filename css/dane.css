@@ -1,158 +1,168 @@
-/* ── Hero panel ── */
-.dane-hero {
-  background: linear-gradient(160deg, var(--c-primary) 0%, var(--c-primary-mid) 100%);
-  padding: var(--sp-lg) var(--sp-md) var(--sp-lg);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex-shrink: 0;
-}
-.dane-hero-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
-}
-.dane-hero-sublabel {
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 4px;
-}
-.dane-hero-value {
-  font-size: 36px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-.dane-hero-bar-wrap { margin-top: var(--sp-sm); display: flex; flex-direction: column; gap: 4px; }
-.dane-hero-bar-wrap .progress-bar { background: rgba(255,255,255,0.2); height: 6px; }
-.dane-hero-bar-wrap .progress-fill { background: #fff; }
-.dane-hero-bar-sub { font-size: 11px; color: rgba(255,255,255,0.55); }
-
-/* ── Tabs ── */
-.dane-tabs {
-  display: flex;
-  border-bottom: 2px solid var(--c-divider);
-  background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  flex-shrink: 0;
-}
-.dane-tab {
-  flex: 1;
-  padding: 12px 8px;
+/* ── Dane hero top bar extensions ─── */
+.dane-hero-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-pill);
+  background: var(--c-navy);
+  color: white;
   font-size: 14px;
-  font-weight: 600;
-  color: var(--c-text-sub);
-  text-align: center;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
-  transition: all var(--transition-fast);
-}
-.dane-tab.active { color: var(--c-primary); border-bottom-color: var(--c-primary); }
-
-.dane-panel { padding: var(--sp-md); display: flex; flex-direction: column; gap: var(--sp-md); }
-
-/* ── Donut chart ── */
-.donut-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--sp-md);
-}
-.donut-chart {
-  position: relative;
-  width: 180px;
-  height: 180px;
-}
-.donut-chart svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-.donut-center {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  pointer-events: none;
-}
-.donut-center-amount { font-size: 15px; font-weight: 700; color: var(--c-text); }
-.donut-center-label { font-size: 10px; color: var(--c-text-sub); margin-top: 2px; }
-
-/* ── Legend ── */
-.legend { display: flex; flex-direction: column; width: 100%; }
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-sm);
-  padding: 10px 0;
-  border-bottom: 1px solid var(--c-divider);
-}
-.legend-item:last-child { border-bottom: none; }
-.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.legend-label { flex: 1; font-size: 13px; font-weight: 500; color: var(--c-text); }
-.legend-amount { font-size: 13px; font-weight: 600; color: var(--c-text); }
-.legend-pct { font-size: 11px; color: var(--c-text-sub); min-width: 30px; text-align: right; }
-
-/* ── Breakdown rows ── */
-.dane-breakdown { display: flex; flex-direction: column; gap: 0; }
-.dane-breakdown-row {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--sp-sm);
-  padding: var(--sp-md) 0;
-  border-bottom: 1px solid var(--c-divider);
-  cursor: pointer;
-}
-.dane-breakdown-row:last-child { border-bottom: none; }
-.dane-breakdown-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--r-md);
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 1px;
+  border: 2px solid rgba(255,255,255,0.3);
 }
-.dane-breakdown-body { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.dane-breakdown-top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-sm); }
-.dane-breakdown-name { font-size: 14px; font-weight: 600; color: var(--c-text); }
-.dane-breakdown-amount { font-size: 14px; font-weight: 700; color: var(--c-text); white-space: nowrap; flex-shrink: 0; }
-.dane-breakdown-sub { font-size: 12px; color: var(--c-text-sub); line-height: 1.45; }
-.dane-breakdown-bar {
-  height: 4px;
-  background: var(--c-divider);
-  border-radius: var(--r-full);
-  overflow: hidden;
+
+.dane-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Dane body layout ─── */
+.dane-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-section);
+  padding: 22px var(--s-screen-x) 28px;
+}
+
+/* ── Donut card (light background) ─── */
+.dane-donut-card {
+  background: var(--c-bg-soft);
+  border-radius: var(--r-card);
+  padding: 16px;
+  border: 0.5px solid var(--c-border-soft);
+}
+
+.dane-donut-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.dane-donut-chart {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+.dane-donut-chart svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.dane-donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+.dane-donut-center-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--c-navy);
+  letter-spacing: -0.02em;
+  font-feature-settings: 'tnum';
+}
+.dane-donut-center-label {
+  font-size: 11px;
+  color: var(--c-text-soft);
   margin-top: 2px;
 }
-.dane-breakdown-bar div { height: 100%; border-radius: var(--r-full); transition: width 0.5s ease; }
 
-/* ── Lokální panel ── */
-.dane-local-card {
-  background: var(--c-bg-card);
-  border-radius: var(--r-lg);
-  padding: var(--sp-md);
+/* ── Donut legend ─── */
+.dane-legend {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-xs);
+  width: 100%;
 }
-.dane-local-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--c-text-sub); }
-.dane-local-value { font-size: 28px; font-weight: 700; color: var(--c-primary); line-height: 1.15; }
-.dane-local-sub { font-size: 13px; color: var(--c-text-sub); }
 
-/* ── Historic summary ── */
-.dane-summary-card {
-  background: var(--c-bg-card);
-  border-radius: var(--r-lg);
-  padding: var(--sp-md);
+.dane-legend-item {
   display: flex;
-  flex-direction: column;
-  gap: var(--sp-sm);
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--c-border-soft);
+  cursor: pointer;
 }
-.dane-summary-row { display: flex; justify-content: space-between; align-items: center; }
-.dane-summary-label { font-size: 14px; color: var(--c-text-sub); }
-.dane-summary-val { font-size: 14px; font-weight: 600; color: var(--c-text); }
-.dane-summary-total { font-size: 18px; font-weight: 700; color: var(--c-primary); }
+.dane-legend-item:last-child { border-bottom: none; }
+
+.dane-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dane-legend-dot--navy       { background: var(--c-navy); }
+.dane-legend-dot--cyan       { background: var(--c-cyan); }
+.dane-legend-dot--cyan-light { background: var(--c-cyan-light); }
+.dane-legend-dot--yellow     { background: var(--c-yellow-warm); }
+
+.dane-legend-label {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+.dane-legend-amount {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-cyan);
+  font-feature-settings: 'tnum';
+}
+.dane-legend-pct {
+  font-size: 11px;
+  color: var(--c-text-soft);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ── Tax source breakdown rows ─── */
+.dane-tax-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 0.5px solid rgba(14,42,71,0.08);
+}
+.dane-tax-row:last-child { border-bottom: none; }
+
+.dane-tax-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.dane-tax-body { flex: 1; }
+
+.dane-tax-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+.dane-tax-sub {
+  font-size: 11px;
+  color: var(--c-text-soft);
+  margin-top: 2px;
+}
+.dane-tax-amount {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text);
+  font-feature-settings: 'tnum';
+  white-space: nowrap;
+}

@@ -1,51 +1,56 @@
-.situace-header {
-  background: linear-gradient(160deg, var(--c-teal) 0%, var(--c-accent) 100%);
-  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
-}
-.situace-header-title { font-size: 22px; font-weight: 700; color: #fff; }
-.situace-header-sub { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 4px; }
-
-.situace-active-card {
-  background: var(--c-bg-card);
-  border-radius: var(--r-lg);
-  padding: var(--sp-md);
-  margin: var(--sp-md);
+/* ── Situace body layout ─── */
+.sit-body {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-sm);
-  cursor: pointer;
+  gap: var(--s-section);
+  padding: 22px var(--s-screen-x) 28px;
 }
-.situace-active-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--c-text-sub); }
-.situace-active-title { font-size: 16px; font-weight: 600; color: var(--c-text); }
-.situace-active-progress { display: flex; align-items: center; gap: var(--sp-sm); }
-.situace-active-steps { font-size: 13px; color: var(--c-text-sub); }
 
-.situace-grid {
+/* ── 2-column situace grid ─── */
+.sit-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--sp-sm);
-  padding: 0 var(--sp-md);
+  gap: 10px;
 }
-.situace-card {
-  background: var(--c-bg-card);
-  border-radius: var(--r-lg);
-  padding: var(--sp-md);
+
+.sit-card {
+  background: var(--c-bg-soft);
+  border-radius: var(--r-card);
+  padding: 14px;
+  border: 0.5px solid var(--c-border-soft);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-sm);
-  cursor: pointer;
-  transition: background var(--transition-fast);
+  gap: 6px;
 }
-.situace-card:active { background: var(--c-divider); }
-.situace-card-emoji { font-size: 28px; }
-.situace-card-title { font-size: 14px; font-weight: 600; color: var(--c-text); }
-.situace-card-sub { font-size: 12px; color: var(--c-text-sub); }
-.situace-card-steps {
+
+.sit-card-emoji {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.sit-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.sit-card-sub {
   font-size: 11px;
-  font-weight: 600;
-  color: var(--c-text-sub);
-  background: rgba(9,70,114,0.07);
-  border-radius: var(--r-full);
-  padding: 2px 8px;
+  color: var(--c-text-soft);
+  line-height: 1.4;
+}
+
+.sit-card-steps {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-cyan);
+  background: var(--c-cyan-pale);
+  border-radius: var(--r-pill);
+  padding: 3px 10px;
   align-self: flex-start;
+  margin-top: 4px;
 }
