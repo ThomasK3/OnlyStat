@@ -35,7 +35,7 @@ Při práci na každém dalším screenu: otevři tenhle soubor, nekopíruj hodn
 --c-teal-hero:   #0891B2;   /* Home hero */
 --c-teal-dark:   #0F766E;   /* Projekty hero */
 --c-green-hero:  #047857;   /* Situace hero */
---c-sky:         #60A5FA;   /* Daně + Projekty pulled-up karta */
+--c-sky:         #60A5FA;   /* Projekty pulled-up karta */
 --c-amber:       #FBBF24;   /* Situace pulled-up karta */
 
 /* Akcenty */
@@ -161,7 +161,7 @@ Každá sekce má kontrastní kartu k hero. Použij color-modifier + `card--ligh
 | Tab | Hero | Karta | Třídy |
 |-----|------|-------|-------|
 | Home | teal `#0891B2` | navy | `.contribution-card` (default, bílý text) |
-| Daně | navy `#0E2A47` | sky `#60A5FA` | `.contribution-card.contribution-card--sky.card--light` |
+| Daně | navy `#0E2A47` | teal `#0891B2` | `.contribution-card.contribution-card--teal` (bílý text, bez card--light) |
 | Projekty | teal-dark `#0F766E` | sky `#60A5FA` | `.proj-summary-card.card--light` |
 | Situace | green `#047857` | amber `#FBBF24` | `.contribution-card.contribution-card--amber.card--light` |
 | Profil | amber `#FBBF24` | green `#047857` | `.contribution-card.contribution-card--green` (bílý text, bez card--light) |
