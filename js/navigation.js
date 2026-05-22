@@ -10,7 +10,6 @@ const NO_NAV_SCREENS = new Set([
   'screen-s12', 'screen-s13', 'screen-s14',
   'screen-s8', 'screen-s9',
   'screen-auto1', 'screen-autoano', 'screen-autone',
-  'screen-feedback', 'screen-feedback-done',
   'screen-nastaveni',
 ]);
 
@@ -20,7 +19,6 @@ const TAB_MAP = {
   'screen-dane':    'nav-dane',
   'screen-projekty':'nav-dane',
   'screen-situace': 'nav-situace',
-  'screen-ukoly':   'nav-situace',
   'screen-profil':  'nav-profil',
   'screen-nastaveni':'nav-profil',
   'screen-stehovani':   'nav-situace',
@@ -35,8 +33,8 @@ const TAB_MAP = {
   'screen-auto1':    'nav-dane',
   'screen-autoano':  'nav-dane',
   'screen-autone':   'nav-dane',
-  'screen-feedback': 'nav-home',
-  'screen-feedback-done': 'nav-home',
+  'screen-feedback': 'nav-profil',
+  'screen-feedback-done': 'nav-profil',
   'screen-report':   'nav-home',
 };
 
@@ -217,7 +215,13 @@ function finishOnboarding() {
 }
 
 function initHome() {
-  // Placeholder for future dynamic personalization from localStorage/userData
+  const slider = document.getElementById('active-sit-slider');
+  const dots = document.querySelectorAll('#active-sit-dots .active-sit-dot');
+  if (!slider || !dots.length) return;
+  slider.addEventListener('scroll', () => {
+    const idx = Math.round(slider.scrollLeft / slider.offsetWidth);
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }, { passive: true });
 }
 
 /* Init on load */
