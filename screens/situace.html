@@ -1,0 +1,95 @@
+<div id="screen-situace" class="screen has-nav">
+
+  <!-- Hero -->
+  <div class="hero hero--green">
+    <div class="orb orb--lg"></div>
+    <div class="orb orb--yellow"></div>
+    <div class="hero-top-bar">
+      <div class="hero-top-left">
+        <div class="dane-hero-avatar">TK</div>
+        <span class="hero-top-name">Tomáš Kanucha</span>
+      </div>
+      <button class="hero-search-btn" aria-label="Hledat">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <div class="dane-hero-eyebrow">Průvodci krok za krokem</div>
+    <h1 class="hero-greeting">Životní<br>situace.</h1>
+    <p class="hero-subtitle">6 průvodců · ušetří ti starosti i čas</p>
+  </div>
+
+  <!-- Pulled-up: aktivní situace -->
+  <div class="card-pulled">
+    <div class="contribution-card contribution-card--amber card--light" onclick="navigateTo('screen-stehovani','forward')">
+      <div class="orb-deco"></div>
+      <div class="row-spread">
+        <div>
+          <div class="eyebrow eyebrow--light">Probíhá · 3 ze 5</div>
+          <div class="card-title-light">Tvoje stěhování.</div>
+        </div>
+        <div class="badge-soft">📦</div>
+      </div>
+      <div class="meta-light">Další krok · zítra · Přepis na nové trvalé bydliště</div>
+      <div class="contribution-progress">
+        <div class="contribution-progress-fill" style="width:60%"></div>
+      </div>
+      <button class="btn-pill btn-pill--white">Otevřít průvodce →</button>
+    </div>
+  </div>
+
+  <!-- Situace body -->
+  <div class="sit-body">
+    <section>
+      <h2 class="section-title">Začít novou situaci.</h2>
+      <p class="section-sub">Vyber průvodce a zvládni to krok za krokem.</p>
+      <div class="section-body">
+        <div class="sit-grid">
+
+          <div class="sit-card" onclick="navigateTo('screen-narozeni','forward')">
+            <div class="sit-card-emoji">👶</div>
+            <div class="sit-card-title">Narodilo se miminko</div>
+            <div class="sit-card-sub">Rodičovský příspěvek, porodné</div>
+            <span class="sit-card-steps">7 kroků</span>
+          </div>
+
+          <div class="sit-card" onclick="navigateTo('screen-stehovani','forward')">
+            <div class="sit-card-emoji">📦</div>
+            <div class="sit-card-title">Stěhování</div>
+            <div class="sit-card-sub">Přihlášení, změna adres</div>
+            <span class="sit-card-steps">5 kroků</span>
+          </div>
+
+          <div class="sit-card" onclick="navigateTo('screen-auto1','forward')">
+            <div class="sit-card-emoji">🚗</div>
+            <div class="sit-card-title">Koupě auta</div>
+            <div class="sit-card-sub">Registrace, pojištění, STK</div>
+            <span class="sit-card-steps">4 kroky</span>
+          </div>
+
+          <div class="sit-card" onclick="navigateTo('screen-doklady','forward')">
+            <div class="sit-card-emoji">🪪</div>
+            <div class="sit-card-title">Výměna dokladů</div>
+            <div class="sit-card-sub">OP, pas, řidičák</div>
+            <span class="sit-card-steps">3 kroky</span>
+          </div>
+
+          <div class="sit-card" onclick="navigateTo('screen-s12','forward')">
+            <div class="sit-card-emoji">💼</div>
+            <div class="sit-card-title">Ztráta zaměstnání</div>
+            <div class="sit-card-sub">Podpora, ÚP, dávky</div>
+            <span class="sit-card-steps">6 kroků</span>
+          </div>
+
+          <div class="sit-card" onclick="navigateTo('screen-nemovitost','forward')">
+            <div class="sit-card-emoji">🏡</div>
+            <div class="sit-card-title">Koupě nemovitosti</div>
+            <div class="sit-card-sub">Daň, katastr, zápis</div>
+            <span class="sit-card-steps">8 kroků</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>

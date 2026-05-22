@@ -1,42 +1,20 @@
 <div id="screen-s13" class="screen">
-
-  <!-- Top bar -->
-  <div class="top-bar">
-    <button class="top-bar-back" onclick="goBack()">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="top-bar-title">Krok splněn!</div>
-    <div class="top-bar-spacer"></div>
-  </div>
-
-  <!-- Success state -->
+  <div class="top-bar"><button class="top-bar-back" onclick="goBack()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="top-bar-title">Krok splněn!</div><div class="top-bar-spacer"></div></div>
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-2xl) var(--sp-md);text-align:center;gap:var(--sp-md);">
-    <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-green-light);display:flex;align-items:center;justify-content:center;">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#2e7d32" stroke-width="2.5" style="width:40px;height:40px;"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
+    <div style="width:80px;height:80px;border-radius:var(--r-full);background:var(--c-green-light);display:flex;align-items:center;justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#2e7d32" stroke-width="2.5" style="width:40px;height:40px;"><polyline points="20 6 9 17 4 12"/></svg></div>
     <div style="font-size:24px;font-weight:700;color:var(--c-text);">Hotovo! 🎉</div>
-    <div style="font-size:15px;color:var(--c-text-sub);line-height:1.6;max-width:280px;">Oznámení změny adresy zaměstnavateli bylo přidáno jako splněné. Průvodce stěhováním je skoro hotový.</div>
-
-    <!-- Progress recap -->
+    <div style="font-size:15px;color:var(--c-text-sub);line-height:1.6;max-width:280px;">Oznámení změny adresy zaměstnavateli bylo přidáno jako splněné.</div>
     <div style="background:var(--c-bg-card);border-radius:var(--r-lg);padding:var(--sp-md);width:100%;text-align:left;">
       <div style="font-size:14px;font-weight:600;color:var(--c-text);margin-bottom:var(--sp-sm);">🏠 Stěhování — pokrok</div>
-      <div class="progress-bar">
-        <div class="progress-fill" style="width:80%"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;margin-top:var(--sp-xs);">
-        <span style="font-size:12px;color:var(--c-text-sub);">4 / 5 kroků splněno</span>
-        <span style="font-size:12px;font-weight:600;color:var(--c-green);">80 %</span>
-      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+      <div style="display:flex;justify-content:space-between;margin-top:var(--sp-xs);"><span style="font-size:12px;color:var(--c-text-sub);">4 / 5 kroků splněno</span><span style="font-size:12px;font-weight:600;color:var(--c-green);">80 %</span></div>
     </div>
-
-    <!-- Remaining step -->
     <div style="background:var(--c-accent-light);border-radius:var(--r-lg);padding:var(--sp-md);width:100%;text-align:left;">
       <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--c-accent);margin-bottom:var(--sp-xs);">Zbývá 1 krok</div>
       <div style="font-size:14px;font-weight:600;color:var(--c-text);">Aktualizace v registru řidičů</div>
       <div style="font-size:13px;color:var(--c-text-sub);margin-top:4px;">Dobrovolné, ale doporučené — lze vyřídit online.</div>
     </div>
   </div>
-
   <div style="padding:0 var(--sp-md) var(--sp-md);display:flex;flex-direction:column;gap:var(--sp-sm);">
     <button class="btn-primary" onclick="navigateTo('screen-s14','forward')">Dokončit poslední krok</button>
     <button class="btn-secondary" onclick="switchTab('screen-situace')">Zpět na situace</button>
