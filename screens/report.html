@@ -1,74 +1,73 @@
 <div id="screen-report" class="screen has-nav">
 
-  <div class="top-bar">
-    <button class="top-bar-back" onclick="navigateTo('screen-home','back')">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="top-bar-title">Květen 2026</div>
-    <div class="top-bar-spacer"></div>
+  <!-- 1. HERO -->
+  <div class="hero hero--report">
+    <div class="orb orb--lg"></div>
+    <div class="hero-top-bar">
+      <button class="hero-search-btn" onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div style="width:36px"></div>
+    </div>
+    <div class="report-eyebrow">Máj 2026</div>
+    <div class="report-total" id="report-total">4 029 Kč</div>
+    <p class="hero-subtitle">Tvůj příspěvek státu tento měsíc.</p>
   </div>
 
-  <div class="screen-content">
-
-    <!-- Hero -->
-    <div class="report-hero">
-      <div class="report-hero-label">Tento měsíc jsi přispěl</div>
-      <div class="report-hero-value" id="report-total">4 029 Kč</div>
-      <div class="report-hero-sub">Díky. Bez tebe by to nefungovalo.</div>
-    </div>
-
-    <!-- Tento měsíc v číslech -->
-    <div>
-      <div class="section-label" style="padding:0 0 var(--sp-sm);">Tento měsíc v číslech</div>
-      <div class="report-numbers">
-        <div class="report-num-card">
-          <div class="report-num-dot" style="background:#094672;"></div>
-          <div class="report-num-label">Důchody</div>
-          <div class="report-num-value" id="report-duchody">1 330 Kč</div>
+  <!-- 2. PULLED CARD – přehled -->
+  <div class="card-pulled">
+    <div class="contribution-card contribution-card--teal">
+      <div class="orb-deco"></div>
+      <div class="eyebrow eyebrow--light">Kam to šlo</div>
+      <div class="report-rows">
+        <div class="report-row">
+          <div class="report-row-dot" style="background:var(--c-navy)"></div>
+          <div class="report-row-label">Důchody</div>
+          <div class="report-row-value" id="report-duchody">1 330 Kč</div>
         </div>
-        <div class="report-num-card">
-          <div class="report-num-dot" style="background:#1e7a87;"></div>
-          <div class="report-num-label">Školství</div>
-          <div class="report-num-value" id="report-skolstvi">1 048 Kč</div>
+        <div class="report-row">
+          <div class="report-row-dot" style="background:var(--c-cyan-light)"></div>
+          <div class="report-row-label">Školství</div>
+          <div class="report-row-value" id="report-skolstvi">1 048 Kč</div>
         </div>
-        <div class="report-num-card">
-          <div class="report-num-dot" style="background:#2d5f8a;"></div>
-          <div class="report-num-label">Doprava</div>
-          <div class="report-num-value" id="report-doprava">967 Kč</div>
+        <div class="report-row">
+          <div class="report-row-dot" style="background:var(--c-mint)"></div>
+          <div class="report-row-label">Doprava</div>
+          <div class="report-row-value" id="report-doprava">967 Kč</div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- 3. BODY -->
+  <div class="report-body">
 
     <!-- Věděl jsi, že... -->
-    <div>
-      <div class="section-label" style="padding:0 0 var(--sp-sm);">Věděl jsi, že...</div>
-      <div class="card">
-        <div style="font-size:28px;">🏗️</div>
-        <div style="font-size:15px;font-weight:600;color:var(--c-text);line-height:1.4;">
-          V květnu se z daní Pražanů opravilo 14 km chodníků.
-        </div>
-        <div style="font-size:14px;color:var(--c-text-sub);">
-          Tvůj příspěvek na tuto akci: <strong style="color:var(--c-text);" id="report-chodnik">~24 Kč</strong>
-        </div>
+    <section>
+      <div class="prof-section-title">Věděl jsi, že...</div>
+      <div class="report-fact-card">
+        <div class="report-fact-icon">🏗️</div>
+        <div class="report-fact-text">V květnu se z daní Pražanů opravilo 14 km chodníků.</div>
+        <div class="report-fact-sub">Tvůj příspěvek: <strong id="report-chodnik">~24 Kč</strong></div>
       </div>
-    </div>
+    </section>
 
     <!-- Nový odznak -->
-    <div>
-      <div class="section-label" style="padding:0 0 var(--sp-sm);">Nový odznak</div>
-      <div class="report-badge-card">
-        <div class="report-badge-icon">🏅</div>
+    <section>
+      <div class="prof-section-title">Nový odznak</div>
+      <div class="report-badge-row">
+        <div class="report-badge-emoji">🏅</div>
         <div class="report-badge-body">
           <div class="report-badge-name">Přispívatel – Máj 2026</div>
           <div class="report-badge-desc">Zaplatil jsi daně. Díky.</div>
         </div>
         <span class="badge badge-yellow">Nové</span>
       </div>
-    </div>
+    </section>
 
-    <!-- Akce -->
     <button class="btn-primary" onclick="navigateTo('screen-profil','forward')">Zobrazit můj profil</button>
-    <button class="btn-secondary" onclick="navigateTo('screen-home','back')">Zpět na přehled</button>
+    <button class="btn-secondary" onclick="goBack()">Zpět na přehled</button>
 
   </div>
 </div>
+</body>
