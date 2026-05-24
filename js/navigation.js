@@ -5,7 +5,6 @@ const App = {
 };
 
 const NO_NAV_SCREENS = new Set([
-  'screen-onboarding',
   'screen-stehovani', 'screen-narozeni', 'screen-doklady',
   'screen-s12', 'screen-s13', 'screen-s14',
   'screen-s8', 'screen-s9',
@@ -196,21 +195,6 @@ function _updateSitProgress(screenEl) {
   }
 }
 
-function calcOnboarding() {
-  const income = parseInt(document.getElementById('onb-income').value) || 0;
-  const monthly = Math.round(income * 0.489);
-  const yearly = monthly * 12;
-  const fmt = n => n > 0 ? '~ ' + n.toLocaleString('cs-CZ') + ' Kč' : '–';
-  document.getElementById('onb-monthly').textContent = fmt(monthly);
-  document.getElementById('onb-yearly').textContent = fmt(yearly);
-}
-
-function finishOnboarding() {
-  const income = parseInt(document.getElementById('onb-income').value) || 0;
-  localStorage.setItem('onboarding_done', '1');
-  if (income > 0) localStorage.setItem('monthly_income', String(income));
-  switchTab('screen-home');
-}
 
 function initHome() {
   const slider = document.getElementById('active-sit-slider');
@@ -223,10 +207,9 @@ function initHome() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const startId = !localStorage.getItem('onboarding_done') ? 'screen-onboarding' : 'screen-home';
-  App.current = startId;
-  const el = await _loadScreen(startId);
+  App.current = 'screen-home';
+  const el = await _loadScreen('screen-home');
   el.classList.add('active');
-  _updateNav(startId);
-  if (startId === 'screen-home') initHome();
+  _updateNav('screen-home');
+  initHome();
 });
