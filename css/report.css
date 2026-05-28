@@ -1,84 +1,141 @@
-/* Hero card */
-.report-hero {
+/* Hero variant */
+.hero--report {
   background: var(--c-primary);
-  border-radius: var(--r-lg);
-  padding: var(--sp-lg) var(--sp-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-xs);
 }
-.report-hero-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.65);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.hero--report .orb--lg {
+  background: var(--c-navy);
+  opacity: 0.4;
 }
-.report-hero-value {
-  font-size: 40px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
+.hero--report .hero-search-btn {
+  background: rgba(255,255,255,0.12);
+  color: white;
 }
-.report-hero-sub {
-  font-size: 14px;
-  color: rgba(255,255,255,0.7);
-  margin-top: var(--sp-xs);
+.hero--report .hero-subtitle {
+  color: rgba(255,255,255,0.6);
 }
 
-/* 3-column number cards */
-.report-numbers {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-sm);
+.report-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 20px;
 }
-.report-num-card {
-  background: var(--c-bg-card);
-  border-radius: var(--r-md);
-  padding: var(--sp-sm) var(--sp-sm) var(--sp-md);
+
+.report-total {
+  font-size: 46px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-top: 6px;
+}
+
+/* Breakdown rows in pulled card */
+.report-rows {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  margin-top: 14px;
 }
-.report-num-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: var(--r-full);
+
+.report-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
 }
-.report-num-label {
-  font-size: 12px;
-  color: var(--c-text-sub);
+.report-row + .report-row {
+  border-top: 0.5px solid rgba(255,255,255,0.15);
+}
+
+.report-row-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.report-row-label {
+  flex: 1;
+  font-size: 14px;
   font-weight: 500;
+  color: rgba(255,255,255,0.8);
 }
-.report-num-value {
-  font-size: 15px;
+
+.report-row-value {
+  font-size: 14px;
   font-weight: 700;
+  color: white;
+  font-feature-settings: 'tnum';
+}
+
+/* Body */
+.report-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-section);
+  padding: 22px var(--s-screen-x) 28px;
+}
+
+/* Fact card */
+.report-fact-card {
+  background: var(--c-bg-soft);
+  border: 0.5px solid var(--c-border-soft);
+  border-radius: var(--r-card);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-fact-icon {
+  font-size: 26px;
+}
+
+.report-fact-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+  line-height: 1.4;
+}
+
+.report-fact-sub {
+  font-size: 13px;
+  color: var(--c-text-soft);
+}
+.report-fact-sub strong {
   color: var(--c-text);
 }
 
-/* Badge card */
-.report-badge-card {
-  background: var(--c-bg-card);
-  border-radius: var(--r-lg);
-  padding: var(--sp-md);
+/* Badge row */
+.report-badge-row {
+  background: var(--c-bg-soft);
+  border: 0.5px solid var(--c-border-soft);
+  border-radius: var(--r-card);
+  padding: 14px 16px;
   display: flex;
   align-items: center;
-  gap: var(--sp-md);
+  gap: 14px;
 }
-.report-badge-icon {
-  font-size: 36px;
+
+.report-badge-emoji {
+  font-size: 32px;
   flex-shrink: 0;
 }
+
 .report-badge-body {
   flex: 1;
 }
+
 .report-badge-name {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--c-text);
 }
+
 .report-badge-desc {
-  font-size: 13px;
-  color: var(--c-text-sub);
+  font-size: 12px;
+  color: var(--c-text-soft);
   margin-top: 2px;
 }

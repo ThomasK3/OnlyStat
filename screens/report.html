@@ -1,0 +1,73 @@
+<div id="screen-report" class="screen has-nav">
+
+  <!-- 1. HERO -->
+  <div class="hero hero--report">
+    <div class="orb orb--lg"></div>
+    <div class="hero-top-bar">
+      <button class="hero-search-btn" onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div style="width:36px"></div>
+    </div>
+    <div class="report-eyebrow">Máj 2026</div>
+    <div class="report-total" id="report-total">4 029 Kč</div>
+    <p class="hero-subtitle">Tvůj příspěvek státu tento měsíc.</p>
+  </div>
+
+  <!-- 2. PULLED CARD – přehled -->
+  <div class="card-pulled">
+    <div class="contribution-card contribution-card--teal">
+      <div class="orb-deco"></div>
+      <div class="eyebrow eyebrow--light">Kam to šlo</div>
+      <div class="report-rows">
+        <div class="report-row">
+          <div class="report-row-dot" style="background:var(--c-navy)"></div>
+          <div class="report-row-label">Důchody</div>
+          <div class="report-row-value" id="report-duchody">1 330 Kč</div>
+        </div>
+        <div class="report-row">
+          <div class="report-row-dot" style="background:var(--c-cyan-light)"></div>
+          <div class="report-row-label">Školství</div>
+          <div class="report-row-value" id="report-skolstvi">1 048 Kč</div>
+        </div>
+        <div class="report-row">
+          <div class="report-row-dot" style="background:var(--c-mint)"></div>
+          <div class="report-row-label">Doprava</div>
+          <div class="report-row-value" id="report-doprava">967 Kč</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. BODY -->
+  <div class="report-body">
+
+    <!-- Věděl jsi, že... -->
+    <section>
+      <div class="prof-section-title">Věděl jsi, že...</div>
+      <div class="report-fact-card">
+        <div class="report-fact-icon">🏗️</div>
+        <div class="report-fact-text">V květnu se z daní Pražanů opravilo 14 km chodníků.</div>
+        <div class="report-fact-sub">Tvůj příspěvek: <strong id="report-chodnik">~24 Kč</strong></div>
+      </div>
+    </section>
+
+    <!-- Nový odznak -->
+    <section>
+      <div class="prof-section-title">Nový odznak</div>
+      <div class="report-badge-row">
+        <div class="report-badge-emoji">🏅</div>
+        <div class="report-badge-body">
+          <div class="report-badge-name">Přispívatel – Máj 2026</div>
+          <div class="report-badge-desc">Zaplatil jsi daně. Díky.</div>
+        </div>
+        <span class="badge badge-yellow">Nové</span>
+      </div>
+    </section>
+
+    <button class="btn-primary" onclick="navigateTo('screen-profil','forward')">Zobrazit můj profil</button>
+    <button class="btn-secondary" onclick="goBack()">Zpět na přehled</button>
+
+  </div>
+</div>
+</body>

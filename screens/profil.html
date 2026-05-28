@@ -1,0 +1,146 @@
+<div id="screen-profil" class="screen has-nav">
+
+  <!-- 1. HERO (amber) -->
+  <div class="hero hero--amber">
+    <div class="orb orb--lg"></div>
+    <div class="profil-hero-avatar">JN</div>
+    <h1 class="hero-greeting">Jan Novák.</h1>
+    <p class="hero-subtitle">jan.novak@gmail.com · Ověřen přes BankID</p>
+  </div>
+
+  <!-- 2. STATS KARTA (mint, pulled up) -->
+  <div class="card-pulled">
+    <div class="contribution-card contribution-card--green">
+      <div class="orb-deco"></div>
+      <div class="card-title-light">Přehled 2026.</div>
+      <div class="profil-stat-row">
+        <div class="profil-stat">
+          <div class="profil-stat-val">48 350 Kč</div>
+          <div class="profil-stat-label">Daně letos</div>
+        </div>
+        <div class="profil-stat">
+          <div class="profil-stat-val">3</div>
+          <div class="profil-stat-label">Aktivní situace</div>
+        </div>
+        <div class="profil-stat">
+          <div class="profil-stat-val">5</div>
+          <div class="profil-stat-label">Splněné úkoly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. BODY -->
+  <div class="profil-body">
+
+    <!-- Daně a finance -->
+    <section>
+      <div class="prof-section-title">Daně a finance</div>
+      <div class="prof-list">
+        <div class="prof-item" onclick="switchTab('screen-dane')">
+          <div class="prof-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="7" y1="14" x2="10" y2="14"/></svg></div>
+          <div class="prof-item-text">
+            <div class="prof-item-title">Přehled daní</div>
+            <div class="prof-item-sub">Za rok 2026 · 48 350 Kč celkem</div>
+          </div>
+          <div class="prof-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="prof-item" onclick="switchTab('screen-projekty')">
+          <div class="prof-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="3 11 12 2 21 11"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg></div>
+          <div class="prof-item-text">
+            <div class="prof-item-title">Projekty ve vašem okolí</div>
+            <div class="prof-item-sub">8 projektů · Ostrava-Poruba</div>
+          </div>
+          <div class="prof-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moje situace -->
+    <section>
+      <div class="prof-section-title">Moje situace</div>
+      <div class="prof-list">
+        <div class="prof-item" onclick="switchTab('screen-situace')">
+          <div class="prof-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div class="prof-item-text">
+            <div class="prof-item-title">Životní situace</div>
+            <div class="prof-item-sub">3 aktivní · 1 dokončená</div>
+          </div>
+          <div class="prof-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moje odznaky -->
+    <section>
+      <div class="prof-section-title">Moje odznaky</div>
+      <div class="prof-badges-grid">
+        <div class="prof-badge-card">
+          <div class="prof-badge-icon">🏅</div>
+          <div class="prof-badge-name">Přispívatel 2026</div>
+          <div class="prof-badge-desc">Platíš daně. Díky.</div>
+        </div>
+        <div class="prof-badge-card">
+          <div class="prof-badge-icon">🚌</div>
+          <div class="prof-badge-name">MHD Hrdina</div>
+          <div class="prof-badge-desc">Jezdíš MHD místo auta.</div>
+        </div>
+        <div class="prof-badge-card">
+          <div class="prof-badge-icon">🌳</div>
+          <div class="prof-badge-name">Parkový návštěvník</div>
+          <div class="prof-badge-desc">Využíváš veřejné parky.</div>
+        </div>
+        <div class="prof-badge-card">
+          <div class="prof-badge-icon">🏗️</div>
+          <div class="prof-badge-name">Stavitel města</div>
+          <div class="prof-badge-desc">Tvoje daně šly na 3 projekty v okolí.</div>
+        </div>
+        <div class="prof-badge-card prof-badge-card--locked">
+          <div class="prof-badge-icon">📚</div>
+          <div class="prof-badge-name">Knihomol</div>
+          <div class="prof-badge-desc">Navštiv veřejnou knihovnu.</div>
+        </div>
+        <div class="prof-badge-card prof-badge-card--locked">
+          <div class="prof-badge-icon">🚴</div>
+          <div class="prof-badge-name">Cyklista</div>
+          <div class="prof-badge-desc">Jeď po nové cyklostezce.</div>
+        </div>
+        <div class="prof-badge-card prof-badge-card--locked">
+          <div class="prof-badge-icon">🏊</div>
+          <div class="prof-badge-name">Plavec</div>
+          <div class="prof-badge-desc">Využij veřejný bazén.</div>
+        </div>
+        <div class="prof-badge-card prof-badge-card--locked">
+          <div class="prof-badge-icon">♻️</div>
+          <div class="prof-badge-name">Třídič</div>
+          <div class="prof-badge-desc">Využij sběrné místo v okolí.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Další -->
+    <section>
+      <div class="prof-section-title">Další</div>
+      <div class="prof-list">
+        <div class="prof-item" onclick="navigateTo('screen-report','forward')">
+          <div class="prof-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="7 9 12 9 17 9"/><polyline points="7 13 12 13"/></svg></div>
+          <div class="prof-item-text">
+            <div class="prof-item-title">Měsíční report</div>
+            <div class="prof-item-sub">Tvůj přehled za květen 2026</div>
+          </div>
+          <div class="prof-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="prof-item" onclick="navigateTo('screen-feedback','forward')">
+          <div class="prof-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <div class="prof-item-text">
+            <div class="prof-item-title">Zpětná vazba</div>
+            <div class="prof-item-sub">Sdělte nám svůj názor</div>
+          </div>
+          <div class="prof-item-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</body>
