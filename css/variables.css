@@ -22,8 +22,8 @@
 
   /* Text */
   --c-text: #0d1b2a;
-  --c-text-sub: #7a8fa6;
-  --c-text-muted: #b0bec5;
+  --c-text-sub: #4e6478;
+  --c-text-muted: #6b7d8f;
   --c-text-on-primary: #ffffff;
 
   /* Nav */
@@ -87,7 +87,7 @@
   --c-bg-soft:        #F5F8FA;
   --c-bg-tint:        #F0FAFC;
   --c-bg-warm:        #FFF7E0;
-  --c-text-soft:      #8A99AB;
+  --c-text-soft:      #5a6d7e;
   --c-text-light:     #B8D4E5;
   --c-text-on-cyan:   #FFFFFF;
   --c-border-soft:    rgba(14,42,71,0.06);

@@ -31,6 +31,7 @@ const TAB_MAP = {
   'screen-auto1':    'nav-dane',
   'screen-autoano':  'nav-dane',
   'screen-autone':   'nav-dane',
+  'screen-chat':     'nav-chat',
   'screen-feedback': 'nav-profil',
   'screen-feedback-done': 'nav-profil',
   'screen-report':   'nav-home',
@@ -195,6 +196,27 @@ function _updateSitProgress(screenEl) {
   }
 }
 
+
+function chatSend(text) {
+  const input = document.getElementById('chat-input');
+  const messages = document.getElementById('chat-messages');
+  const msg = text || (input && input.value.trim());
+  if (!msg || !messages) return;
+  if (input) input.value = '';
+
+  const userEl = document.createElement('div');
+  userEl.className = 'chat-msg chat-msg--user';
+  userEl.innerHTML = `<div class="chat-msg-bubble">${msg}</div>`;
+  messages.appendChild(userEl);
+
+  setTimeout(() => {
+    const botEl = document.createElement('div');
+    botEl.className = 'chat-msg chat-msg--bot';
+    botEl.innerHTML = `<div class="chat-msg-avatar">🤖</div><div class="chat-msg-bubble">Díky za otázku! Tato funkce je zatím ve vývoji. Brzy ti budu moci odpovědět.</div>`;
+    messages.appendChild(botEl);
+    botEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }, 600);
+}
 
 function initHome() {
   const slider = document.getElementById('active-sit-slider');
